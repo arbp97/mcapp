@@ -7,7 +7,7 @@
       "src": "img/logo-plain.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
