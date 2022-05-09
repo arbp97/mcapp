@@ -1,0 +1,17 @@
+{
+  "short_name": "McDonald's",
+  "name": "McDonald's App",
+  "name": "¡Obtenga cupones de descuento y ofertas especiales con nuestra aplicación!",
+  "icons": [
+    {
+      "src": "img/logo-plain.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any",
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
