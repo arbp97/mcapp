@@ -4,10 +4,22 @@
   "description": "¡Obtenga cupones de descuento y ofertas especiales con nuestra aplicación!",
   "icons": [
     {
+      "src": "img/logo-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
       "src": "img/logo-plain.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
+    },
+    {
+      "src": "img/logo-maskable-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
