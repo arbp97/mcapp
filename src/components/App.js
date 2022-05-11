@@ -1,9 +1,10 @@
 import "../theme/App.css";
+import Navigation from "./Navigation.js";
 
 const App = () => {
   return (
     <div className="App">
-      <p>Test React App</p>
+      <Navigation />
     </div>
   );
 };
