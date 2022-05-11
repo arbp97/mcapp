@@ -1,5 +1,5 @@
 import "../theme/Navigation.css";
-import { createRef, useState } from "react";
+import { useState } from "react";
 
 const Navigation = () => {
   // nav button values
