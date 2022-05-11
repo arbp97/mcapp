@@ -6,7 +6,7 @@
     -4px 0px 0px 2px rgb(50 54 57 / 15%);
   background-color: whitesmoke;
   width: 100%;
-  height: 70px;
+  height: 60px;
   display: flex;
   align-items: center;
 }
@@ -24,7 +24,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 10px;
+  row-gap: 5px;
   cursor: pointer;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .nav-list-item > img {
-  width: 40%;
+  width: 35%;
 }
 
 .nav-list-item > p {
