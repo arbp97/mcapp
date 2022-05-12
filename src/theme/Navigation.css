@@ -21,25 +21,33 @@
   width: 20%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 5px;
   cursor: pointer;
+}
+
+.nav-list-item > a {
+  text-decoration: none;
 }
 
 .nav-list-item.active {
   font-weight: bold;
 }
 
-.nav-list-item > img {
-  width: 35%;
-}
-
-.nav-list-item > p {
+.nav-link {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+  transition: all 0.15s;
+}
+
+.nav-link > img {
+  width: 35%;
 }
 
 @media screen and (min-width: 450px) {

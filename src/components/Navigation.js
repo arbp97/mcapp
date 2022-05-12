@@ -1,5 +1,6 @@
 import "../theme/Navigation.css";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navigation = (props) => {
   // default view is home view
@@ -14,13 +15,20 @@ const Navigation = (props) => {
             <li
               className={
                 // if key is the actual active key, set active class
-                active == key ? "nav-list-item active" : "nav-list-item"
+                active === key ? "nav-list-item active" : "nav-list-item"
               }
               key={key}
               onClick={() => setActive(key)} // change active button on click
             >
-              <img src={"img/nav/" + value.img}></img>
-              <p>{value.text}</p>
+              <a href="#">
+                <NavLink
+                  to={key === "home" ? "/" : "/" + key}
+                  className="nav-link"
+                >
+                  <img src={"img/nav/" + value.img} alt=""></img>
+                  {value.text}
+                </NavLink>
+              </a>
             </li>
           );
         })}
