@@ -1,23 +1,14 @@
 import "../theme/Navigation.css";
 import { useState } from "react";
 
-const Navigation = () => {
-  // nav button values
-  const buttons = {
-    home: { text: "Home", img: "logo-black.png" },
-    orders: { text: "Pedidos", img: "fries.png" },
-    discounts: { text: "Ofertas", img: "ticket.png" },
-    coupons: { text: "Cupones", img: "coupon.png" },
-    more: { text: "Más", img: "more.png" },
-  };
-
+const Navigation = (props) => {
   // default view is home view
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState(props.default);
 
   return (
     <nav className="nav-container">
       <ul className="nav-list">
-        {Object.entries(buttons).map(([key, value]) => {
+        {Object.entries(props.buttons).map(([key, value]) => {
           // load all buttons listed before
           return (
             <li
@@ -26,7 +17,8 @@ const Navigation = () => {
                 active == key ? "nav-list-item active" : "nav-list-item"
               }
               key={key}
-              onClick={() => setActive(key)} // change active button on click
+              onClick=
+              {() => setActive(key)} // change active button on click
             >
               <img src={"img/nav/" + value.img}></img>
               <p>{value.text}</p>
