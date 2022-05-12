@@ -17,8 +17,7 @@ const Navigation = (props) => {
                 active == key ? "nav-list-item active" : "nav-list-item"
               }
               key={key}
-              onClick=
-              {() => setActive(key)} // change active button on click
+              onClick={() => setActive(key)} // change active button on click
             >
               <img src={"img/nav/" + value.img}></img>
               <p>{value.text}</p>
