@@ -2,11 +2,12 @@ import "../theme/App.css";
 import Navigation from "./Navigation.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./views/Home.js";
-import Coupon from "./views/Coupon.js";
-import Discount from "./views/Discount.js";
-import Order from "./views/Order.js";
-import More from "./views/More.js";
+import Home from "../views/Home.js";
+import Coupon from "../views/Coupon.js";
+import Discount from "../views/Discount.js";
+import Order from "../views/Order.js";
+import More from "../views/More.js";
+import Catalogue from "../views/Catalogue.js";
 
 const App = () => {
   // nav button values
@@ -26,7 +27,7 @@ const App = () => {
           <Route path="/orders" element={<Order />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
-          <Route path="/more" element={<More />} />
+          <Route path="/more" element={<Catalogue />} />
         </Routes>
         <Navigation buttons={navButtons} default="home" />
       </Router>
