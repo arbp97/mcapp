@@ -1,16 +1,10 @@
-import React from "react";
-import { ReactComponent as Logo } from "./McDonalds.svg";
 import "./Header.css";
 
 const Header = () => {
   return (
-    <nav className="nav-header">
-      <div className="div-header">
-        <div className="div-svg">
-          <Logo />
-        </div>
-      </div>
-    </nav>
+    <div className="div-header">
+      <img src="../img/logo-plain.png" alt="" />
+    </div>
   );
 };
 

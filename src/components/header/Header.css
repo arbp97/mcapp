@@ -1,15 +1,17 @@
-.nav-header {
-  height: 60px;
-  border: 1px solid #dfdfdf;
-}
-
 .div-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 60px;
+  border-bottom: 1px solid #dfdfdf;
+  background-color: white;
 }
 
-.div-svg {
-  height: 30px;
-  width: 30px;
+.div-header > img {
+  height: auto;
+  width: 48px;
 }
