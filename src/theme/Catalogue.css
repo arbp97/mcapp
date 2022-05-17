@@ -1,7 +1,47 @@
 .Catalogue {
-  min-height: 600px;
+  height: fit-content;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  row-gap: 5px;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.category-link {
+  width: 60%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.category-link > img {
+  width: 30%;
+  height: auto;
+  padding: 10px 10px;
+}
+
+.category-link > p {
+  font-size: 24px;
+  width: 70%;
+  text-align: center;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .category-link {
+    width: 90%;
+  }
+  .category-link > img {
+    width: 35%;
+  }
+  .category-link > p {
+    font-size: 20px;
+  }
 }
