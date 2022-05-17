@@ -1,5 +1,5 @@
 import Product from "./Product.js";
-import "../theme/ProductList.css";
+import "./ProductList.css";
 
 const ProductList = (props) => {
   return (

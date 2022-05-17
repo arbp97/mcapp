@@ -1,4 +1,4 @@
-import "../theme/Catalogue.css";
+import "./Catalogue.css";
 import { NavLink } from "react-router-dom";
 
 const Catalogue = (props) => {

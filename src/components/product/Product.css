@@ -38,4 +38,10 @@
   .Product > img {
     width: 60%;
   }
+  .Product-info {
+    padding: 20px 20px;
+  }
+  .Product-text {
+    width: 100%;
+  }
 }

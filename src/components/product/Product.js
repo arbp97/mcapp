@@ -1,4 +1,4 @@
-import "../theme/Product.css";
+import "./Product.css";
 
 const Product = (props) => {
   //componente funcional props-->propiedades

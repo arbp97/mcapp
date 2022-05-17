@@ -1,13 +1,13 @@
-import "../theme/App.css";
-import Navigation from "./Navigation.js";
+import "./App.css";
+import Navigation from "./navbar/Navigation.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "../views/Home.js";
-import Coupon from "../views/Coupon.js";
-import Discount from "../views/Discount.js";
-import Order from "../views/Order.js";
-import Catalogue from "../views/Catalogue.js";
-import ProductList from "./ProductList.js";
+import Home from "./views/Home.js";
+import Coupon from "./views/Coupon.js";
+import Discount from "./views/Discount.js";
+import Order from "./views/Order.js";
+import Catalogue from "./views/Catalogue.js";
+import ProductList from "./product/ProductList.js";
 
 const App = () => {
   // nav button values

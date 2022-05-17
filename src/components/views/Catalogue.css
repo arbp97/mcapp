@@ -37,6 +37,7 @@
 @media screen and (max-width: 768px) {
   .category-link {
     width: 90%;
+    padding: 10px 10px;
   }
   .category-link > img {
     width: 35%;

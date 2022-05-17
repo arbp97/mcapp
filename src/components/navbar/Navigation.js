@@ -1,4 +1,4 @@
-import "../theme/Navigation.css";
+import "./Navigation.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Navigation = (props) => {
                 to={key === "home" ? "/" : "/" + key}
                 className="nav-link"
               >
-                <img src={"../img/" + value.img} alt=""></img>
+                <img src={"../img/" + value.img} alt="" />
                 {value.text}
               </NavLink>
             </li>
