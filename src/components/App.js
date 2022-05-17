@@ -6,8 +6,8 @@ import Home from "../views/Home.js";
 import Coupon from "../views/Coupon.js";
 import Discount from "../views/Discount.js";
 import Order from "../views/Order.js";
-import More from "../views/More.js";
 import Catalogue from "../views/Catalogue.js";
+import ProductList from "./ProductList.js";
 
 const App = () => {
   // nav button values
@@ -16,7 +16,26 @@ const App = () => {
     orders: { text: "Pedidos", img: "fries.png" },
     discounts: { text: "Ofertas", img: "ticket.png" },
     coupons: { text: "Cupones", img: "coupon.png" },
-    more: { text: "Más", img: "more.png" },
+    catalogue: { text: "Menú", img: "more.png" },
+  };
+
+  const categories = {
+    burgers: {
+      category: "Hamburguesas",
+      items: [
+        {
+          img: "big_mac.png",
+          title: "Big Mac",
+          description: "La hamburguesa más famosa del mundo. Un sabor único.",
+        },
+        {
+          img: "mcnifica.png",
+          title: "McNífica",
+          description:
+            "En un mundo donde todos buscan lo nuevo, la McNífica viene a rectificar lo bueno de ser clásico.",
+        },
+      ],
+    },
   };
 
   return (
@@ -27,7 +46,22 @@ const App = () => {
           <Route path="/orders" element={<Order />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
-          <Route path="/more" element={<Catalogue />} />
+          <Route path="/catalogue" element={<Catalogue />} />
+          {Object.entries(categories).map(([key, value]) => {
+            // map all categories to routes
+            return (
+              <Route
+                key={key}
+                path={"/catalogue/" + key}
+                element={
+                  <ProductList
+                    category={value.category}
+                    products={value.items}
+                  />
+                }
+              />
+            );
+          })}
         </Routes>
         <Navigation buttons={navButtons} default="home" />
       </Router>

@@ -26,10 +26,6 @@
   cursor: pointer;
 }
 
-.nav-list-item > a {
-  text-decoration: none;
-}
-
 .nav-list-item.active {
   font-weight: bold;
 }
@@ -48,7 +44,7 @@
 }
 
 .nav-link > img {
-  width: 35%;
+  width: 30%;
 }
 
 @media screen and (min-width: 450px) {

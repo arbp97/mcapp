@@ -1,10 +1,10 @@
-import ListProducts from "../components/ListProducts.js";
 import "../theme/Catalogue.css";
+import { NavLink } from "react-router-dom";
 
-const Catalogue = () => {
+const Catalogue = (props) => {
   return (
-    <div className="catalogo">
-      <ListProducts />
+    <div className="Catalogue">
+      <NavLink to={"/catalogue/burgers"}>Burgers</NavLink>
     </div>
   );
 };

@@ -20,15 +20,13 @@ const Navigation = (props) => {
               key={key}
               onClick={() => setActive(key)} // change active button on click
             >
-              <a href="#">
-                <NavLink
-                  to={key === "home" ? "/" : "/" + key}
-                  className="nav-link"
-                >
-                  <img src={"img/nav/" + value.img} alt=""></img>
-                  {value.text}
-                </NavLink>
-              </a>
+              <NavLink
+                to={key === "home" ? "/" : "/" + key}
+                className="nav-link"
+              >
+                <img src={"../img/" + value.img} alt=""></img>
+                {value.text}
+              </NavLink>
             </li>
           );
         })}
