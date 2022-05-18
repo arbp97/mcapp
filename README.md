@@ -4,9 +4,17 @@ Grupo 14 Proyecto de Software - UNLa
 
 ## Scripts
 
+### Development
+
 > npm start
 
+### Optimized Build
+
 > npm run build
+
+(install serve w/ <code>npm install -g serve</code>)
+
+> serve -s build
 
 ## Project Structure
 
@@ -18,6 +26,4 @@ Grupo 14 Proyecto de Software - UNLa
 
 <code>src/</code> Main sources
 
-<code>src/theme</code> CSS styles
-
-<code>src/components</code> React components
+<code>src/components</code> React components & styles
