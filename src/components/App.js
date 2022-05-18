@@ -8,6 +8,7 @@ import Discount from "./views/Discount.js";
 import Order from "./views/Order.js";
 import Catalogue from "./views/Catalogue.js";
 import ProductList from "./product/ProductList.js";
+import Header from "./header/Header.js";
 
 const App = () => {
   // nav button values
@@ -57,6 +58,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />

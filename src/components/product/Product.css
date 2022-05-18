@@ -16,7 +16,6 @@
 }
 .Product-info {
   text-align: center;
-  padding: 40px 40px;
   width: 60%;
 }
 
@@ -39,9 +38,9 @@
     width: 60%;
   }
   .Product-info {
-    padding: 20px 20px;
+    width: 80%;
   }
   .Product-text {
-    width: 100%;
+    font-size: 14px;
   }
 }
