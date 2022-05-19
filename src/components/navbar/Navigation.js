@@ -1,10 +1,15 @@
 import "./Navigation.css";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navigation = (props) => {
-  // default view is home view
-  const [active, setActive] = useState(props.default);
+  // default view is home
+  const location = useLocation();
+  const [active, setActive] = useState(location.pathname);
+
+  const toRoute = (route) => {
+    return route === "home" ? "/" : "/" + route;
+  };
 
   return (
     <nav className="nav-container">
@@ -15,15 +20,14 @@ const Navigation = (props) => {
             <li
               className={
                 // if key is the actual active key, set active class
-                active === key ? "nav-list-item active" : "nav-list-item"
+                active === toRoute(key)
+                  ? "nav-list-item active"
+                  : "nav-list-item"
               }
               key={key}
-              onClick={() => setActive(key)} // change active button on click
+              onClick={() => setActive(toRoute(key))} // change active button on click
             >
-              <NavLink
-                to={key === "home" ? "/" : "/" + key}
-                className="nav-link"
-              >
+              <NavLink to={toRoute(key)} className="nav-link">
                 <img src={"../img/" + value.img} alt="" />
                 {value.text}
               </NavLink>
