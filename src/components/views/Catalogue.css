@@ -21,6 +21,12 @@
   border-bottom: 1px solid #ccc;
 }
 
+.category-arrow {
+  float: right;
+  height: 40px !important;
+  width: auto !important;
+}
+
 .category-link > img {
   width: 30%;
   height: auto;
@@ -28,6 +34,7 @@
 }
 
 .category-link > p {
+  margin: 0 !important;
   font-size: 24px;
   width: 70%;
   text-align: center;

@@ -14,6 +14,11 @@ const Catalogue = (props) => {
           >
             <img src={"img/" + value.items[0].img} alt="" />
             <p>{value.category}</p>
+            <img
+              className="category-arrow"
+              src={"../img/right-arrow.png"}
+              alt=""
+            />
           </NavLink>
         );
       })}

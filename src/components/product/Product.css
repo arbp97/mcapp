@@ -1,7 +1,7 @@
 .Product {
-  width: 80%;
+  width: 60%;
   height: fit-content;
-  padding: 30px 0;
+  padding: 30px 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -17,6 +17,7 @@
 .Product-info {
   text-align: center;
   width: 60%;
+  padding: 10px 10px;
 }
 
 .Product-title {

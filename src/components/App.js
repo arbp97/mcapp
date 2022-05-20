@@ -14,7 +14,6 @@ import products from "../data/products.js";
 const App = () => {
   return (
     <div className="App">
-      <Header />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,6 +40,7 @@ const App = () => {
             );
           })}
         </Routes>
+        <Header />
         <Navigation buttons={navButtons} />
       </Router>
     </div>
