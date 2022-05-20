@@ -3,17 +3,6 @@
     height: 1000px;
 }
 
-/* .Order {
-    top: 100px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 80px;
-} */
-
 .Order {
     height: fit-content;
     display: flex;
@@ -23,8 +12,20 @@
     justify-content: center;
     margin-top: 60px;
     margin-bottom: 80px;
-  }
-  
+}
+
+.Pedidos{
+    font-weight: bold;
+}
+
 .navbar-text{
-    width: 100%;
+    display: flex;
+    justify-content: center!important;
+    width: 100%!important;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background-color: white!important;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: rgb(181, 178, 178);
 }

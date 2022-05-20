@@ -5,13 +5,10 @@ import "./Order.css";
 const Order = () => {
   return (
     <div className="Order" >
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <span class="navbar-text">
-            Busca restaurante, direccion, ...
-          </span>
-        </div>
-      </nav>
+    <h1 className="Pedidos">Pedidos</h1>
+        <input class="navbar-text" type="text"
+          placeholder="Busca restaurante, direccion, ..."
+          />
       <MapView />
     </div>
   );
