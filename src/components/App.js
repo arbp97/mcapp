@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./views/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
-import Order from "./views/Order.js";
+import Order from "./views/orders/Order.js";
 import Catalogue from "./views/Catalogue.js";
 import ProductList from "./product/ProductList.js";
 import Header from "./header/Header.js";

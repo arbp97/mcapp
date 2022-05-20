@@ -1,0 +1,30 @@
+.leaflet-container {
+    width: 1000px;
+    height: 1000px;
+}
+
+/* .Order {
+    top: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
+} */
+
+.Order {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 5px; */
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+  
+.navbar-text{
+    width: 100%;
+}
