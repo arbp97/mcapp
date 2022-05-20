@@ -2,15 +2,41 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 999;
   display: flex;
   align-items: center;
-  justify-content: center;
+  z-index: 999;
   height: 60px;
   background-color: white;
 }
 
-.div-header > img {
+.logo {
+  position: fixed;
+  left: calc(50% - 24px);
   height: auto;
   width: 48px;
+}
+
+.go-back-btn {
+  position: fixed;
+  left: 0;
+  border: none;
+  background-color: white;
+  color: black;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.go-back-btn.hidden {
+  visibility: hidden;
+}
+
+.go-back-btn > img {
+  height: 16px;
+  margin-right: 5px;
+  width: auto;
 }

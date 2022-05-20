@@ -15,6 +15,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Order />} />
@@ -40,7 +41,6 @@ const App = () => {
             );
           })}
         </Routes>
-        <Header />
         <Navigation buttons={navButtons} />
       </Router>
     </div>

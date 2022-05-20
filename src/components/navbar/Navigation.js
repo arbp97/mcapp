@@ -1,5 +1,5 @@
 import "./Navigation.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Navigation = (props) => {
@@ -10,6 +10,10 @@ const Navigation = (props) => {
   const toRoute = (route) => {
     return route === "home" ? "/" : "/" + route;
   };
+
+  useEffect(() => {
+    setActive(location.pathname);
+  }, [location]);
 
   return (
     <nav className="nav-container">
@@ -25,7 +29,6 @@ const Navigation = (props) => {
                   : "nav-list-item"
               }
               key={key}
-              onClick={() => setActive(toRoute(key))} // change active button on click
             >
               <NavLink to={toRoute(key)} className="nav-link">
                 <img src={"../img/" + value.img} alt="" />
