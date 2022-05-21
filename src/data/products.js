@@ -6,7 +6,7 @@ const products = {
       {
         img: "big_mac.png", // first img used as category image
         title: "Big Mac",
-        description: "La hamburguesa más famosa del mundo. Un sabor único.",
+        description:"La hamburguesa más famosa del mundo. Un sabor único.",
       },
       {
         img: "mcnifica.png",
