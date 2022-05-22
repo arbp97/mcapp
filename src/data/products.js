@@ -440,7 +440,50 @@ const products = {
     
           }
         ]
+      },
+      coffee: {
+        category: "McCafé",
+        items: [
+          {
+            img: "Espresso.png",
+            title: "Espresso",
+            description:"La mejor selección de finos granos de café arábicos en todo su esplendor, para que disfrutes sorbo a sorbo.",
+    
+          },
+          {
+            img: "Latte.png",
+            title: "Latte",
+            description:"Delicioso espresso con vainilla, leche con espuma y por si fuera poco, acompañado de un increíble crocante de caramelo.",
+    
+          },
+          {
+            img: "Frappé.png",
+            title: "Frappé",
+            description:"El mismo café que te ayuda a levantarte todos los días, ahora con una sensación refrescante, acompañado de crema e hilos de chocolate.",
+    
+          },
+          {
+            img: "Medialuna-de-Manteca.png",
+            title: "Medialuna de Manteca",
+            description:"Un clásico ideal para cualquier momento del día. Esponjosa, dulce y crocante a la vez son las características de esta delicia. Ideal para acompañar un café, un frappé o hasta un rico té.",
+    
+          },
+          {
+            img: "Medialuna-de-Grasa.png",
+            title: "Medialuna de Grasa",
+            description:"Tradicionales y crocantes, para acompañar tu delicioso café, o darte un gusto en cualquier momento del día.",
+    
+          },
+          {
+            img: "Croissant.png",
+            title: "Croissant",
+            description:"Una verdadera delicia de la pastelería francesa, para acompañarte en cualquier desayuno o merienda. ¡No te quedes sin probarlo!",
+    
+          },
+       
+        ]
       }
+
     
 };
 
