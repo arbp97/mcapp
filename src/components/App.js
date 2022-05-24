@@ -87,7 +87,31 @@ const App = () => {
       title: "LOMAS DE ZAMORA",
       img: "indicador.png",
       location: "Av. Hipolito Yrigoyen 8230 L. de Zamora",
-
+    },
+    restaurant7: {
+      title: "9 DE JULIO - LANUS",
+      img: "indicador.png",
+      location: "9 de Julio 1194",
+    },
+    restaurant8: {
+      title: "LANUS",
+      img: "indicador.png",
+      location: "Av. Hipolito Yrigoyen 4475 Lanus",
+    },
+    restaurant9: {
+      title: "BANFIELD",
+      img: "indicador.png",
+      location: "Av. Hipolito Yrigoyen 7545 Banfield",
+    },
+    restaurant10: {
+      title: "ALTO AVELLANEDA AUTOMAC",
+      img: "indicador.png",
+      location: "Guemes 897",
+    },
+    restaurant11: {
+      title: "AV. MITRE AVELLANEDA",
+      img: "indicador.png",
+      location: "Av. Mitre 639 Avellaneda",
     },
   };
 

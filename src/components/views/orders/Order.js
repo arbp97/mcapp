@@ -1,7 +1,6 @@
 import React from "react";
 import MapView from "../../pedidos/MapView.js";
-import { NavLink, BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProductList from "../../product/ProductList.js";
+import { NavLink } from "react-router-dom";
 import "./Order.css";
 
 const Order = (props) => {
@@ -17,22 +16,20 @@ const Order = (props) => {
         </div>
 
       <MapView />
-
       <strong>Lista de Restaurantes</strong>
-      
       <div className="Order-ListElements">
             {Object.entries(props.category).map(([key, value]) => {
               return (
                 <NavLink
                   key={key}
                   className={"Order-link"}
-                  to={"/catalogue/" + key}
+                  to={""} //TODO: "/orders/" + key  (PARA REDIRIGIR CUANDO TOQUE EL RESTAURANTE)
                 >
                 <img className="Order-img" src={"../img/" + value.img} alt="" />
                 <div className="Order-ListElements1">
-                  <h6>{value.title} </h6>
+                  <h6 className="Order-ListTitulo">{value.title} </h6>
                     <div className="Order-ListElements2">
-                      <h6>{value.location}</h6>
+                      <h6 className="Order-SubListTitulo">{value.location}</h6>
                     </div>
                 </div>
                 </NavLink>

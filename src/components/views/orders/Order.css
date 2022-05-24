@@ -35,7 +35,7 @@
 }
 
 .Order-img{
-    width: 20%!important;
+    width: 15%!important;
     justify-content: left; 
     height: fit-content;
     margin-right: 5px;
@@ -69,8 +69,8 @@
   
 @media screen and (max-width: 768px) {
 .Order-link {
-    width: 90%;
-    padding: 10px 10px;
+    width: 100%;
+    padding: 1px 10px;
 }
 .Order-link > img {
       width: 35%;
@@ -80,6 +80,7 @@
 }}
 
 .Order-ListElements{
+    width: 100%;
     display:inline-block;
     justify-content: center;
 
