@@ -5,7 +5,14 @@
 }
 
 .Carousel {
-  margin-top: 60px;
+    margin-top: 60px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
 }
 
 /* li:before {

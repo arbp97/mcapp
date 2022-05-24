@@ -1,0 +1,130 @@
+.leaflet-container {
+    width: 1000px;
+    height: 1000px;
+}
+
+.Order-Clase {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.Order-Titulo{
+    font-size: xx-large;
+    text-align: left;
+    font-weight: bold;
+
+}
+
+.form-control{
+    width: 100%!important;
+    margin-top: 0px!important;
+    color: rgb(175, 175, 175);
+    height: 50px!important;
+    margin-top: 0px!important;
+    border: 0px!important;
+}
+
+.glyphicon{
+    line-height: 2rem!important;
+    font-weight:700!important;
+}
+
+.Order-img{
+    width: 15%!important;
+    justify-content: left; 
+    height: fit-content;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 0px!important;
+
+}
+
+.Order-link {
+    width: 60%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+}
+  
+.Order-link > img {
+    width: 40%;
+    height: auto;
+    padding: 10px 10px;
+}
+  
+.Order-link > p {
+    font-size: 15px;
+    width: 70%;
+    text-align: center;
+    color: grey;
+}
+  
+@media screen and (max-width: 768px) {
+.Order-link {
+    width: 100%;
+    padding: 1px 10px;
+}
+.Order-link > img {
+      width: 35%;
+}
+.Order-link > p {
+      font-size: 20px;
+}}
+
+.Order-ListElements{
+    width: 100%;
+    display:inline-block;
+    justify-content: center;
+
+}
+
+.Order-ListElements1{
+    justify-content: center;
+    font-size: 10px;
+    color: grey;
+    position: relative;
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
+
+.Order-ListElements2{
+    justify-content: center;
+    font-size: 10px;
+    color: rgb(50, 50, 50);
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.inner-addon {
+    width: 100%;
+    margin-top: 1px;
+    border: 1px solid;
+    border-color: rgb(175, 175, 175);
+    color: rgb(175, 175, 175);
+    position: relative;
+}
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+.left-addon .glyphicon {
+    left: 0px;
+}
+.right-addon .glyphicon {
+    right: 0px;
+}
+.left-addon input {
+    padding-left: 30px;
+}
+.right-addon input {
+    padding-right: 30px;
+}
