@@ -16,6 +16,7 @@
 
 .Pedidos{
     font-weight: bold;
+    align-items: center;
 }
 
 .navbar-text{
@@ -27,5 +28,84 @@
     background-color: white!important;
     outline-style: solid;
     outline-width: 1px;
-    outline-color: rgb(181, 178, 178);
+    outline-color: rgb(217, 217, 217)
+}
+
+.Order {
+    /* height: fit-content;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px; */
+    /* margin-bottom: 80px; */
+}
+
+.Order-img{
+    width: 20%!important;
+    justify-content: left!important; 
+    height: fit-content;
+    margin-right: 5px;
+    margin-left: 5px!important;
+    padding: 1px 1px 1px 1px!important;
+
+}
+
+.Order-link {
+    width: 60%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+}
+  
+.Order-link > img {
+    width: 40%;
+    height: auto;
+    padding: 10px 10px;
+}
+  
+.Order-link > p {
+    font-size: 15px;
+    width: 70%;
+    text-align: center;
+    color: grey;
+}
+  
+@media screen and (max-width: 768px) {
+.Order-link {
+    width: 90%;
+    padding: 10px 10px;
+}
+.Order-link > img {
+      width: 35%;
+}
+.Order-link > p {
+      font-size: 20px;
+}}
+
+.Order-ListElements{
+    display:inline-block;
+    justify-content: center!important;
+
+}
+
+.Order-ListElements1{
+    justify-content: center!important;
+    font-size: 10px!important;
+    color: grey;
+    position: relative;
+    margin-top: 1px;
+    margin-bottom: 2px!important;
+}
+
+.Order-ListElements2{
+    justify-content: center!important;
+    font-size: 10px!important;
+    color: rgb(50, 50, 50);
+    margin-top: 1px;
+    margin-bottom: 1px!important;
 }

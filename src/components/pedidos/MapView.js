@@ -8,7 +8,7 @@ import {Icon} from 'leaflet'
 const MapView = () => {
     return (
     <MapContainer center={{lat: '-34.7355251653576', lng: '-58.391348921321224'}} zoom={9} 
-        style={{width: "500px", height: "500px", backgroundColor:"grey", marginBottom:'90px', alignItems:"center", justifyContent: "center", display: "flex"}}>
+        style={{width: "445px", height: "400px", backgroundColor:"grey", marginBottom:'15px', alignItems:"center", justifyContent: "center", display: "flex"}}>
         <TileLayer 
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' 
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contribution'

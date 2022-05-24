@@ -55,6 +55,41 @@ const App = () => {
       ],
     },
   };
+// ________--------------_________________----------------_____________________
+
+  const restaurants = {
+    restaurant1: {
+      title: "BOULEVARD ADROGUE SHOPPING",
+      img: "indicador.png",
+      location: "H. Yrigoyen 13200 Adrogue",
+    },
+    restaurant2: {
+      title: "AV. ESPORA ADROGUE",
+      img: "indicador.png",
+      location: "Av. Tomas Espora 611 1846",
+    },
+    restaurant3: {
+      title: "LOMAS CENTRO SHOPPING",
+      img: "indicador.png",
+      location: "Av. Antartida Arg. 703 L. de Zamora",
+    },
+    restaurant4: {
+      title: "TEMPERLEY COTO",
+      img: "indicador.png",
+      location: "Av. Presidente Hipolito Yrigoyen 10699",
+    },
+    restaurant5: {
+      title: "PEATONAL LOMAS DE ZAMORA",
+      img: "indicador.png",
+      location: "Peatona Laprida 177 L. de Zamora",
+    },
+    restaurant6: {
+      title: "LOMAS DE ZAMORA",
+      img: "indicador.png",
+      location: "Av. Hipolito Yrigoyen 8230 L. de Zamora",
+
+    },
+  };
 
   return (
     <div className="App">
@@ -62,7 +97,25 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/orders" element={<Order />} />
+          <Route 
+            path="/orders"
+            element={<Order category={restaurants} />}
+          />
+            {Object.entries(categories).map(([key, value]) => {
+            // map all categories to routes
+            return (
+              <Route
+                key={key}
+                path={"/orders/" + key}
+                element={
+                  <ProductList
+                    category={value.description}
+                    products={value.title}
+                  />
+                }
+              />
+            );
+          })}
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route
