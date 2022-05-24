@@ -3,52 +3,44 @@
     height: 1000px;
 }
 
-.Order {
+.Order-Clase {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    /* row-gap: 5px; */
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.Pedidos{
+.Order-Titulo{
+    font-size: xx-large;
+    text-align: left;
     font-weight: bold;
-    align-items: center;
+
 }
 
-.navbar-text{
-    display: flex;
-    justify-content: center!important;
+.form-control{
     width: 100%!important;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    background-color: white!important;
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: rgb(217, 217, 217)
+    margin-top: 0px!important;
+    color: rgb(175, 175, 175);
+    height: 50px!important;
+    margin-top: 0px!important;
+    border: 0px!important;
 }
 
-.Order {
-    /* height: fit-content;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 80px; */
-    /* margin-bottom: 80px; */
+.glyphicon{
+    line-height: 2rem!important;
+    font-weight:700!important;
 }
 
 .Order-img{
     width: 20%!important;
-    justify-content: left!important; 
+    justify-content: left; 
     height: fit-content;
     margin-right: 5px;
-    margin-left: 5px!important;
-    padding: 1px 1px 1px 1px!important;
+    margin-left: 5px;
+    padding: 0px!important;
 
 }
 
@@ -89,23 +81,49 @@
 
 .Order-ListElements{
     display:inline-block;
-    justify-content: center!important;
+    justify-content: center;
 
 }
 
 .Order-ListElements1{
-    justify-content: center!important;
-    font-size: 10px!important;
+    justify-content: center;
+    font-size: 10px;
     color: grey;
     position: relative;
     margin-top: 1px;
-    margin-bottom: 2px!important;
+    margin-bottom: 2px;
 }
 
 .Order-ListElements2{
-    justify-content: center!important;
-    font-size: 10px!important;
+    justify-content: center;
+    font-size: 10px;
     color: rgb(50, 50, 50);
     margin-top: 1px;
-    margin-bottom: 1px!important;
+    margin-bottom: 1px;
+}
+
+.inner-addon {
+    width: 100%;
+    margin-top: 1px;
+    border: 1px solid;
+    border-color: rgb(175, 175, 175);
+    color: rgb(175, 175, 175);
+    position: relative;
+}
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+.left-addon .glyphicon {
+    left: 0px;
+}
+.right-addon .glyphicon {
+    right: 0px;
+}
+.left-addon input {
+    padding-left: 30px;
+}
+.right-addon input {
+    padding-right: 30px;
 }

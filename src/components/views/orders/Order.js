@@ -6,12 +6,13 @@ import "./Order.css";
 
 const Order = (props) => {
   return (
-    <div className="Order" >
-    <h2 className="Pedidos">Pedidos</h2>
+    <div className="Order-Clase" >
+    <text className="Order-Titulo">Pedidos</text>
     
-        <div class="input-group">
-          <input class="navbar-text" type="text"
-          placeholder="Busca restaurante, direccion, ..."
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <div class="inner-addon left-addon">
+          <i class="glyphicon glyphicon-search"></i>
+            <input type="text" class="form-control" placeholder="Busca restaurante, direccion, ..."
           />
         </div>
 
@@ -21,7 +22,6 @@ const Order = (props) => {
       
       <div className="Order-ListElements">
             {Object.entries(props.category).map(([key, value]) => {
-              // map all categories as links
               return (
                 <NavLink
                   key={key}
