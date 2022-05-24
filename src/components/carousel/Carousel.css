@@ -4,17 +4,14 @@
   border-radius: 50%;
 }
 
-.Carousel {
-    margin-top: 60px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 80px;
+.carousel-indicators {
+  margin: 0 !important;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-/* li:before {
-    color: #ffc72c;
-} */
+.Carousel {
+  width: 100%;
+}
