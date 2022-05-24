@@ -1,8 +1,6 @@
-.mapview {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  height: 500px;
+.Map {
+  width: 100%;
+  height: 512px;
+  margin-bottom: 20px;
+  z-index: 500;
 }

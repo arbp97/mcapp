@@ -1,23 +1,15 @@
+import "./Map.css";
 import React from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
-import "./Map.css";
 
 const Map = (props) => {
   return (
     <MapContainer
       center={{ lat: "-34.7355251653576", lng: "-58.391348921321224" }}
       zoom={9}
-      style={{
-        width: "445px",
-        height: "400px",
-        backgroundColor: "grey",
-        marginBottom: "15px",
-        alignItems: "center",
-        justifyContent: "center",
-        display: "flex",
-      }}
+      className="Map"
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -27,6 +19,7 @@ const Map = (props) => {
         return (
           <Marker
             key={key}
+            title={value.location}
             position={{
               lat: value.lat,
               lng: value.lng,

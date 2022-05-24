@@ -2,43 +2,36 @@ import React from "react";
 import Map from "../../map/Map.js";
 import { NavLink } from "react-router-dom";
 import "./Order.css";
-import { Form, FormGroup, Input } from "reactstrap";
+import { Input } from "reactstrap";
 
 const Order = (props) => {
   return (
-    <div className="Order-Clase">
-      <p className="Order-Titulo">Pedidos</p>
-      <div className="inner-addon left-addon">
+    <div className="Order">
+      <p className="title">Pedidos</p>
+      <div className="searchbar">
         <i className="glyphicon glyphicon-search"></i>
-        <Form>
-          <FormGroup>
-            <Input
-              className="form-control"
-              type="text"
-              name="search"
-              id="searchRestaurant"
-              placeholder="Buscar por dirección..."
-            />
-          </FormGroup>
-        </Form>
+        <Input
+          type="text"
+          name="search"
+          id="searchRestaurant"
+          placeholder="Buscar por dirección..."
+        />
       </div>
 
       <Map markers={props.markers} />
-      <strong>Lista de Restaurantes</strong>
-      <div className="Order-ListElements">
+      <div className="marker-list">
+        <p className="title">Sucursales</p>
         {Object.entries(props.markers).map(([key, value]) => {
           return (
             <NavLink
               key={key}
-              className={"Order-link"}
+              className={"marker"}
               to={""} //TODO: "/orders/" + key  (PARA REDIRIGIR CUANDO TOQUE EL RESTAURANTE)
             >
-              <img className="Order-img" src={"../img/" + value.img} alt="" />
-              <div className="Order-ListElements1">
-                <h6 className="Order-ListTitulo">{value.title} </h6>
-                <div className="Order-ListElements2">
-                  <h6 className="Order-SubListTitulo">{value.location}</h6>
-                </div>
+              <img src={"../img/" + value.img} alt="" />
+              <div className="marker-info">
+                <h6 className="title">{value.title} </h6>
+                <h6 className="location">{value.location}</h6>
               </div>
             </NavLink>
           );
