@@ -1,11 +1,11 @@
 import "./App.css";
 import Navigation from "./navbar/Navigation.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./views/Home.js";
+import Home from "./views/home/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
 import Order from "./views/orders/Order.js";
-import Catalogue from "./views/Catalogue.js";
+import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./product/ProductList.js";
 import Header from "./header/Header.js";
 import navButtons from "../data/navButtons.js";

@@ -13,6 +13,7 @@ const Navigation = (props) => {
 
   useEffect(() => {
     setActive(location.pathname);
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
