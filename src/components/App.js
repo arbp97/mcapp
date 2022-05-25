@@ -10,8 +10,6 @@ import ProductList from "./product/ProductList.js";
 import Header from "./header/Header.js";
 import navButtons from "../data/navButtons.js";
 import products from "../data/products.js";
-import offers from "../data/offers.js";
-import OffersList from "./offers/OffersList.js";
 
 const App = () => {
   return (
