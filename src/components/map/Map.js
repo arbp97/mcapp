@@ -10,6 +10,7 @@ const Map = (props) => {
       center={{ lat: "-34.7355251653576", lng: "-58.391348921321224" }}
       zoom={9}
       className="Map"
+      attributionControl={false}
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
