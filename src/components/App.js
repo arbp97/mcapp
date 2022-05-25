@@ -4,12 +4,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./views/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
-import Order from "./views/Order.js";
+import Order from "./views/orders/Order.js";
 import Catalogue from "./views/Catalogue.js";
 import ProductList from "./product/ProductList.js";
 import Header from "./header/Header.js";
 import navButtons from "../data/navButtons.js";
 import products from "../data/products.js";
+import markers from "../data/markers.js";
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/orders" element={<Order />} />
+          <Route path="/orders" element={<Order markers={markers} />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route

@@ -34,7 +34,9 @@ registerRoute(
 
 // Cache CDN stuff
 registerRoute(
-  ({ url }) => url.origin === "https://cdn.jsdelivr.net",
+  ({ url }) =>
+    url.origin === "https://cdn.jsdelivr.net" ||
+    "https://maxcdn.bootstrapcdn.com",
   new StaleWhileRevalidate({
     cacheName: "cdn-styles-scripts",
   })
@@ -42,7 +44,7 @@ registerRoute(
 
 // Cache the underlying font files with a cache-first strategy for 1 year.
 // @see https://developers.google.com/web/tools/workbox/guides/common-recipes#google_fonts
-registerRoute(
+https: registerRoute(
   ({ url }) => url.origin === "https://fonts.gstatic.com",
   new CacheFirst({
     cacheName: "google-fonts-webfonts",

@@ -35,7 +35,7 @@
 
 .nav-link {
   color: #333 !important;
-  text-decoration: none;
+  text-decoration: none !important;
   font-size: 18px;
   text-align: center;
   display: flex;

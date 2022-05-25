@@ -1,0 +1,88 @@
+.Order {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.Order .title {
+  font-size: xx-large;
+  text-align: left;
+  font-weight: bold;
+}
+
+.Order .searchbar {
+  color: rgb(175, 175, 175);
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+
+/* style icon */
+.Order .searchbar .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.Order .searchbar .glyphicon {
+  left: 0px;
+}
+
+/* add padding  */
+.Order .searchbar input {
+  padding-left: 30px;
+}
+
+.marker > img {
+  height: 70%;
+  width: auto;
+}
+
+.marker {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+  text-decoration: none !important;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  padding-left: 10px;
+}
+
+.marker-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-list .title {
+  font-size: 20px;
+}
+
+.marker-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 5px;
+}
+
+.marker-info .title {
+  font-size: 14px;
+  color: rgb(99, 99, 99);
+}
+
+.marker-info .location {
+  font-size: 12px;
+  color: gray;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
