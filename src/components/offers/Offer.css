@@ -1,0 +1,47 @@
+.Offer {
+  width: 60%;
+  height: fit-content;
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffff;
+  box-shadow: 0 3px 13px 1px rgb(0 0 0 /9%);
+}
+.Offer > img {
+  height: auto;
+  width: 40%;
+  padding: 10px 10px;
+}
+.Offer-info {
+  text-align: center;
+  width: 60%;
+  padding: 10px 10px;
+}
+
+.Offer-title {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.Offer-text {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .Offer {
+    flex-direction: column;
+    width: 90%;
+  }
+  .Offer > img {
+    width: 60%;
+  }
+  .Offer-info {
+    width: 80%;
+  }
+  .Offer-text {
+    font-size: 14px;
+  }
+}
