@@ -77,7 +77,7 @@
 
 .marker-info .title {
   font-size: 14px;
-  color: rgb(99, 99, 99);
+  color: rgb(100, 100, 100);
 }
 
 .marker-info .location {
@@ -85,4 +85,31 @@
   color: gray;
   margin-top: 1px;
   margin-bottom: 1px;
+}
+
+.mode-button-container {
+  width: 200px;
+  height: fit-content;
+  border-radius: 20px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px 0;
+}
+
+.mode-button {
+  color: rgb(100, 100, 100);
+  border-radius: 20px;
+  text-align: center;
+  font-size: 16px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.mode-button.selected {
+  background-color: #ffc72c;
+  font-weight: bold;
+  color: black;
 }

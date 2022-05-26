@@ -1,13 +1,34 @@
-import React from "react";
+import { useState } from "react";
 import Map from "../../map/Map.js";
 import { NavLink } from "react-router-dom";
 import "./Order.css";
 import { Input } from "reactstrap";
 
 const Order = (props) => {
+  const modes = ["pickup", "delivery"];
+  const [activeMode, setActiveMode] = useState(modes[0]);
+
   return (
     <div className="Order">
       <p className="title">Pedidos</p>
+      <div className="mode-button-container">
+        <div
+          className={
+            activeMode === modes[0] ? "mode-button selected" : "mode-button"
+          }
+          onClick={() => setActiveMode(modes[0])}
+        >
+          Pickup
+        </div>
+        <div
+          className={
+            activeMode === modes[1] ? "mode-button selected" : "mode-button"
+          }
+          onClick={() => setActiveMode(modes[1])}
+        >
+          McDelivery
+        </div>
+      </div>
       <div className="searchbar">
         <i className="glyphicon glyphicon-search"></i>
         <Input
