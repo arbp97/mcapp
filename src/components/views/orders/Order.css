@@ -14,30 +14,6 @@
   font-weight: bold;
 }
 
-.Order .searchbar {
-  color: rgb(175, 175, 175);
-  width: 100%;
-  height: fit-content;
-  position: relative;
-}
-
-/* style icon */
-.Order .searchbar .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-/* align icon */
-.Order .searchbar .glyphicon {
-  left: 0px;
-}
-
-/* add padding  */
-.Order .searchbar input {
-  padding-left: 30px;
-}
-
 .marker > img {
   height: 40%;
   width: auto;

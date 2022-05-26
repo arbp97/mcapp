@@ -1,0 +1,23 @@
+.Searchbar {
+  color: rgb(175, 175, 175);
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+
+/* style icon */
+.Searchbar .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.Searchbar .glyphicon {
+  left: 0px;
+}
+
+/* add padding  */
+.Searchbar input {
+  padding-left: 30px;
+}

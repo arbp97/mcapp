@@ -1,8 +1,8 @@
+import "./Order.css";
 import { useState } from "react";
 import Map from "../../map/Map.js";
+import Searchbar from "../../searchbar/Searchbar.js";
 import { NavLink } from "react-router-dom";
-import "./Order.css";
-import { Input } from "reactstrap";
 
 const Order = (props) => {
   const modes = ["pickup", "delivery"];
@@ -29,15 +29,12 @@ const Order = (props) => {
           McDelivery
         </div>
       </div>
-      <div className="searchbar">
-        <i className="glyphicon glyphicon-search"></i>
-        <Input
-          type="text"
-          name="search"
-          id="searchRestaurant"
-          placeholder="Buscar por dirección..."
-        />
-      </div>
+      <Searchbar
+        placeholder={"Buscar por direccion..."}
+        icontype={"glyphicon-search"}
+        name={"orderSearch"}
+        id={"orderSearch"}
+      />
 
       <Map markers={props.markers} />
       <div className="marker-list">
