@@ -12,7 +12,12 @@ const Navigation = (props) => {
   };
 
   useEffect(() => {
-    setActive(location.pathname);
+    const isSubDirectory = new RegExp("/+[a-z].+?(?=/)");
+
+    if (!isSubDirectory.exec(location.pathname)) {
+      setActive(location.pathname);
+    }
+
     window.scrollTo(0, 0);
   }, [location]);
 
