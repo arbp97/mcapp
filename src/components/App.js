@@ -1,7 +1,7 @@
 import "./App.css";
 import Navigation from "./navbar/Navigation.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./views/Home.js";
+import Home from "./views/home/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
 import Order from "./views/orders/Order.js";
@@ -11,6 +11,7 @@ import Header from "./header/Header.js";
 import navButtons from "../data/navButtons.js";
 import products from "../data/products.js";
 import markers from "../data/markers.js";
+import homeCatalogue from "../data/homeCatalogue.js";
 
 const App = () => {
   return (
@@ -18,14 +19,11 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home homeCatalogue={homeCatalogue} />}/>
           <Route path="/orders" element={<Order markers={markers} />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
-          <Route
-            path="/catalogue"
-            element={<Catalogue categories={products} />}
-          />
+          <Route path="/catalogue" element={<Catalogue categories={products} />}/>
           {Object.entries(products).map(([key, value]) => {
             // map all categories to routes
             return (
