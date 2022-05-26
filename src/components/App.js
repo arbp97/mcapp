@@ -5,6 +5,8 @@ import Home from "./views/home/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
 import Order from "./views/orders/Order.js";
+import RestaurantList from "./views/orders/RestaurantList.js";
+import Delivery from "./views/orders/Delivery.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./product/ProductList.js";
 import Header from "./header/Header.js";
@@ -20,7 +22,24 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home links={homeLinks} />} />
-          <Route path="/orders" element={<Order markers={markers} />} />
+          <Route
+            path="/orders"
+            element={
+              <>
+                <Order active={"pickup"} />
+                <RestaurantList markers={markers} />
+              </>
+            }
+          />
+          <Route
+            path="/orders/delivery"
+            element={
+              <>
+                <Order active={"delivery"} />
+                <Delivery />
+              </>
+            }
+          />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route

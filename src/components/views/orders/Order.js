@@ -1,59 +1,33 @@
 import "./Order.css";
 import { useState } from "react";
-import Map from "../../map/Map.js";
-import Searchbar from "../../searchbar/Searchbar.js";
 import { NavLink } from "react-router-dom";
 
 const Order = (props) => {
   const modes = ["pickup", "delivery"];
-  const [activeMode, setActiveMode] = useState(modes[0]);
+  const [activeMode, setActiveMode] = useState(props.active);
 
   return (
     <div className="Order">
       <p className="title">Pedidos</p>
       <div className="mode-button-container">
-        <div
+        <NavLink
           className={
             activeMode === modes[0] ? "mode-button selected" : "mode-button"
           }
           onClick={() => setActiveMode(modes[0])}
+          to={"/orders"}
         >
           Pickup
-        </div>
-        <div
+        </NavLink>
+        <NavLink
           className={
             activeMode === modes[1] ? "mode-button selected" : "mode-button"
           }
           onClick={() => setActiveMode(modes[1])}
+          to={"/orders/delivery"}
         >
           McDelivery
-        </div>
-      </div>
-      <Searchbar
-        placeholder={"Buscar por direccion..."}
-        icontype={"glyphicon-search"}
-        name={"orderSearch"}
-        id={"orderSearch"}
-      />
-
-      <Map markers={props.markers} />
-      <div className="marker-list">
-        <p className="title">Sucursales</p>
-        {Object.entries(props.markers).map(([key, value]) => {
-          return (
-            <NavLink
-              key={key}
-              className={"marker"}
-              to={""} //TODO: "/orders/" + key  (PARA REDIRIGIR CUANDO TOQUE EL RESTAURANTE)
-            >
-              <img src={"../img/" + value.img} alt="" />
-              <div className="marker-info">
-                <h6 className="title">{value.title} </h6>
-                <h6 className="location">{value.location}</h6>
-              </div>
-            </NavLink>
-          );
-        })}
+        </NavLink>
       </div>
     </div>
   );
