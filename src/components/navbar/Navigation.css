@@ -33,6 +33,12 @@
   font-weight: bold;
 }
 
+.nav-list-item.active .nav-link > img {
+  /* #ffc72c */
+  filter: invert(90%) sepia(31%) saturate(1660%) hue-rotate(331deg)
+    brightness(100%) contrast(101%);
+}
+
 .nav-link {
   color: #333 !important;
   text-decoration: none !important;
