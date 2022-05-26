@@ -44,7 +44,7 @@ registerRoute(
 
 // Cache the underlying font files with a cache-first strategy for 1 year.
 // @see https://developers.google.com/web/tools/workbox/guides/common-recipes#google_fonts
-https: registerRoute(
+registerRoute(
   ({ url }) => url.origin === "https://fonts.gstatic.com",
   new CacheFirst({
     cacheName: "google-fonts-webfonts",

@@ -4,3 +4,13 @@
   margin-bottom: 20px;
   z-index: 500;
 }
+
+@media screen and (max-width: 768px) {
+  .Map {
+    height: 256px;
+  }
+}
+
+img.leaflet-marker-icon {
+  filter: hue-rotate(150deg) saturate(5);
+}

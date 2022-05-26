@@ -1,7 +1,12 @@
 import Product from "./Product.js";
 import "./ProductList.css";
+import { useEffect } from "react";
 
 const ProductList = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div className="ProductList">
       <p>{props.category}</p>
