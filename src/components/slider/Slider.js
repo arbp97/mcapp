@@ -7,7 +7,10 @@ const Slider = (props) => {
         return (
           <div className="slide" key={key}>
             <img src={"../../img/" + value.img} alt=""></img>
-            <p>{value.title}</p>
+            <p className="title" title={value.title}>
+              {value.title}
+            </p>
+            {value.price && <p className="price">{"$" + value.price}</p>}
           </div>
         );
       })}

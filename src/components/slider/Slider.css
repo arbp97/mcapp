@@ -29,12 +29,20 @@
 
 .Slider .slide > p {
   width: 100%;
-  color: black;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
   height: fit-content;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.Slider .slide > .title {
+  text-align: center;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Slider .slide > .price {
+  color: rgb(100, 100, 100);
+  font-size: 12px;
 }

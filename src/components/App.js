@@ -1,6 +1,6 @@
 import "./App.css";
-import Navigation from "./navbar/Navigation.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+/* VIEWS */
 import Home from "./views/home/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
@@ -10,9 +10,13 @@ import Delivery from "./views/orders/Delivery.js";
 import ComboList from "./views/orders/ComboList.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./views/catalogue/ProductList.js";
+/* COMMON COMPONENTS */
 import Header from "./header/Header.js";
+import Navigation from "./navbar/Navigation.js";
+/* DATASETS */
 import navButtons from "../data/navButtons.js";
 import products from "../data/products.js";
+import combos from "../data/combo.js";
 import markers from "../data/markers.js";
 import homeLinks from "../data/homeLinks.js";
 
@@ -43,7 +47,7 @@ const App = () => {
           />
           <Route
             path="/orders/pickup/add"
-            element={<ComboList items={products} />}
+            element={<ComboList items={combos} />}
           />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
