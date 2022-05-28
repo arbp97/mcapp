@@ -1,0 +1,40 @@
+.Slider {
+  padding: 2em;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  column-gap: 10px;
+}
+
+.Slider .slide {
+  width: 150px;
+  height: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 5px;
+  padding: 5px;
+}
+
+.Slider .slide > img {
+  border-radius: 10px;
+  width: 100%;
+  height: 70%;
+  box-shadow: 0 3px 13px 1px rgb(0 0 0 /30%);
+}
+
+.Slider .slide > p {
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  height: fit-content;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
