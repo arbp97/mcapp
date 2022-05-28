@@ -1,4 +1,4 @@
-import Product from "./Product.js";
+import Product from "../../product/Product.js";
 import "./ProductList.css";
 import { useEffect } from "react";
 

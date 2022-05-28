@@ -8,7 +8,7 @@ import Order from "./views/orders/Order.js";
 import RestaurantList from "./views/orders/RestaurantList.js";
 import Delivery from "./views/orders/Delivery.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
-import ProductList from "./product/ProductList.js";
+import ProductList from "./views/catalogue/ProductList.js";
 import Header from "./header/Header.js";
 import navButtons from "../data/navButtons.js";
 import products from "../data/products.js";
