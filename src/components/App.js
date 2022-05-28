@@ -7,6 +7,7 @@ import Discount from "./views/Discount.js";
 import Order from "./views/orders/Order.js";
 import RestaurantList from "./views/orders/RestaurantList.js";
 import Delivery from "./views/orders/Delivery.js";
+import ComboList from "./views/orders/ComboList.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./views/catalogue/ProductList.js";
 import Header from "./header/Header.js";
@@ -39,6 +40,10 @@ const App = () => {
                 <Delivery />
               </>
             }
+          />
+          <Route
+            path="/orders/pickup/add"
+            element={<ComboList items={products} />}
           />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
