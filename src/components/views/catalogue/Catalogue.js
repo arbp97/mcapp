@@ -16,7 +16,7 @@ const Catalogue = (props) => {
             <p>{value.category}</p>
             <img
               className="category-arrow"
-              src={"../img/right-arrow.png"}
+              src={"/img/right-arrow.png"}
               alt=""
             />
           </NavLink>

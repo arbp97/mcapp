@@ -1,21 +1,71 @@
 .ComboList {
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 60px;
   margin-bottom: 80px;
 }
 
-.ComboList .slider-container {
+.ComboList-slides {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.ComboList-slides .slider-container {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.ComboList .slider-container > p {
+.ComboList-slides .slider-container > p {
   font-weight: bold;
   font-size: 22px;
   color: rgb(100, 100, 100);
   padding-left: 1em;
+}
+
+.ComboList .restaurant {
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  position: fixed;
+  height: fit-content;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+  padding-left: 10px;
+  line-height: 10px;
+}
+
+.ComboList .restaurant > img {
+  width: 42px;
+  height: auto;
+}
+
+.ComboList .restaurant .address {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-top: 12px;
+}
+
+.ComboList .restaurant .address :nth-child(1) {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ComboList .restaurant .address :nth-child(2) {
+  color: black;
+  font-size: 10px;
+  opacity: 0.6;
 }

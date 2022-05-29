@@ -23,10 +23,10 @@ const Header = () => {
           handleNavigate();
         }}
       >
-        <img src={"../img/left-arrow.png"} alt="" />
+        <img src={"/img/left-arrow.png"} alt="" />
         Volver
       </button>
-      <img className="logo" src="../img/logo-plain.png" alt="" />
+      <img className="logo" src="/img/logo-plain.png" alt="" />
     </div>
   );
 };

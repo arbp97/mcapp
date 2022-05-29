@@ -17,8 +17,17 @@ const RestaurantList = (props) => {
         <p className="title">Sucursales</p>
         {Object.entries(props.markers).map(([key, value]) => {
           return (
-            <NavLink key={key} className={"marker"} to={"/orders/pickup/add"}>
-              <img src={"../img/" + value.img} alt="" />
+            <NavLink
+              key={key}
+              className={"marker"}
+              to={"/orders/pickup/add"}
+              state={{
+                name: value.title,
+                address: value.location,
+                img: value.img,
+              }}
+            >
+              <img src={"/img/" + value.img} alt="" />
               <div className="marker-info">
                 <h6 className="title">{value.title} </h6>
                 <h6 className="location">{value.location}</h6>

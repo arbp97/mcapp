@@ -33,7 +33,7 @@ const Carousel = () => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="../img/Carousel-HaceteVIP.png"
+              src="/img/Carousel-HaceteVIP.png"
               className="d-block w-100"
               alt="..."
               width="300px"
@@ -42,7 +42,7 @@ const Carousel = () => {
           </div>
           <div className="carousel-item">
             <img
-              src="../img/Carousel-McComunidad.png"
+              src="/img/Carousel-McComunidad.png"
               className="d-block w-100"
               alt="..."
               width="300px"
@@ -51,7 +51,7 @@ const Carousel = () => {
           </div>
           <div className="carousel-item">
             <img
-              src="../img/Carousel-McDelivery.png"
+              src="/img/Carousel-McDelivery.png"
               className="d-block w-100"
               alt="..."
               width="300px"

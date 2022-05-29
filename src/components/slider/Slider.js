@@ -6,7 +6,7 @@ const Slider = (props) => {
       {Object.entries(props.items).map(([key, value]) => {
         return (
           <div className="slide" key={key}>
-            <img src={"../../img/" + value.img} alt=""></img>
+            <img src={"/img/" + value.img} alt=""></img>
             <p className="title" title={value.title}>
               {value.title}
             </p>

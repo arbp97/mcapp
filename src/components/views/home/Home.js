@@ -11,7 +11,7 @@ const Home = (props) => {
             <div key={key} className="home-link">
               <p className="title">{value.title}</p>
               <a href={value.href}>
-                <img src={"../img/" + value.img} alt="" />
+                <img src={"/img/" + value.img} alt="" />
               </a>
             </div>
           );

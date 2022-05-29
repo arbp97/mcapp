@@ -37,7 +37,7 @@ const Navigation = (props) => {
               key={key}
             >
               <NavLink to={toRoute(key)} className="nav-link">
-                <img src={"../img/" + value.img} alt="" />
+                <img src={"/img/" + value.img} alt="" />
                 {value.text}
               </NavLink>
             </li>

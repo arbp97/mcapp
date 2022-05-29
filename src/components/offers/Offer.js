@@ -5,7 +5,7 @@ const Offer = (props) => {
 
   return (
     <div className="Offer">
-      <img src={"../img/" + props.img} alt="" />
+      <img src={"/img/" + props.img} alt="" />
       <div className="Offer-info">
         <p className="Offer-title">{props.title}</p>
         <p className="Offer-text">{props.description}</p>
