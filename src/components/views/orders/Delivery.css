@@ -19,10 +19,10 @@
   background-color: #ffc72c;
   color: black;
   font-size: 18px;
-  cursor: pointer;
   text-align: center;
   position: absolute;
   bottom: 70px;
+  border: none;
 }
 
 @media screen and (max-width: 450px) {

@@ -14,7 +14,7 @@ const Delivery = () => {
         />
         <Map markers={[]} />
       </div>
-      <div className="findme-btn">Localizarme en el mapa</div>
+      <button className="findme-btn">Localizarme en el mapa</button>
     </div>
   );
 };

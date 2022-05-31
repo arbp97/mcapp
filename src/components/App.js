@@ -10,6 +10,7 @@ import Delivery from "./views/orders/Delivery.js";
 import ComboList from "./views/orders/ComboList.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./views/catalogue/ProductList.js";
+import AddItem from "./views/orders/AddItem.js";
 /* COMMON COMPONENTS */
 import Header from "./header/Header.js";
 import Navigation from "./navbar/Navigation.js";
@@ -49,6 +50,7 @@ const App = () => {
             path="/orders/pickup/add"
             element={<ComboList items={combos} />}
           />
+          <Route path="/orders/pickup/add/item" element={<AddItem />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route

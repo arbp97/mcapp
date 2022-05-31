@@ -1,0 +1,86 @@
+.AddItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.AddItem .title {
+  font-weight: bold;
+  color: rgb(50, 50, 50);
+  font-size: 32px;
+  width: 90%;
+  text-align: center;
+}
+
+.AddItem .price {
+  color: rgb(50, 50, 50);
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.AddItem > img {
+  width: 512px;
+  height: auto;
+}
+
+.AddItem .counter-container {
+  margin-top: 50px;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 13px 1px rgb(0 0 0 /9%);
+}
+
+.AddItem .counter-container > p {
+  color: black;
+  font-size: 20px;
+  width: 40%;
+  height: 100%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AddItem .counter-container > button {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: #ffc72c;
+}
+
+.AddItem .counter-container :nth-child(1) {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.AddItem .counter-container :nth-child(3) {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.AddItem .counter-container > button > img {
+  width: 30%;
+  height: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .AddItem > img {
+    width: 75%;
+  }
+}
