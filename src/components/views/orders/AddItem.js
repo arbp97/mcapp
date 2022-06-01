@@ -1,11 +1,16 @@
 import "./AddItem.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const AddItem = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const data = location.state;
   const [count, setCount] = useState(1);
+
+  const handleClick = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="AddItem">
@@ -17,10 +22,13 @@ const AddItem = () => {
           <img src="/img/minus.png" alt="" />
         </button>
         <p>{count}</p>
-        <button onClick={() => setCount(count >= 50 ? count : count + 1)}>
+        <button onClick={() => setCount(count >= 5 ? count : count + 1)}>
           <img src="/img/plus.png" alt="" />
         </button>
       </div>
+      <button className="additem-btn" onClick={() => handleClick()}>
+        Agregar al pedido
+      </button>
     </div>
   );
 };

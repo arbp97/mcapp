@@ -7,19 +7,24 @@ const Navigation = (props) => {
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
 
+  // returns supposed route with a slash
   const toRoute = (route) => {
     return route === "home" ? "/" : "/" + route;
   };
 
   useEffect(() => {
-    const isSubDirectory = new RegExp("/+[a-z].+?(?=/)");
+    // returns the root section of a route, as route
+    const toRoot = (route) => {
+      for (const b of Object.entries(props.buttons)) {
+        if (route.includes(b[0])) return toRoute(b[0]);
+      }
+      return route;
+    };
 
-    if (!isSubDirectory.exec(location.pathname)) {
-      setActive(location.pathname);
-    }
+    setActive(toRoot(location.pathname));
 
     window.scrollTo(0, 0);
-  }, [location]);
+  }, [location, props.buttons]);
 
   return (
     <nav className="nav-container">
