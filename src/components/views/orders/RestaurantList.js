@@ -21,7 +21,9 @@ const RestaurantList = (props) => {
       <div className="marker-list">
         <p className="title">Sucursales</p>
         {Object.entries(props.markers)
-          .filter(([key, value]) => value.title.toLowerCase().includes(query))
+          .filter(([key, value]) =>
+            value.title.toLowerCase().includes(query.toLowerCase())
+          )
           .map(([key, value]) => {
             return (
               <NavLink

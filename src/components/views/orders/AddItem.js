@@ -11,35 +11,23 @@ const AddItem = () => {
   // add selected qty of this item and adds them to the order
   const handleClick = () => {
     const order = JSON.parse(localStorage.getItem("order"));
-    const newItem = {
-      quantity: count,
-      name: data.name,
-      pricePerUnit: data.price,
-    };
+    let existingItem = order.items.find((item) => item.name === data.name);
 
-    // if the order object does not exist then create it
-    // with the new item inside
-    if (!order) {
-      localStorage.setItem(
-        "order",
-        JSON.stringify({
-          items: [newItem],
-          status: "pending",
-        })
-      );
+    // if the item exists in the current order,
+    //just add the count to it to avoid duplications
+    if (existingItem) {
+      existingItem.quantity += count;
     } else {
-      // if the item exists in the current order,
-      //just add the count to it to avoid duplications
-      let existingItem = order.items.find((item) => item.name === data.name);
+      const newItem = {
+        quantity: count,
+        name: data.name,
+        pricePerUnit: data.price,
+      };
 
-      if (existingItem) {
-        existingItem.quantity += count;
-      } else {
-        order.items.push(newItem);
-      }
-
-      localStorage.setItem("order", JSON.stringify(order));
+      order.items.push(newItem);
     }
+
+    localStorage.setItem("order", JSON.stringify(order));
 
     navigate(-1);
   };
