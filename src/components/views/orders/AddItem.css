@@ -6,7 +6,7 @@
   row-gap: 10px;
   width: 100%;
   margin-top: 80px;
-  margin-bottom: 80px;
+  margin-bottom: 160px;
 }
 
 .AddItem .title {
@@ -86,8 +86,8 @@
   color: black;
   font-size: 18px;
   text-align: center;
-  position: relative;
-  margin-top: 60px;
+  position: fixed;
+  bottom: 60px;
   border: none;
 }
 

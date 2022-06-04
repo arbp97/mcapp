@@ -7,21 +7,37 @@ const Cart = () => {
   let order = JSON.parse(localStorage.getItem("order"));
   const [itemList, setItemList] = useState(order.items);
 
-  useEffect(() => {
-    // go back if there is nothing no display
-    if (!order || order.items.length <= 0) {
-      navigate(-1);
+  const getTotal = () => {
+    let result = 0;
+
+    for (const item of order.items) {
+      result += item.pricePerUnit * item.quantity;
     }
-  }, [order, navigate]);
+
+    return result;
+  };
+
+  const [total, setTotal] = useState(getTotal);
 
   // delete selected item from the order
   const deleteItem = (item) => {
     order.items = order.items.filter(function (value, index) {
       return index !== item;
     });
-    setItemList(order.items);
+
     localStorage.setItem("order", JSON.stringify(order));
+    setItemList(order.items);
+
+    // change total if the item list changed
+    setTotal(getTotal);
   };
+
+  useEffect(() => {
+    // go back if there is nothing no display
+    if (!order || order.items.length <= 0) {
+      navigate(-1);
+    }
+  }, [order, navigate]);
 
   return (
     <div className="Cart">
@@ -33,7 +49,7 @@ const Cart = () => {
               <p>{item.name}</p>
               <p>{"Cantidad: " + item.quantity}</p>
               <p>
-                {item.pricePerUnit}
+                {"$" + item.pricePerUnit}
                 <button
                   className="delete-btn"
                   onClick={() => deleteItem(index)}
@@ -45,6 +61,13 @@ const Cart = () => {
           </div>
         );
       })}
+      <div className="cart-info">
+        <div className="cart-total">
+          <p>Total</p>
+          <p>{"$ " + total}</p>
+        </div>
+        <button>Pagar con la app</button>
+      </div>
     </div>
   );
 };

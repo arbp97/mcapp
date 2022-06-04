@@ -22,7 +22,7 @@ const AddItem = () => {
         quantity: count,
         name: data.name,
         img: data.img,
-        pricePerUnit: data.price,
+        pricePerUnit: Number(data.price),
       };
 
       order.items.push(newItem);
