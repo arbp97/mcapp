@@ -1,0 +1,68 @@
+.Cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.Cart .item {
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+}
+
+.Cart .item > img {
+  height: 100%;
+  width: auto;
+}
+
+.Cart .item .item-info {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: rgb(50, 50, 50);
+}
+
+.Cart .item .item-info > p {
+  margin: 0;
+}
+
+.delete-btn {
+  position: relative;
+  float: right;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 14px;
+  color: #da291c;
+  font-weight: bold;
+  padding: 5px 10px;
+  box-shadow: 1px 1px 5px 1px rgb(0 0 0 /9%);
+  transition: all 0.15s;
+}
+
+.delete-btn:hover {
+  background-color: #da291c;
+  color: white;
+}
+
+.delete-btn:active {
+  opacity: 0.8;
+  background-color: #da291c;
+  color: white;
+}

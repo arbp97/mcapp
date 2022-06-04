@@ -1,5 +1,5 @@
 import "./ComboList.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider.js";
 import { useEffect } from "react";
 
@@ -12,14 +12,9 @@ const ComboList = (props) => {
     /* create a new order or, in case that it exists & its not sent, 
     change the address to the current selected restaurant */
     if (!order) {
-      localStorage.setItem(
-        "order",
-        JSON.stringify({
-          address: data.address,
-          items: [],
-          status: "pending",
-        })
-      );
+      const newOrder = { address: data.address, items: [], status: "pending" };
+
+      localStorage.setItem("order", JSON.stringify(newOrder));
     } else {
       if (order.status !== "accepted" && order.address !== data.address) {
         order.address = data.address;
@@ -42,15 +37,15 @@ const ComboList = (props) => {
           return (
             <div className="slider-container" key={key}>
               <p>{value.category}</p>
-              <Slider items={value.items} />
+              <Slider items={value.items} link={location.pathname + "/item"} />
             </div>
           );
         })}
-        {order.items.length > 0 && (
-          <div className="view-order-link">
+        {order && order.items.length > 0 && (
+          <NavLink className="view-order-link" to={"/orders/pickup/cart"}>
             <img src="/img/order-bag.png" alt="" />
             <div className="order-qty">{order.items.length}</div>
-          </div>
+          </NavLink>
         )}
       </div>
     </div>

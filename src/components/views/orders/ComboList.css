@@ -76,6 +76,7 @@
   right: 10px;
   width: fit-content;
   height: auto;
+  text-decoration: none;
 }
 
 .ComboList .view-order-link > img {

@@ -1,9 +1,7 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Slider.css";
 
 const Slider = (props) => {
-  const location = useLocation();
-
   return (
     <div className="Slider">
       {Object.entries(props.items).map(([key, value]) => {
@@ -11,7 +9,7 @@ const Slider = (props) => {
           <NavLink
             className="slide"
             key={key}
-            to={location.pathname + "/item"}
+            to={props.link ? props.link : ""}
             state={{
               name: value.title,
               img: value.img,

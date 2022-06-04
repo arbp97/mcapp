@@ -11,6 +11,7 @@ import ComboList from "./views/orders/ComboList.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./views/catalogue/ProductList.js";
 import AddItem from "./views/orders/AddItem.js";
+import Cart from "./views/orders/Cart.js";
 /* COMMON COMPONENTS */
 import Header from "./header/Header.js";
 import Navigation from "./navbar/Navigation.js";
@@ -51,6 +52,7 @@ const App = () => {
             element={<ComboList items={combos} />}
           />
           <Route path="/orders/pickup/add/item" element={<AddItem />} />
+          <Route path="/orders/pickup/cart" element={<Cart />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route

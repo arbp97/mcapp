@@ -21,6 +21,7 @@ const AddItem = () => {
       const newItem = {
         quantity: count,
         name: data.name,
+        img: data.img,
         pricePerUnit: data.price,
       };
 
