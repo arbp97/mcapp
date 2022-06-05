@@ -1,5 +1,6 @@
 import "./AddItem.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import McButton from "../../buttons/McButton.js";
 import { useState } from "react";
 
 const AddItem = () => {
@@ -47,9 +48,9 @@ const AddItem = () => {
           <img src="/img/plus.png" alt="" />
         </button>
       </div>
-      <button className="additem-btn" onClick={() => handleClick()}>
-        Agregar al pedido
-      </button>
+      <div className="button-container">
+        <McButton content={"Agregar al pedido"} onClick={() => handleClick()} />
+      </div>
     </div>
   );
 };

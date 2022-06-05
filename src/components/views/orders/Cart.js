@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import McButton from "../../buttons/McButton.js";
 import "./Cart.css";
 
 const Cart = () => {
@@ -66,7 +67,10 @@ const Cart = () => {
           <p>Total</p>
           <p>{"$ " + total}</p>
         </div>
-        <button>Pagar con la app</button>
+        <McButton
+          content={"Pagar con la app"}
+          onClick={() => alert("Work in progress")}
+        />
       </div>
     </div>
   );

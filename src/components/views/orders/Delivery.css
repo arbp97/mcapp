@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 80px;
+  margin-bottom: 120px;
   height: fit-content;
 }
 
@@ -13,20 +13,10 @@
   width: 100%;
 }
 
-.findme-btn {
-  padding: 1em;
-  width: 300px;
-  background-color: #ffc72c;
-  color: black;
-  font-size: 18px;
-  text-align: center;
-  position: absolute;
-  bottom: 70px;
-  border: none;
-}
-
-@media screen and (max-width: 450px) {
-  .findme-btn {
-    width: 100%;
-  }
+.Delivery .button-container {
+  width: 100%;
+  height: fit-content;
+  position: fixed;
+  bottom: 60px;
+  z-index: 501;
 }

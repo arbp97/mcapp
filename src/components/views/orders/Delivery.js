@@ -1,6 +1,7 @@
 import "./Delivery.css";
 import Map from "../../map/Map.js";
 import Searchbar from "../../searchbar/Searchbar.js";
+import McButton from "../../buttons/McButton.js";
 
 const Delivery = () => {
   return (
@@ -14,7 +15,12 @@ const Delivery = () => {
         />
         <Map markers={[]} />
       </div>
-      <button className="findme-btn">Localizarme en el mapa</button>
+      <div className="button-container">
+        <McButton
+          content={"Localizarme en el mapa"}
+          onClick={() => alert("Work in progress")}
+        />
+      </div>
     </div>
   );
 };

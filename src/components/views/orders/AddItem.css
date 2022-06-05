@@ -79,23 +79,15 @@
   height: auto;
 }
 
-.additem-btn {
-  padding: 1em;
-  width: 512px;
-  background-color: #ffc72c;
-  color: black;
-  font-size: 18px;
-  text-align: center;
+.AddItem .button-container {
+  width: 100%;
+  height: fit-content;
   position: fixed;
   bottom: 60px;
-  border: none;
 }
 
 @media screen and (max-width: 500px) {
   .AddItem > img {
     width: 75%;
-  }
-  .additem-btn {
-    width: 100%;
   }
 }

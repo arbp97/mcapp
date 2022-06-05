@@ -82,17 +82,6 @@
   flex-direction: column;
 }
 
-.Cart .cart-info > button {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: #ffc72c;
-  font-size: 18px;
-}
-
 .Cart .cart-info .cart-total {
   font-size: 22px;
   font-weight: bold;
