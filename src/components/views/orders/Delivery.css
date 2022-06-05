@@ -12,11 +12,3 @@
   flex-direction: column;
   width: 100%;
 }
-
-.Delivery .button-container {
-  width: 100%;
-  height: fit-content;
-  position: fixed;
-  bottom: 60px;
-  z-index: 501;
-}

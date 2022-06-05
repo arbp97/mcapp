@@ -48,9 +48,11 @@ const AddItem = () => {
           <img src="/img/plus.png" alt="" />
         </button>
       </div>
-      <div className="button-container">
-        <McButton content={"Agregar al pedido"} onClick={() => handleClick()} />
-      </div>
+      <McButton
+        content={"Agregar al pedido"}
+        onClick={() => handleClick()}
+        fixed
+      />
     </div>
   );
 };

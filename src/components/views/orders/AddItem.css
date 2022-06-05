@@ -79,13 +79,6 @@
   height: auto;
 }
 
-.AddItem .button-container {
-  width: 100%;
-  height: fit-content;
-  position: fixed;
-  bottom: 60px;
-}
-
 @media screen and (max-width: 500px) {
   .AddItem > img {
     width: 75%;

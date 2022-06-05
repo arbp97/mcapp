@@ -15,12 +15,11 @@ const Delivery = () => {
         />
         <Map markers={[]} />
       </div>
-      <div className="button-container">
-        <McButton
-          content={"Localizarme en el mapa"}
-          onClick={() => alert("Work in progress")}
-        />
-      </div>
+      <McButton
+        content={"Localizarme en el mapa"}
+        onClick={() => alert("Work in progress")}
+        fixed
+      />
     </div>
   );
 };

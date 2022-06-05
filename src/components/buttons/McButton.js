@@ -2,7 +2,10 @@ import "./McButton.css";
 
 const McButton = (props) => {
   return (
-    <button className="McButton" onClick={props.onClick}>
+    <button
+      className={props.fixed ? "McButton fixed" : "McButton"}
+      onClick={props.onClick}
+    >
       {props.content}
     </button>
   );

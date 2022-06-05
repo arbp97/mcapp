@@ -11,6 +11,12 @@
   transition: all 0.15s;
 }
 
+.McButton.fixed {
+  position: fixed;
+  bottom: 60px;
+  z-index: 501;
+}
+
 .McButton:active {
   opacity: 0.8;
 }
