@@ -1,6 +1,6 @@
 import "./Delivery.css";
 import Map from "../../map/Map.js";
-import Searchbar from "../../searchbar/Searchbar.js";
+import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
 
 const Delivery = () => {

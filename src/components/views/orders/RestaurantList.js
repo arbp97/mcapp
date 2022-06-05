@@ -1,6 +1,6 @@
 import "./RestaurantList.css";
 import Map from "../../map/Map.js";
-import Searchbar from "../../searchbar/Searchbar.js";
+import Searchbar from "../../input/Searchbar.js";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 

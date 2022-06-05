@@ -1,0 +1,23 @@
+.McInput {
+  height: 80px;
+  color: rgb(100, 100, 100);
+}
+
+.McInput > label {
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.McInput > input {
+  transition: all 0.25s;
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  border-bottom: 2px solid rgb(163, 163, 163);
+  padding: 5px;
+}
+
+.McInput > input:focus {
+  outline: none;
+  border-bottom: 2px solid #ffc72c;
+}
