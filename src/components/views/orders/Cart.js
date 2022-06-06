@@ -69,7 +69,7 @@ const Cart = () => {
         </div>
         <McButton
           content={"Pagar con la app"}
-          onClick={() => alert("Work in progress")}
+          onClick={() => navigate("/orders/checkout")}
         />
       </div>
     </div>

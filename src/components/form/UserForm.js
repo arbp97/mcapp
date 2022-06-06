@@ -1,7 +1,7 @@
 import "./UserForm.css";
 import McInput from "../input/McInput.js";
 
-const UserForm = () => {
+const UserForm = (props) => {
   return (
     <div className="UserForm">
       <h1>
@@ -12,12 +12,22 @@ const UserForm = () => {
         type={"text"}
         label={"Nombre y apellido"}
         width={"100%"}
+        value={props.data.name}
+        onChange={(e) => {
+          // eslint-disable-next-line
+          props.setData({ ...props.data, ["name"]: e.target.value });
+        }}
       />
       <McInput
         id={"input-email"}
         type={"email"}
         label={"Correo"}
         width={"100%"}
+        value={props.data.email}
+        onChange={(e) => {
+          // eslint-disable-next-line
+          props.setData({ ...props.data, ["email"]: e.target.value });
+        }}
       />
       <McInput
         id={"input-country"}
@@ -41,6 +51,11 @@ const UserForm = () => {
           type={"text"}
           label={"Documento"}
           width={"70%"}
+          value={props.data.dni}
+          onChange={(e) => {
+            // eslint-disable-next-line
+            props.setData({ ...props.data, ["dni"]: e.target.value });
+          }}
         />
       </div>
       <div className="composite-input">
@@ -58,6 +73,11 @@ const UserForm = () => {
           placeholder={"000-0000-0000"}
           label={"Teléfono"}
           width={"70%"}
+          value={props.data.phone}
+          onChange={(e) => {
+            // eslint-disable-next-line
+            props.setData({ ...props.data, ["phone"]: e.target.value });
+          }}
         />
       </div>
     </div>

@@ -8,6 +8,7 @@ import "./McInput.css";
  * @param {*} placeholder optional
  * @param {*} value optional
  * @param {*} disabled optional
+ * @param {()} onChange
  */
 const McInput = (props) => {
   return (
@@ -19,6 +20,7 @@ const McInput = (props) => {
         disabled={props.disabled ? true : false}
         placeholder={props.placeholder ? props.placeholder : ""}
         defaultValue={props.value ? props.value : ""}
+        onChange={props.onChange}
       />
     </div>
   );
