@@ -70,7 +70,7 @@ const UserForm = (props) => {
         <McInput
           id={"input-phone"}
           type={"tel"}
-          placeholder={"000-0000-0000"}
+          placeholder={"00-0000-0000"}
           label={"Teléfono"}
           width={"70%"}
           value={props.data.phone}
