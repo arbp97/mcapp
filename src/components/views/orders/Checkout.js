@@ -1,9 +1,9 @@
 import "./Checkout.css";
 import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Checkout = () => {
+const UserValidation = (props) => {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -18,7 +18,7 @@ const Checkout = () => {
       return;
     }
 
-    if (!/^[a-zA-Z]+$/.test(formData.name)) {
+    if (!/^([a-zA-Z ]){2,30}$/.test(formData.name)) {
       alert("Nombre inválido");
       return;
     }
@@ -32,12 +32,31 @@ const Checkout = () => {
       alert("Ingrese un teléfono válido");
       return;
     }
+
+    localStorage.setItem("user", JSON.stringify(formData));
+    props.setIsValidated(true);
   };
 
   return (
-    <div className="Checkout">
+    <div className="UserValidation">
       <UserForm data={formData} setData={setFormData} />
       <McButton content={"Aceptar"} onClick={() => handleValidation()} fixed />
+    </div>
+  );
+};
+
+const Checkout = () => {
+  const [isValidated, setIsValidated] = useState(false);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) setIsValidated(true);
+  }, [setIsValidated]);
+
+  return (
+    <div className="Checkout">
+      {!isValidated && <UserValidation setIsValidated={setIsValidated} />}
+      {isValidated && <p>VALIDATED</p>}
     </div>
   );
 };

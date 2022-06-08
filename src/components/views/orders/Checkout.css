@@ -8,3 +8,10 @@
   margin-top: 80px;
   margin-bottom: 120px;
 }
+
+.UserValidation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
