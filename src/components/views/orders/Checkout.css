@@ -6,7 +6,7 @@
   row-gap: 10px;
   width: 100%;
   margin-top: 80px;
-  margin-bottom: 120px;
+  margin-bottom: 180px;
 }
 
 .UserValidation {
@@ -14,4 +14,63 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.Detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-box {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+}
+
+.detail-box .address {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.detail-box .items {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-size: 16px;
+}
+
+.items .item {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item .name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 60%;
+}
+
+.Detail .detail-total {
+  width: 100%;
+  position: fixed;
+  bottom: 120px;
+  height: 60px;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  font-weight: bold;
+  font-size: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1em 0 1em;
 }
