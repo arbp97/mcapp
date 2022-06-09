@@ -42,7 +42,7 @@ const ComboList = (props) => {
           );
         })}
         {order && order.items.length > 0 && (
-          <NavLink className="view-order-link" to={"/orders/pickup/cart"}>
+          <NavLink className="view-order-link" to={"/orders/cart"}>
             <img src="/img/order-bag.png" alt="" />
             <div className="order-qty">{order.items.length}</div>
           </NavLink>

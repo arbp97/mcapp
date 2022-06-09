@@ -32,6 +32,8 @@
   font-size: 16px;
   width: 50%;
   text-decoration: none !important;
+  border: none;
+  background-color: transparent;
 }
 
 .mode-button:hover {
@@ -42,4 +44,78 @@
   background-color: #ffc72c;
   font-weight: bold;
   color: black;
+}
+
+.RestaurantList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.RestaurantList .marker > img {
+  height: 40%;
+  width: auto;
+}
+
+.marker {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 20px;
+  text-decoration: none !important;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  padding-left: 10px;
+}
+
+.marker-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-list .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.marker-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 5px;
+}
+
+.marker-info .title {
+  font-size: 14px;
+  color: rgb(100, 100, 100);
+}
+
+.marker-info .location {
+  font-size: 12px;
+  color: gray;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.Delivery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 120px;
+  height: fit-content;
+}
+
+.delivery-map {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

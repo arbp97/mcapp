@@ -5,8 +5,6 @@ import Home from "./views/home/Home.js";
 import Coupon from "./views/Coupon.js";
 import Discount from "./views/Discount.js";
 import Order from "./views/orders/Order.js";
-import RestaurantList from "./views/orders/RestaurantList.js";
-import Delivery from "./views/orders/Delivery.js";
 import ComboList from "./views/orders/ComboList.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
 import ProductList from "./views/catalogue/ProductList.js";
@@ -32,28 +30,11 @@ const App = () => {
           <Route path="/" element={<Home links={homeLinks} />} />
           <Route
             path="/orders"
-            element={
-              <>
-                <Order active={"pickup"} />
-                <RestaurantList markers={markers} />
-              </>
-            }
+            element={<Order active={"pickup"} markers={markers} />}
           />
-          <Route
-            path="/orders/delivery"
-            element={
-              <>
-                <Order active={"delivery"} />
-                <Delivery />
-              </>
-            }
-          />
-          <Route
-            path="/orders/pickup/add"
-            element={<ComboList items={combos} />}
-          />
-          <Route path="/orders/pickup/add/item" element={<AddItem />} />
-          <Route path="/orders/pickup/cart" element={<Cart />} />
+          <Route path="/orders/add" element={<ComboList items={combos} />} />
+          <Route path="/orders/add/item" element={<AddItem />} />
+          <Route path="/orders/cart" element={<Cart />} />
           <Route path="/orders/checkout" element={<Checkout />} />
           <Route path="/discounts" element={<Discount />} />
           <Route path="/coupons" element={<Coupon />} />
