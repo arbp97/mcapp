@@ -1,0 +1,42 @@
+.CurrentOrder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  width: 100%;
+  height: calc(100vh - 120px);
+  margin-top: 60px;
+  margin-bottom: 60px;
+  background-color: #ffc72c;
+}
+
+.CurrentOrder .title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: fit-content;
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top: 70px;
+}
+
+.CurrentOrder .address {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  text-align: center;
+}
+
+.CurrentOrder .info {
+  width: 80%;
+  text-align: center;
+}
+
+.CurrentOrder .title > img {
+  width: 120px;
+  height: auto;
+}

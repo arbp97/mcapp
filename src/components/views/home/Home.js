@@ -1,9 +1,11 @@
 import "./Home.css";
 import Carousel from "../../carousel/Carousel.js";
 import McButton from "../../buttons/McButton.js";
+import { useNavigate } from "react-router-dom";
 
 const Home = (props) => {
   const order = JSON.parse(localStorage.getItem("order"));
+  const navigate = useNavigate();
 
   return (
     <div className="Home">
@@ -23,8 +25,10 @@ const Home = (props) => {
       {order && order.confirmed && (
         <McButton
           content={"Pedido en curso >>>"}
-          img={"order-bag.png"}
-          onClick={() => alert("Work in progress")}
+          img={"order-bag-nobg.png"}
+          onClick={() =>
+            navigate("/orders/current", { state: { order: order } })
+          }
           fixed
         />
       )}
