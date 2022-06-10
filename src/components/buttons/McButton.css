@@ -20,3 +20,8 @@
 .McButton:active {
   opacity: 0.8;
 }
+
+.McButton > img {
+  width: 140px;
+  height: auto;
+}

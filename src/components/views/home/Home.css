@@ -1,6 +1,6 @@
 .Home {
   margin-top: 60px;
-  margin-bottom: 80px;
+  margin-bottom: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,6 +36,11 @@
   font-size: 18px;
   color: black;
   font-weight: bold;
+}
+
+.order-btn-container {
+  width: fit-content;
+  height: fit-content;
 }
 
 @media screen and (max-width: 768px) {

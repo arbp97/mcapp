@@ -1,5 +1,6 @@
 import "./Home.css";
 import Carousel from "../../carousel/Carousel.js";
+import McButton from "../../buttons/McButton.js";
 
 const Home = (props) => {
   const order = JSON.parse(localStorage.getItem("order"));
@@ -20,9 +21,12 @@ const Home = (props) => {
         })}
       </div>
       {order && order.confirmed && (
-        <div>
-          <h1>Pedido en curso</h1>
-        </div>
+        <McButton
+          content={"Pedido en curso >>>"}
+          img={"order-bag.png"}
+          onClick={() => alert("Work in progress")}
+          fixed
+        />
       )}
     </div>
   );
