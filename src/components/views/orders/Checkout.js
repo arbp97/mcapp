@@ -106,7 +106,7 @@ const Checkout = () => {
 
   const confirmOrder = () => {
     let order = location.state.order;
-    order.status = "confirmed";
+    order.confirmed = true;
 
     localStorage.setItem("order", JSON.stringify(order));
 

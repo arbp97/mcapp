@@ -2,6 +2,8 @@ import "./Home.css";
 import Carousel from "../../carousel/Carousel.js";
 
 const Home = (props) => {
+  const order = JSON.parse(localStorage.getItem("order"));
+
   return (
     <div className="Home">
       <Carousel />
@@ -17,6 +19,11 @@ const Home = (props) => {
           );
         })}
       </div>
+      {order && order.confirmed && (
+        <div>
+          <h1>Pedido en curso</h1>
+        </div>
+      )}
     </div>
   );
 };

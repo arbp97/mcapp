@@ -61,7 +61,7 @@ const Order = (props) => {
   useEffect(() => {
     const order = JSON.parse(localStorage.getItem("order"));
 
-    if (order && order.status === "confirmed") {
+    if (order && order.confirmed) {
       alert("Ya existe un pedido en curso");
       navigate("/");
     }

@@ -12,11 +12,11 @@ const ComboList = (props) => {
     /* create a new order or, in case that it exists & its not sent, 
     change the address to the current selected restaurant */
     if (!order) {
-      const newOrder = { address: data.address, items: [], status: "pending" };
+      const newOrder = { address: data.address, items: [], confirmed: false };
 
       localStorage.setItem("order", JSON.stringify(newOrder));
     } else {
-      if (order.status !== "accepted" && order.address !== data.address) {
+      if (!order.confirmed && order.address !== data.address) {
         order.address = data.address;
         localStorage.setItem("order", JSON.stringify(order));
       }
