@@ -2,8 +2,8 @@ import "./Order.css";
 import Map from "../../map/Map.js";
 import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const RestaurantList = (props) => {
   return (
@@ -56,6 +56,16 @@ const Order = (props) => {
   const [activeMode, setActiveMode] = useState(props.active);
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const order = JSON.parse(localStorage.getItem("order"));
+
+    if (order && order.status === "confirmed") {
+      alert("Ya existe un pedido en curso");
+      navigate("/");
+    }
+  }, [navigate]);
 
   const changeMode = (mode) => {
     setActiveMode(mode);

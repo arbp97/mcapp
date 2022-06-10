@@ -67,7 +67,7 @@ const Detail = (props) => {
             return (
               <div className="item" key={key}>
                 <p className="name">{value.name}</p>
-                <p>{"x " + value.quantity}</p>
+                <p>{"x" + value.quantity}</p>
                 <p>{"$" + value.pricePerUnit * value.quantity}</p>
               </div>
             );
@@ -82,7 +82,11 @@ const Detail = (props) => {
         <p>Total</p>
         <p>{"$ " + props.total}</p>
       </div>
-      <McButton content={"Enviar pedido"} onClick={() => alert("WIP")} fixed />
+      <McButton
+        content={"Enviar pedido"}
+        onClick={() => props.confirmOrder()}
+        fixed
+      />
     </div>
   );
 };
@@ -100,11 +104,24 @@ const Checkout = () => {
     if (user) setIsValidated(true);
   }, [navigate, location, setIsValidated]);
 
+  const confirmOrder = () => {
+    let order = location.state.order;
+    order.status = "confirmed";
+
+    localStorage.setItem("order", JSON.stringify(order));
+
+    navigate("/");
+  };
+
   return (
     <div className="Checkout">
       {!isValidated && <UserValidation setIsValidated={setIsValidated} />}
       {isValidated && (
-        <Detail order={location.state.order} total={location.state.total} />
+        <Detail
+          order={location.state.order}
+          total={location.state.total}
+          confirmOrder={confirmOrder}
+        />
       )}
     </div>
   );
