@@ -48,6 +48,7 @@
 
 .RestaurantList {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,6 +80,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
 .marker-list .title {
@@ -112,10 +114,4 @@
   width: 100%;
   margin-bottom: 120px;
   height: fit-content;
-}
-
-.delivery-map {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 }

@@ -6,24 +6,13 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const RestaurantList = (props) => {
-  const [query, setQuery] = useState("");
-
   return (
     <div className="RestaurantList">
-      <Searchbar
-        placeholder={"Buscar por direccion..."}
-        icontype={"glyphicon-search"}
-        name={"orderSearch"}
-        id={"orderSearch"}
-        query={query}
-        setQuery={setQuery}
-      />
-      <Map markers={props.markers} />
       <div className="marker-list">
         <p className="title">Sucursales</p>
         {Object.entries(props.markers)
           .filter(([key, value]) =>
-            value.title.toLowerCase().includes(query.toLowerCase())
+            value.title.toLowerCase().includes(props.query.toLowerCase())
           )
           .map(([key, value]) => {
             return (
@@ -53,15 +42,6 @@ const RestaurantList = (props) => {
 const Delivery = () => {
   return (
     <div className="Delivery">
-      <div className="delivery-map">
-        <Searchbar
-          placeholder={"Ingresar dirección de entrega"}
-          icontype={"glyphicon-search"}
-          name={"deliverySearch"}
-          id={"deliverySearch"}
-        />
-        <Map markers={[]} />
-      </div>
       <McButton
         content={"Localizarme en el mapa"}
         onClick={() => alert("Work in progress")}
@@ -74,6 +54,13 @@ const Delivery = () => {
 const Order = (props) => {
   const modes = ["pickup", "delivery"];
   const [activeMode, setActiveMode] = useState(props.active);
+  const [mapMarkers, setMapMarkers] = useState(props.markers);
+  const [query, setQuery] = useState("");
+
+  const changeMode = (mode) => {
+    setActiveMode(mode);
+    mode === "delivery" ? setMapMarkers([]) : setMapMarkers(props.markers);
+  };
 
   return (
     <div className="Order">
@@ -84,7 +71,7 @@ const Order = (props) => {
           className={
             activeMode === modes[0] ? "mode-button selected" : "mode-button"
           }
-          onClick={() => setActiveMode(modes[0])}
+          onClick={() => changeMode(modes[0])}
         >
           Pickup
         </button>
@@ -93,12 +80,23 @@ const Order = (props) => {
           className={
             activeMode === modes[1] ? "mode-button selected" : "mode-button"
           }
-          onClick={() => setActiveMode(modes[1])}
+          onClick={() => changeMode(modes[1])}
         >
           McDelivery
         </button>
       </div>
-      {activeMode === modes[0] && <RestaurantList markers={props.markers} />}
+      <Map markers={mapMarkers} />
+      <Searchbar
+        placeholder={"Buscar por direccion..."}
+        icontype={"glyphicon-search"}
+        name={"search"}
+        id={"search"}
+        query={query}
+        setQuery={setQuery}
+      />
+      {activeMode === modes[0] && (
+        <RestaurantList query={query} markers={mapMarkers} />
+      )}
       {activeMode === modes[1] && <Delivery />}
     </div>
   );
