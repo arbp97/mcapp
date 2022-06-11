@@ -16,3 +16,8 @@
 body {
   height: 100%;
 }
+
+.discount{
+  height: 200px;
+  padding-top: 30px;
+}
