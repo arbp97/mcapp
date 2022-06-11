@@ -10,8 +10,13 @@ const CurrentOrder = () => {
   const order = location.state ? location.state.order : null;
 
   useEffect(() => {
-    if (!order) navigate("/");
+    if (!order || !order.confirmed) navigate("/");
   }, [order, navigate]);
+
+  const cancelOrder = () => {
+    localStorage.removeItem("order");
+    navigate("/");
+  };
 
   return (
     <div className="CurrentOrder">
@@ -38,7 +43,7 @@ const CurrentOrder = () => {
       <McButton
         content={"Cancelar pedido"}
         color="#da291c"
-        onClick={() => alert("WIP")}
+        onClick={() => cancelOrder()}
         fixed
       />
     </div>
