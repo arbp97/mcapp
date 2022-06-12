@@ -1,64 +1,70 @@
-// categories & products
-const ofertasSlider = {
+// discounts & promotions
+const discounts = {
+  burgers: {
     category: "Para disfrutar en familia",
-    itemsBurgers: [
+    items: [
       {
         title: "MC Combo Cuadruple Bacon Grande",
         img: "PROMOCIONE2McCombosMedianosCuartodeLibraconQueso.png",
-        price: "1090.00",
+        //price: "1090.00",
       },
       {
         title: "MC Combo Grand Triple Tasty",
         img: "Promocion20.png",
-        price: "990.00",
+        //price: "990.00",
       },
       {
         title: "MC Combo Grand Triple Tasty",
         img: "Promocion18.png",
-        price: "990.00",
+        //price: "990.00",
       },
       {
         title: "MC Combo Grand Triple Tasty",
         img: "Promocion19.png",
-        price: "990.00",
-      }
+        //price: "990.00",
+      },
     ],
-    categoryHelado: "Para que termines de la mejor manera",
-    itemsHelado: [
+  },
+  dessert: {
+    category: "Para que termines de la mejor manera",
+    items: [
       {
-        title: "2 Mc Flurry",
+        title: "2 McFlurry",
         img: "Promocion15.png",
-        price: "599.00",
+        //price: "599.00",
       },
       {
-        title: "2 sundae",
+        title: "2 Sundae",
         img: "Promocion16.png",
-        price: "300.00",
+        //price: "300.00",
       },
       {
-        title: "2 conitos",
+        title: "2 Conitos",
         img: "Promocion12.png",
-        price: "150.00",
-      }
+        //price: "150.00",
+      },
     ],
-    categoryCoffe: "Arranca la mañana con fuerza",
-    itemsCoffe: [
+  },
+  coffe: {
+    category: "Arranca la mañana con fuerza",
+    items: [
       {
         title: "Cappuccino chico + 1 croissant",
         img: "Promocion5.png",
-        price: "300.00",
+        //price: "300.00",
       },
       {
         title: "2 Cafes + 4 medialunas",
         img: "Promocion7.png",
-        price: "390.00",
+        //price: "390.00",
       },
       {
         title: "Cappuccino chico + 2 medialunas",
         img: "Promocion6.png",
-        price: "300.00",
-      }
+        //price: "300.00",
+      },
     ],
-  };
-  export default ofertasSlider;
-  
+  },
+};
+
+export default discounts;

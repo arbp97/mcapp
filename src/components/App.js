@@ -21,6 +21,7 @@ import products from "../data/products.js";
 import combos from "../data/combo.js";
 import markers from "../data/markers.js";
 import homeLinks from "../data/homeLinks.js";
+import discounts from "../data/discounts.js";
 
 const App = () => {
   return (
@@ -38,7 +39,7 @@ const App = () => {
           <Route path="/orders/cart" element={<Cart />} />
           <Route path="/orders/checkout" element={<Checkout />} />
           <Route path="/orders/current" element={<CurrentOrder />} />
-          <Route path="/discounts" element={<Discount />} />
+          <Route path="/discounts" element={<Discount items={discounts} />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route
             path="/catalogue"
