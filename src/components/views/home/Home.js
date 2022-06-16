@@ -9,7 +9,7 @@ const Home = (props) => {
 
   return (
     <div className="Home">
-      <Carousel />
+      <Carousel items={props.carouselItems} />
       <div className="home-list">
         {Object.entries(props.links).map(([key, value]) => {
           return (

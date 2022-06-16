@@ -29,7 +29,10 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home links={homeLinks} />} />
+          <Route
+            path="/"
+            element={<Home links={homeLinks} carouselItems={homeLinks} />}
+          />
           <Route
             path="/orders"
             element={<Order active={"pickup"} markers={markers} />}
