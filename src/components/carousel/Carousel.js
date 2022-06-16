@@ -9,32 +9,31 @@ const Carousel = (props) => {
         data-bs-ride="carousel"
       >
         <ol className="carousel-indicators">
-          {Object.entries(props.items).map(([key, value]) => {
+          {props.items.map((element, index) => {
             return (
               <li
-                key={key}
+                key={index}
                 type="button"
-                // eslint-disable-next-line
-                className={key == 0 ? "active" : ""}
+                className={index === 0 ? "active" : ""}
                 data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to={key}
-                aria-label={"Slide " + Number(key + 1)}
-                // eslint-disable-next-line
-                aria-current={key == 0 ? "true" : "false"}
+                data-bs-slide-to={index}
+                aria-label={"Slide " + Number(index + 1)}
+                aria-current={index === 0 ? "true" : "false"}
               ></li>
             );
           })}
         </ol>
         <div className="carousel-inner">
-          {Object.entries(props.items).map(([key, value]) => {
+          {props.items.map((element, index) => {
             return (
               <div
-                key={key}
-                // eslint-disable-next-line
-                className={key == 0 ? "carousel-item active" : "carousel-item"}
+                key={index}
+                className={
+                  index === 0 ? "carousel-item active" : "carousel-item"
+                }
               >
                 <img
-                  src={"img/" + value.img}
+                  src={"img/" + element}
                   className="d-block w-100"
                   alt="..."
                   width="300px"

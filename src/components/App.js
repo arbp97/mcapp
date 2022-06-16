@@ -21,6 +21,7 @@ import products from "../data/products.js";
 import combos from "../data/combo.js";
 import markers from "../data/markers.js";
 import homeLinks from "../data/homeLinks.js";
+import homeSlides from "../data/homeSlides.js";
 import discounts from "../data/discounts.js";
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Home links={homeLinks} carouselItems={homeLinks} />}
+            element={<Home links={homeLinks} carouselItems={homeSlides} />}
           />
           <Route
             path="/orders"
