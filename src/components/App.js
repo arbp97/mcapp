@@ -43,7 +43,10 @@ const App = () => {
           <Route path="/orders/cart" element={<Cart />} />
           <Route path="/orders/checkout" element={<Checkout />} />
           <Route path="/orders/current" element={<CurrentOrder />} />
-          <Route path="/discounts" element={<Discount items={discounts} />} />
+          <Route
+            path="/discounts"
+            element={<Discount items={discounts} carouselItems={homeSlides} />}
+          />
           <Route path="/coupons" element={<Coupon />} />
           <Route
             path="/catalogue"

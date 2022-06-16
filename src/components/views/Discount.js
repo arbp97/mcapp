@@ -8,7 +8,7 @@ const Discount = (props) => {
 
   return (
     <div className="Discount">
-      <Carousel />
+      <Carousel items={props.carouselItems} />
       <div className="slides">
         {Object.entries(props.items).map(([key, value]) => {
           return (
