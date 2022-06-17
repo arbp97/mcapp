@@ -9,7 +9,7 @@
   margin-top: 60px;
   padding-top: 100px;
   margin-bottom: 120px;
-  background-color: #ffc72c;
+  background-color: var(--mc-yellow);
 }
 
 .CurrentOrder .title {

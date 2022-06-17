@@ -19,5 +19,5 @@
 
 .McInput > input:focus {
   outline: none;
-  border-bottom: 2px solid #ffc72c;
+  border-bottom: 2px solid var(--mc-yellow);
 }

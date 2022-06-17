@@ -41,7 +41,7 @@
 }
 
 .mode-button.selected {
-  background-color: #ffc72c;
+  background-color: var(--mc-yellow);
   font-weight: bold;
   color: black;
 }

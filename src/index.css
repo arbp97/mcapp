@@ -6,7 +6,9 @@
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
+:root {
   /* color guide */
   --mc-red: #da291c;
   --mc-yellow: #ffc72c;
@@ -15,9 +17,4 @@
 
 body {
   height: 100%;
-}
-
-.discount{
-  height: 200px;
-  padding-top: 30px;
 }

@@ -91,12 +91,12 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  color: #ffc72c;
+  color: var(--mc-yellow);
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #da291c;
+  background-color: var(--mc-red);
 }

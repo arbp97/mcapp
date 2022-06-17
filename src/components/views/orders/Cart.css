@@ -53,7 +53,7 @@
   border-radius: 20px;
   background-color: white;
   font-size: 14px;
-  color: #da291c;
+  color: var(--mc-red);
   font-weight: bold;
   padding: 5px 10px;
   box-shadow: 1px 1px 5px 1px rgb(0 0 0 /9%);
@@ -61,13 +61,13 @@
 }
 
 .delete-btn:hover {
-  background-color: #da291c;
+  background-color: var(--mc-red);
   color: white;
 }
 
 .delete-btn:active {
   opacity: 0.8;
-  background-color: #da291c;
+  background-color: var(--mc-red);
   color: white;
 }
 
