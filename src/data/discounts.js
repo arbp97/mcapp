@@ -4,22 +4,22 @@ const discounts = {
     category: "Para disfrutar en familia",
     items: [
       {
-        title: "MC Combo Cuadruple Bacon Grande",
+        title: "2 McCombos Cuarto de Libra",
         img: "PROMOCIONE2McCombosMedianosCuartodeLibraconQueso.png",
         //price: "1090.00",
       },
       {
-        title: "MC Combo Grand Triple Tasty",
+        title: "2 McCombos Cuarto de Libra Mediano",
         img: "Promocion20.png",
         //price: "990.00",
       },
       {
-        title: "MC Combo Grand Triple Tasty",
+        title: "Menu Ensalada Deli Pollo + Bebida",
         img: "Promocion18.png",
         //price: "990.00",
       },
       {
-        title: "MC Combo Grand Triple Tasty",
+        title: "2 McCombos Triple Queso Medianos",
         img: "Promocion19.png",
         //price: "990.00",
       },

@@ -1,5 +1,5 @@
-import Slider from "../slider/Slider.js";
-import Carousel from "../carousel/Carousel.js";
+import Slider from "../../slider/Slider.js";
+import Carousel from "../../carousel/Carousel.js";
 import "./Discount.css";
 import { useLocation } from "react-router-dom";
 

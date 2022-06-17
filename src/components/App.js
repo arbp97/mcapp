@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 /* VIEWS */
 import Home from "./views/home/Home.js";
 import Coupon from "./views/Coupon.js";
-import Discount from "./views/Discount.js";
+import Discount from "./views/discounts/Discount.js";
+import AddCoupon from "./views/discounts/AddCoupon.js";
 import Order from "./views/orders/Order.js";
 import ComboList from "./views/orders/ComboList.js";
 import Catalogue from "./views/catalogue/Catalogue.js";
@@ -50,6 +51,7 @@ const App = () => {
               <Discount items={discounts} carouselItems={discountSlides} />
             }
           />
+          <Route path="/discounts/item" element={<AddCoupon />} />
           <Route path="/coupons" element={<Coupon />} />
           <Route
             path="/catalogue"

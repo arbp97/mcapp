@@ -13,7 +13,7 @@ const Slider = (props) => {
             state={{
               name: value.title,
               img: value.img,
-              price: value.price ? value.price : 0,
+              price: value.price ? value.price : null,
             }}
           >
             <img src={"/img/" + value.img} alt=""></img>
