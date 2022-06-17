@@ -12,7 +12,18 @@
   align-items: center;
 }
 
+.carousel-item > img {
+  height: 512px;
+  width: auto;
+}
+
 .Carousel {
   width: 100%;
   margin-bottom: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-item > img {
+    height: 360px;
+  }
 }

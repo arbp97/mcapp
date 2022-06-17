@@ -22,6 +22,7 @@ import combos from "../data/combo.js";
 import markers from "../data/markers.js";
 import homeLinks from "../data/homeLinks.js";
 import homeSlides from "../data/homeSlides.js";
+import discountSlides from "../data/discountSlides.js";
 import discounts from "../data/discounts.js";
 
 const App = () => {
@@ -45,7 +46,9 @@ const App = () => {
           <Route path="/orders/current" element={<CurrentOrder />} />
           <Route
             path="/discounts"
-            element={<Discount items={discounts} carouselItems={homeSlides} />}
+            element={
+              <Discount items={discounts} carouselItems={discountSlides} />
+            }
           />
           <Route path="/coupons" element={<Coupon />} />
           <Route

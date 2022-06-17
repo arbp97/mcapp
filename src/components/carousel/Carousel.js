@@ -36,8 +36,6 @@ const Carousel = (props) => {
                   src={"img/" + element}
                   className="d-block w-100"
                   alt="..."
-                  width="300px"
-                  height="300px"
                 />
               </div>
             );
