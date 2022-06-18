@@ -22,8 +22,6 @@ const Navigation = (props) => {
     };
 
     setActive(toRoot(location.pathname));
-
-    window.scrollTo(0, 0);
   }, [location, props.buttons]);
 
   return (
