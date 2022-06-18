@@ -20,7 +20,7 @@ const Slider = (props) => {
             <p className="title" title={value.title}>
               {value.title}
             </p>
-            {value.price && <p className="price">{"$" + value.price}</p>}
+            {props.showPrice && <p className="price">{"$" + value.price}</p>}
           </NavLink>
         );
       })}

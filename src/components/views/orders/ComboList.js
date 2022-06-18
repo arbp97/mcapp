@@ -37,7 +37,11 @@ const ComboList = (props) => {
           return (
             <div className="slider-container" key={key}>
               <p>{value.category}</p>
-              <Slider items={value.items} link={location.pathname + "/item"} />
+              <Slider
+                items={value.items}
+                showPrice={true}
+                link={location.pathname + "/item"}
+              />
             </div>
           );
         })}
