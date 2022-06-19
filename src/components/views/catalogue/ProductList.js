@@ -1,11 +1,16 @@
+import { useParams } from "react-router-dom";
 import Product from "../../product/Product.js";
+import products from "../../../data/products.js";
 import "./ProductList.css";
 
-const ProductList = (props) => {
+const ProductList = () => {
+  const { category } = useParams();
+  const data = products[category];
+
   return (
     <div className="ProductList">
-      <p>{props.category}</p>
-      {Object.entries(props.products).map(([key, value]) => {
+      <p>{data.category}</p>
+      {Object.entries(data.items).map(([key, value]) => {
         // load all products of this category
         return (
           <Product

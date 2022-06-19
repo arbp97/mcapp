@@ -41,38 +41,27 @@ const App = () => {
               path="/orders"
               element={<Order active={"pickup"} markers={markers} />}
             />
-            <Route path="/orders/add" element={<ComboList items={combos} />} />
-            <Route path="/orders/add/item" element={<AddItem />} />
+            <Route path="/orders/add">
+              <Route index element={<ComboList items={combos} />} />
+              <Route path="/orders/add/:category/:id" element={<AddItem />} />
+            </Route>
             <Route path="/orders/cart" element={<Cart />} />
             <Route path="/orders/checkout" element={<Checkout />} />
             <Route path="/orders/current" element={<CurrentOrder />} />
-            <Route
-              path="/discounts"
-              element={
-                <Discount items={discounts} carouselItems={discountSlides} />
-              }
-            />
-            <Route path="/discounts/item" element={<AddCoupon />} />
+            <Route path="/discounts">
+              <Route
+                index
+                element={
+                  <Discount items={discounts} carouselItems={discountSlides} />
+                }
+              />
+              <Route path=":category/:id" element={<AddCoupon />} />
+            </Route>
             <Route path="/coupons" element={<Coupon />} />
-            <Route
-              path="/catalogue"
-              element={<Catalogue categories={products} />}
-            />
-            {Object.entries(products).map(([key, value]) => {
-              // map all categories to routes
-              return (
-                <Route
-                  key={key}
-                  path={"/catalogue/" + key}
-                  element={
-                    <ProductList
-                      category={value.category}
-                      products={value.items}
-                    />
-                  }
-                />
-              );
-            })}
+            <Route path="/catalogue">
+              <Route index element={<Catalogue categories={products} />} />
+              <Route path=":category" element={<ProductList />} />
+            </Route>
           </Routes>
           <Navigation buttons={navButtons} />
         </Scroll>

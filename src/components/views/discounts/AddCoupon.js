@@ -1,13 +1,15 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import "./AddCoupon.css";
 import { Modal, ModalBody } from "reactstrap";
 import McButton from "../../buttons/McButton.js";
+import discounts from "../../../data/discounts.js";
 
 const AddCoupon = () => {
-  const location = useLocation();
-  const data = location.state;
+  // coupon data
+  const { category, id } = useParams();
+  const data = discounts[category].items[id];
 
   // Modal open state
   const [modal, setModal] = useState(false);
@@ -29,7 +31,7 @@ const AddCoupon = () => {
     return (
       <Modal isOpen={modal} toggle={toggleModal} centered={true}>
         <ModalBody>
-          <p className="title">{data.name}</p>
+          <p className="title">{data.title}</p>
           <div>
             <QRCode value="https://mcdapp.vercel.app" size={256} />
             <p className="warning">Válido hasta el {validDate}</p>
@@ -50,7 +52,7 @@ const AddCoupon = () => {
       <p className="warning">
         🇦🇷 Este cupón solo es válido para la República Argentina.
       </p>
-      <p className="title">{data.name}</p>
+      <p className="title">{data.title}</p>
       <button className="button" onClick={toggleModal}>
         <img src="/img/qr-icon.png" alt="" />
         OBTENER CUPÓN

@@ -1,12 +1,13 @@
 import "./AddItem.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
 import { useState } from "react";
+import combos from "../../../data/combo.js";
 
 const AddItem = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const data = location.state;
+  const { category, id } = useParams();
+  const data = combos[category].items[id];
   const [count, setCount] = useState(1);
 
   // add selected qty of this item and adds them to the order
@@ -21,7 +22,7 @@ const AddItem = () => {
     } else {
       const newItem = {
         quantity: count,
-        name: data.name,
+        name: data.title,
         img: data.img,
         pricePerUnit: Number(data.price),
       };
@@ -36,7 +37,7 @@ const AddItem = () => {
 
   return (
     <div className="AddItem">
-      <p className="title">{data.name}</p>
+      <p className="title">{data.title}</p>
       <img src={"/img/" + data.img} alt="" />
       <p className="price">{"$" + data.price}</p>
       <div className="counter-container">

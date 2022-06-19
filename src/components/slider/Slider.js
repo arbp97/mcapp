@@ -9,7 +9,7 @@ const Slider = (props) => {
           <NavLink
             className="slide"
             key={key}
-            to={props.link ? props.link : ""}
+            to={props.link ? props.link + key : ""}
             state={{
               name: value.title,
               img: value.img,

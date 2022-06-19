@@ -40,7 +40,7 @@ const ComboList = (props) => {
               <Slider
                 items={value.items}
                 showPrice={true}
-                link={location.pathname + "/item"}
+                link={"/orders/add/" + key + "/"}
               />
             </div>
           );
