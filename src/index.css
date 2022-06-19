@@ -14,3 +14,8 @@
   --mc-yellow: #ffc72c;
   --mc-black: #27251f;
 }
+
+/* FIX FOR REACTSTRAP MODAL (piece of shit) */
+.fade {
+  opacity: 1;
+}

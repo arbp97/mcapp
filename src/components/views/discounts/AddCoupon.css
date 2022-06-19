@@ -18,9 +18,8 @@
   margin-bottom: 50px;
 }
 
-.AddCoupon .warning {
+.warning {
   font-size: 10px;
-  width: 90%;
   text-align: center;
 }
 
@@ -55,6 +54,25 @@
 .AddCoupon .button > img {
   height: 70%;
   width: auto;
+}
+
+.modal-content {
+  border-radius: 15px;
+}
+
+.modal-content .title {
+  font-size: 24px;
+  color: var(--mc-black);
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
 }
 
 @media screen and (max-width: 512px) {
