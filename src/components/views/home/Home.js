@@ -4,7 +4,6 @@ import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
 
 const Home = (props) => {
-  const order = JSON.parse(localStorage.getItem("order"));
   const navigate = useNavigate();
 
   return (
@@ -22,13 +21,11 @@ const Home = (props) => {
           );
         })}
       </div>
-      {order && order.confirmed && (
+      {props.isOrderConfirmed && (
         <McButton
           content={"Pedido en curso >>>"}
           img={"order-bag-nobg.png"}
-          onClick={() =>
-            navigate("/orders/current", { state: { order: order } })
-          }
+          onClick={() => navigate("/orders/current")}
           fixed
         />
       )}

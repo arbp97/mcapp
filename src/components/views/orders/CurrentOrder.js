@@ -1,20 +1,21 @@
 import "./CurrentOrder.css";
 import McButton from "../../buttons/McButton.js";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { QRCode } from "react-qrcode-logo";
 
-const CurrentOrder = () => {
-  const location = useLocation();
+const CurrentOrder = (props) => {
   const navigate = useNavigate();
-  const order = location.state ? location.state.order : null;
+  const order = JSON.parse(localStorage.getItem("order"));
 
-  useEffect(() => {
-    if (!order || !order.confirmed) navigate("/");
-  }, [order, navigate]);
+  // restrict access when an order is in place
+  if (!props.isOrderConfirmed) {
+    return <Navigate to={"/"} replace />;
+  }
 
   const cancelOrder = () => {
     localStorage.removeItem("order");
+    props.setIsOrderConfirmed(false);
     navigate("/");
   };
 

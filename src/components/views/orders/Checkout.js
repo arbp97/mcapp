@@ -91,7 +91,7 @@ const Detail = (props) => {
   );
 };
 
-const Checkout = () => {
+const Checkout = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isValidated, setIsValidated] = useState(false);
@@ -109,6 +109,7 @@ const Checkout = () => {
     order.confirmed = true;
 
     localStorage.setItem("order", JSON.stringify(order));
+    props.setIsOrderConfirmed(true);
 
     navigate("/");
   };
