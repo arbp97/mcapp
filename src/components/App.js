@@ -56,35 +56,34 @@ const App = () => {
                 />
               }
             />
-            <Route
-              path="/orders"
-              element={
-                <Order
-                  active={"pickup"}
-                  markers={markers}
-                  isOrderConfirmed={isOrderConfirmed}
-                />
-              }
-            />
-            ;
-            <Route path="/orders/add">
-              <Route index element={<ComboList items={combos} />} />
-              <Route path="/orders/add/:category/:id" element={<AddItem />} />
+            <Route path="/orders">
+              <Route
+                index
+                element={
+                  <Order
+                    active={"pickup"}
+                    markers={markers}
+                    isOrderConfirmed={isOrderConfirmed}
+                  />
+                }
+              />
+              <Route path="cart" element={<Cart />} />
+              <Route
+                path="checkout"
+                element={<Checkout setIsOrderConfirmed={setIsOrderConfirmed} />}
+              />
+              <Route
+                path="current"
+                element={
+                  <CurrentOrder
+                    setIsOrderConfirmed={setIsOrderConfirmed}
+                    isOrderConfirmed={isOrderConfirmed}
+                  />
+                }
+              />
+              <Route path="add" element={<ComboList items={combos} />} />
+              <Route path="add/:category/:id" element={<AddItem />} />
             </Route>
-            <Route path="/orders/cart" element={<Cart />} />
-            <Route
-              path="/orders/checkout"
-              element={<Checkout setIsOrderConfirmed={setIsOrderConfirmed} />}
-            />
-            <Route
-              path="/orders/current"
-              element={
-                <CurrentOrder
-                  setIsOrderConfirmed={setIsOrderConfirmed}
-                  isOrderConfirmed={isOrderConfirmed}
-                />
-              }
-            />
             <Route path="/discounts">
               <Route
                 index
