@@ -17,6 +17,7 @@ import CurrentOrder from "./views/orders/CurrentOrder.js";
 import Header from "./header/Header.js";
 import Navigation from "./navbar/Navigation.js";
 import Scroll from "./common/Scroll.js";
+import InfoModal from "./modal/InfoModal.js";
 /* DATASETS */
 import navButtons from "../data/navButtons.js";
 import products from "../data/products.js";
@@ -39,6 +40,11 @@ const App = () => {
       setIsOrderConfirmed(true);
     }
   }, [setIsOrderConfirmed]);
+
+  // Order warning
+  const [showOrderModal, setShowOrderModal] = useState(false);
+
+  const toggleOrderModal = () => setShowOrderModal(!showOrderModal);
 
   return (
     <div className="App">
@@ -64,6 +70,7 @@ const App = () => {
                     active={"pickup"}
                     markers={markers}
                     isOrderConfirmed={isOrderConfirmed}
+                    toggleOrderModal={toggleOrderModal}
                   />
                 }
               />
@@ -100,6 +107,13 @@ const App = () => {
             </Route>
           </Routes>
           <Navigation buttons={navButtons} />
+          <InfoModal
+            toggle={toggleOrderModal}
+            isOpen={showOrderModal}
+            title="Atención"
+            message="Ya existe un pedido en curso. Pulsa 'Ver' para ver tu pedido actual."
+            link="/orders/current"
+          />
         </Scroll>
       </Router>
     </div>

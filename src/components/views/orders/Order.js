@@ -2,7 +2,7 @@ import "./Order.css";
 import Map from "../../map/Map.js";
 import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, NavLink } from "react-router-dom";
 
 const RestaurantList = (props) => {
@@ -56,6 +56,11 @@ const Order = (props) => {
   const [activeMode, setActiveMode] = useState(props.active);
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
+
+  //show warning modal when an order is in place
+  useEffect(() => {
+    if (props.isOrderConfirmed) props.toggleOrderModal();
+  }, [props]);
 
   // restrict access when an order is in place
   if (props.isOrderConfirmed) {
