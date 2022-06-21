@@ -13,7 +13,6 @@ const InfoModal = (props) => {
           {props.link && (
             <Button
               color="danger"
-              size="lg"
               onClick={() => {
                 props.toggle();
                 navigate(props.link);
@@ -22,7 +21,7 @@ const InfoModal = (props) => {
               Ver
             </Button>
           )}
-          <Button color="warning" size="lg" onClick={props.toggle}>
+          <Button color="warning" onClick={props.toggle}>
             Ok
           </Button>
         </ModalFooter>
