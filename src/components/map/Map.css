@@ -4,6 +4,10 @@
   z-index: 500;
 }
 
+.popup {
+  font-size: 14px;
+}
+
 @media screen and (max-width: 768px) {
   .Map {
     height: 256px;
@@ -11,5 +15,6 @@
 }
 
 img.leaflet-marker-icon {
-  filter: hue-rotate(150deg) saturate(5);
+  filter: brightness(0) saturate(100%) invert(26%) sepia(70%) saturate(2605%)
+    hue-rotate(346deg) brightness(84%) contrast(104%);
 }

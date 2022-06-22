@@ -95,7 +95,7 @@ const Order = (props) => {
           McDelivery
         </button>
       </div>
-      <Map markers={mapMarkers} />
+      <Map markers={mapMarkers} locateCurrent={activeMode === modes[1]} />
       <Searchbar
         placeholder={"Buscar por direccion..."}
         icontype={"glyphicon-search"}
