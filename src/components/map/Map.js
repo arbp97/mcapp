@@ -1,17 +1,10 @@
 import "./Map.css";
-import { useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-import { Icon } from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import LeafletControlGeocoder from "./LeafletControlGeocoder.js";
+import MarkerIcon from "./MarkerIcon.js";
 
 const Map = (props) => {
+  /* NEEDS FIXING
   const LocationMarker = () => {
     const [position, setPosition] = useState(null);
     const map = useMapEvents({
@@ -25,21 +18,11 @@ const Map = (props) => {
     });
 
     return position === null ? null : (
-      <Marker
-        position={position}
-        icon={
-          new Icon({
-            iconUrl: markerIcon,
-            shadowUrl: markerShadow,
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-          })
-        }
-      >
+      <Marker position={position} icon={MarkerIcon}>
         <Popup className="popup">Estás Acá</Popup>
       </Marker>
     );
-  };
+  };*/
 
   return (
     <MapContainer
@@ -60,20 +43,17 @@ const Map = (props) => {
               lat: value.lat,
               lng: value.lng,
             }}
-            icon={
-              new Icon({
-                iconUrl: markerIcon,
-                shadowUrl: markerShadow,
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-              })
-            }
+            icon={MarkerIcon}
           >
             <Popup className="popup">{value.location}</Popup>
           </Marker>
         );
       })}
-      {props.locateCurrent && <LocationMarker />}
+      {props.locateCurrent && (
+        <>
+          <LeafletControlGeocoder setLocation={props.setLocation} />
+        </>
+      )}
     </MapContainer>
   );
 };

@@ -39,14 +39,10 @@ const RestaurantList = (props) => {
   );
 };
 
-const Delivery = () => {
+const Delivery = (props) => {
   return (
     <div className="Delivery">
-      <McButton
-        content={"Localizarme en el mapa"}
-        onClick={() => alert("Work in progress")}
-        fixed
-      />
+      <McButton content={"Aceptar"} onClick={() => alert(props.location)} />
     </div>
   );
 };
@@ -56,6 +52,7 @@ const Order = (props) => {
   const [activeMode, setActiveMode] = useState(props.active);
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
+  const [location, setLocation] = useState(null);
 
   //show warning modal when an order is in place
   useEffect(() => {
@@ -95,19 +92,25 @@ const Order = (props) => {
           McDelivery
         </button>
       </div>
-      <Map markers={mapMarkers} locateCurrent={activeMode === modes[1]} />
-      <Searchbar
-        placeholder={"Buscar por direccion..."}
-        icontype={"glyphicon-search"}
-        name={"search"}
-        id={"search"}
-        query={query}
-        setQuery={setQuery}
+      <Map
+        markers={mapMarkers}
+        locateCurrent={activeMode === modes[1]}
+        setLocation={setLocation}
       />
       {activeMode === modes[0] && (
-        <RestaurantList query={query} markers={mapMarkers} />
+        <>
+          <Searchbar
+            placeholder={"Buscar por direccion..."}
+            icontype={"glyphicon-search"}
+            name={"search"}
+            id={"search"}
+            query={query}
+            setQuery={setQuery}
+          />
+          <RestaurantList query={query} markers={mapMarkers} />
+        </>
       )}
-      {activeMode === modes[1] && <Delivery />}
+      {activeMode === modes[1] && <Delivery location={location} />}
     </div>
   );
 };
