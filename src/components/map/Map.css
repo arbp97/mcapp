@@ -4,7 +4,11 @@
   z-index: 500;
 }
 
-.popup {
+.leaflet-popup-content {
+  font-size: 12px;
+}
+
+.leaflet-control-geocoder {
   font-size: 14px;
 }
 

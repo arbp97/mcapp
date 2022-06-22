@@ -61,6 +61,7 @@ const LeafletControlGeocoder = (props) => {
     return () => {
       map.removeControl(control);
       layerGroup.clearLayers();
+      setLocation(null);
     };
   }, [map, setLocation]);
 

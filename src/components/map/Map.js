@@ -19,7 +19,7 @@ const Map = (props) => {
 
     return position === null ? null : (
       <Marker position={position} icon={MarkerIcon}>
-        <Popup className="popup">Estás Acá</Popup>
+        <Popup>Estás Acá</Popup>
       </Marker>
     );
   };*/
@@ -45,7 +45,7 @@ const Map = (props) => {
             }}
             icon={MarkerIcon}
           >
-            <Popup className="popup">{value.location}</Popup>
+            <Popup>{value.location}</Popup>
           </Marker>
         );
       })}
