@@ -2,6 +2,7 @@ import "./Order.css";
 import Map from "../../map/Map.js";
 import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
+import InfoModal from "../../modal/InfoModal.js";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink } from "react-router-dom";
 
@@ -40,9 +41,20 @@ const RestaurantList = (props) => {
 };
 
 const Delivery = (props) => {
+  // Delivery Info
+  const [showModal, setShowModal] = useState(true);
+
+  const toggleModal = () => setShowModal(!showModal);
+
   return (
     <div className="Delivery">
       <McButton content={"Aceptar"} onClick={() => alert(props.location)} />
+      <InfoModal
+        toggle={toggleModal}
+        isOpen={showModal}
+        title="Localización"
+        message="Presiona en el botón de búsqueda arriba a la derecha del mapa para buscar tu dirección."
+      />
     </div>
   );
 };
