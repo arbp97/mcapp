@@ -44,6 +44,11 @@ const Map = (props) => {
               lng: value.lng,
             }}
             icon={MarkerIcon}
+            eventHandlers={{
+              click: () => {
+                props.setLocation(value.location);
+              },
+            }}
           >
             <Popup>{value.location}</Popup>
           </Marker>

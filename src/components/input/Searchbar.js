@@ -10,6 +10,7 @@ const Searchbar = (props) => {
         name={props.name}
         id={props.id}
         placeholder={props.placeholder}
+        value={props.query}
         onChange={(e) => props.setQuery(e.target.value)}
       />
     </div>

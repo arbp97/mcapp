@@ -13,7 +13,7 @@ const RestaurantList = (props) => {
         <p className="title">Sucursales</p>
         {Object.entries(props.markers)
           .filter(([key, value]) =>
-            value.title.toLowerCase().includes(props.query.toLowerCase())
+            value.location.toLowerCase().includes(props.query.toLowerCase())
           )
           .map(([key, value]) => {
             return (
@@ -64,12 +64,19 @@ const Order = (props) => {
   const [activeMode, setActiveMode] = useState(props.active);
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState("");
 
   //show warning modal when an order is in place
   useEffect(() => {
     if (props.isOrderConfirmed) props.toggleOrderModal();
   }, [props]);
+
+  // set searchbar query from the selected marker
+  useEffect(() => {
+    if (activeMode === "pickup") {
+      setQuery(location);
+    }
+  }, [location, activeMode]);
 
   // restrict access when an order is in place
   if (props.isOrderConfirmed) {
