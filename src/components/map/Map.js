@@ -1,10 +1,29 @@
 import "./Map.css";
-import React from "react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import markerIconPng from "leaflet/dist/images/marker-icon.png";
-import { Icon } from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import LeafletControlGeocoder from "./LeafletControlGeocoder.js";
+import MarkerIcon from "./MarkerIcon.js";
 
 const Map = (props) => {
+  /* NEEDS FIXING
+  const LocationMarker = () => {
+    const [position, setPosition] = useState(null);
+    const map = useMapEvents({
+      click() {
+        map.locate();
+      },
+      locationfound(e) {
+        setPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      },
+    });
+
+    return position === null ? null : (
+      <Marker position={position} icon={MarkerIcon}>
+        <Popup>Estás Acá</Popup>
+      </Marker>
+    );
+  };*/
+
   return (
     <MapContainer
       center={{ lat: "-34.7355251653576", lng: "-58.391348921321224" }}
@@ -20,22 +39,26 @@ const Map = (props) => {
         return (
           <Marker
             key={key}
-            title={value.location}
             position={{
               lat: value.lat,
               lng: value.lng,
             }}
-            icon={
-              new Icon({
-                iconUrl: markerIconPng,
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-              })
-            }
-          />
+            icon={MarkerIcon}
+            eventHandlers={{
+              click: () => {
+                props.setLocation(value.location);
+              },
+            }}
+          >
+            <Popup>{value.location}</Popup>
+          </Marker>
         );
       })}
-      {/* <Marker position={{lat: '[-34.71032632455545', lng: '-58.38620363454534'}} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})} /> */}
+      {props.locateCurrent && (
+        <>
+          <LeafletControlGeocoder setLocation={props.setLocation} />
+        </>
+      )}
     </MapContainer>
   );
 };

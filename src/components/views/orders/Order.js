@@ -2,6 +2,7 @@ import "./Order.css";
 import Map from "../../map/Map.js";
 import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
+import InfoModal from "../../modal/InfoModal.js";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const RestaurantList = (props) => {
         <p className="title">Sucursales</p>
         {Object.entries(props.markers)
           .filter(([key, value]) =>
-            value.title.toLowerCase().includes(props.query.toLowerCase())
+            value.location.toLowerCase().includes(props.query.toLowerCase())
           )
           .map(([key, value]) => {
             return (
@@ -39,13 +40,20 @@ const RestaurantList = (props) => {
   );
 };
 
-const Delivery = () => {
+const Delivery = (props) => {
+  // Delivery Info
+  const [showModal, setShowModal] = useState(true);
+
+  const toggleModal = () => setShowModal(!showModal);
+
   return (
     <div className="Delivery">
-      <McButton
-        content={"Localizarme en el mapa"}
-        onClick={() => alert("Work in progress")}
-        fixed
+      <McButton content={"Aceptar"} onClick={() => alert(props.location)} />
+      <InfoModal
+        toggle={toggleModal}
+        isOpen={showModal}
+        title="Localización"
+        message="Presiona en el botón de búsqueda arriba a la derecha del mapa para buscar tu dirección."
       />
     </div>
   );
@@ -56,11 +64,19 @@ const Order = (props) => {
   const [activeMode, setActiveMode] = useState(props.active);
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
+  const [location, setLocation] = useState("");
 
   //show warning modal when an order is in place
   useEffect(() => {
     if (props.isOrderConfirmed) props.toggleOrderModal();
   }, [props]);
+
+  // set searchbar query from the selected marker
+  useEffect(() => {
+    if (activeMode === "pickup") {
+      setQuery(location);
+    }
+  }, [location, activeMode]);
 
   // restrict access when an order is in place
   if (props.isOrderConfirmed) {
@@ -95,19 +111,25 @@ const Order = (props) => {
           McDelivery
         </button>
       </div>
-      <Map markers={mapMarkers} />
-      <Searchbar
-        placeholder={"Buscar por direccion..."}
-        icontype={"glyphicon-search"}
-        name={"search"}
-        id={"search"}
-        query={query}
-        setQuery={setQuery}
+      <Map
+        markers={mapMarkers}
+        locateCurrent={activeMode === modes[1]}
+        setLocation={setLocation}
       />
       {activeMode === modes[0] && (
-        <RestaurantList query={query} markers={mapMarkers} />
+        <>
+          <Searchbar
+            placeholder={"Buscar por direccion..."}
+            icontype={"glyphicon-search"}
+            name={"search"}
+            id={"search"}
+            query={query}
+            setQuery={setQuery}
+          />
+          <RestaurantList query={query} markers={mapMarkers} />
+        </>
       )}
-      {activeMode === modes[1] && <Delivery />}
+      {activeMode === modes[1] && <Delivery location={location} />}
     </div>
   );
 };
