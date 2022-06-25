@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
 import "./Cart.css";
@@ -8,37 +8,37 @@ const Cart = () => {
   let order = JSON.parse(localStorage.getItem("order"));
   const [itemList, setItemList] = useState(order.items);
 
-  const getTotal = () => {
+  const getTotal = useCallback(() => {
     let result = 0;
 
-    for (const item of order.items) {
+    for (const item of itemList) {
       result += item.pricePerUnit * item.quantity;
     }
 
     return result;
-  };
+  }, [itemList]);
+
+  useEffect(() => {
+    // go back if there is nothing no display
+    if (itemList.length <= 0) {
+      navigate(-1);
+    }
+    // change total && order stored if the item list changed
+    order.items = itemList;
+    localStorage.setItem("order", JSON.stringify(order));
+    setTotal(getTotal);
+  }, [itemList, navigate, getTotal, order]);
 
   const [total, setTotal] = useState(getTotal);
 
   // delete selected item from the order
   const deleteItem = (item) => {
-    order.items = order.items.filter(function (value, index) {
-      return index !== item;
-    });
-
-    localStorage.setItem("order", JSON.stringify(order));
-    setItemList(order.items);
-
-    // change total if the item list changed
-    setTotal(getTotal);
+    setItemList(
+      itemList.filter((element, index) => {
+        return index !== item;
+      })
+    );
   };
-
-  useEffect(() => {
-    // go back if there is nothing no display
-    if (!order || order.items.length <= 0) {
-      navigate(-1);
-    }
-  }, [order, navigate]);
 
   return (
     <div className="Cart">
