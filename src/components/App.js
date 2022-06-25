@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 /* VIEWS */
 import Home from "./views/home/Home.js";
-import Coupon from "./views/Coupon.js";
+import Coupon from "./views/coupons/Coupon.js";
 import Discount from "./views/discounts/Discount.js";
 import AddCoupon from "./views/discounts/AddCoupon.js";
 import Order from "./views/orders/Order.js";
