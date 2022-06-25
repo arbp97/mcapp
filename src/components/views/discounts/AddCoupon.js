@@ -2,8 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import "./AddCoupon.css";
-import { Modal, ModalBody } from "reactstrap";
-import McButton from "../../buttons/McButton.js";
+import { Modal } from "reactstrap";
 import discounts from "../../../data/discounts.js";
 
 const AddCoupon = () => {
@@ -30,18 +29,12 @@ const AddCoupon = () => {
 
     return (
       <Modal isOpen={modal} toggle={toggleModal} centered={true}>
-        <ModalBody>
-          <p className="title">{data.title}</p>
-          <div>
-            <QRCode value="https://mcdapp.vercel.app" size={256} />
-            <p className="warning">Válido hasta el {validDate}</p>
-          </div>
-          <McButton
-            color={"#ffc72c"}
-            onClick={() => alert("WIP")}
-            content="Añadir cupón"
-          />
-        </ModalBody>
+        <p className="title">{data.title}</p>
+        <div>
+          <QRCode value="https://mcdapp.vercel.app" size={256} />
+          <p className="warning">Válido hasta el {validDate}</p>
+        </div>
+        <div className="coupon-code">AM1 - A2T - DKE</div>
       </Modal>
     );
   };

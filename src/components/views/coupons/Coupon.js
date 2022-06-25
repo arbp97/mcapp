@@ -16,9 +16,9 @@ const Coupon = () => {
     return (
       <div className="default-view">
         <img src="/img/logo-plain.png" alt="" />
-        <h1>
+        <h2>
           <strong>No existen cupones para mostrar</strong>
-        </h1>
+        </h2>
       </div>
     );
   };
