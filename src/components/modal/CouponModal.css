@@ -1,0 +1,38 @@
+.modal-content {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.modal-content .title {
+  font-size: 24px;
+  color: var(--mc-black);
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.warning {
+  font-size: 10px;
+  text-align: center;
+}
+
+.coupon-code {
+  font-size: 24px;
+  background-color: var(--mc-yellow);
+  width: 100%;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}

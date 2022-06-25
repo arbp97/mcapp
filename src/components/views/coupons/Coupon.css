@@ -48,10 +48,6 @@
   transition: all 0.2s;
 }
 
-.Coupon .mode-button:hover {
-  color: inherit;
-}
-
 .Coupon .mode-button.selected {
   background-color: var(--mc-red);
   color: white;
