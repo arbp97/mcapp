@@ -8,24 +8,18 @@ const Coupon = () => {
   let coupons = JSON.parse(localStorage.getItem("coupons"));
   if (!coupons) {
     coupons = [];
-    localStorage.setItem("coupons", coupons);
+    localStorage.setItem("coupons", JSON.stringify(coupons));
   }
   // valid coupons
-  const activeCoupons =
-    coupons.length > 0
-      ? coupons.filter((element) => {
-          const newDate = new Date(element.validDate);
-          return newDate > date;
-        })
-      : [];
+  const activeCoupons = coupons.filter((element) => {
+    const newDate = new Date(element.validDate);
+    return newDate > date;
+  });
   // coupons that expired
-  const inactiveCoupons =
-    coupons.length > 0
-      ? coupons.filter((element) => {
-          const newDate = new Date(element.validDate);
-          return newDate < date;
-        })
-      : [];
+  const inactiveCoupons = coupons.filter((element) => {
+    const newDate = new Date(element.validDate);
+    return newDate < date;
+  });
 
   useEffect(() => {
     // display default view when there is no coupons to
