@@ -46,6 +46,29 @@ const Coupon = () => {
     );
   };
 
+  const CouponCard = (props) => {
+    const displayDate = (d) => {
+      const result = new Date(d);
+      return (
+        result.getDate() +
+        "/" +
+        Number(result.getMonth() + 1) +
+        "/" +
+        result.getFullYear()
+      );
+    };
+
+    return (
+      <div className="coupon-card">
+        <img src={"/img/" + props.img} alt="" />
+        <div className="info">
+          <span className="date">{"Vence el " + displayDate(props.date)}</span>
+          <span className="price">{"$ " + props.price}</span>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="Coupon">
       <div className="mode-button-container">
@@ -69,9 +92,24 @@ const Coupon = () => {
         active &&
         activeCoupons.map((element, index) => {
           return (
-            <div key={index}>
-              <h1>{element.title}</h1>
-            </div>
+            <CouponCard
+              key={index}
+              date={element.validDate}
+              img={element.img}
+              price={element.price}
+            />
+          );
+        })}
+      {!nothingToDisplay &&
+        !active &&
+        inactiveCoupons.map((element, index) => {
+          return (
+            <CouponCard
+              key={index}
+              date={element.validDate}
+              img={element.img}
+              price={element.price}
+            />
           );
         })}
     </div>

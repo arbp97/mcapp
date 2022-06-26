@@ -22,15 +22,15 @@
 }
 
 .Coupon .mode-button-container :nth-child(1) {
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .Coupon .mode-button-container :nth-child(2) {
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -42,7 +42,6 @@
   width: 50%;
   height: 100%;
   text-decoration: none !important;
-  border: none;
   background-color: transparent;
   font-weight: bold;
   transition: all 0.2s;
@@ -70,11 +69,49 @@
   height: auto;
 }
 
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  width: 90%;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.coupon-card > img {
+  width: 400px;
+  height: auto;
+}
+
+.coupon-card .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+}
+
+.coupon-card .info .date {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--mc-black);
+  text-align: center;
+}
+
+.coupon-card .info .price {
+  font-size: 14px;
+}
+
 @media screen and (max-width: 512px) {
   .Coupon .mode-button-container {
     width: 90%;
   }
   .default-view > img {
     width: 50%;
+  }
+  .coupon-card > img {
+    width: 90%;
   }
 }

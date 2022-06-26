@@ -30,6 +30,7 @@ const AddCoupon = () => {
       const coupon = {
         title: data.title,
         img: data.img,
+        price: data.price,
         validDate: date,
       };
 
