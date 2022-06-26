@@ -4,6 +4,7 @@ import "./Coupon.css";
 const Coupon = () => {
   const [nothingToDisplay, setNothingToDisplay] = useState(false);
   const [active, setActive] = useState(true);
+  const date = new Date();
   let coupons = JSON.parse(localStorage.getItem("coupons"));
   if (!coupons) {
     coupons = [];
@@ -11,15 +12,13 @@ const Coupon = () => {
   }
   // valid coupons
   const activeCoupons = coupons.filter((element) => {
-    const actualDate = new Date();
     const newDate = new Date(element.validDate);
-    return newDate > actualDate;
+    return newDate > date;
   });
   // coupons that expired
   const inactiveCoupons = coupons.filter((element) => {
-    const actualDate = new Date();
     const newDate = new Date(element.validDate);
-    return newDate < actualDate;
+    return newDate < date;
   });
 
   useEffect(() => {
@@ -66,6 +65,15 @@ const Coupon = () => {
         </button>
       </div>
       {nothingToDisplay && <DefaultView />}
+      {!nothingToDisplay &&
+        active &&
+        activeCoupons.map((element, index) => {
+          return (
+            <div key={index}>
+              <h1>{element.title}</h1>
+            </div>
+          );
+        })}
     </div>
   );
 };
