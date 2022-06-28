@@ -60,8 +60,7 @@ const Delivery = (props) => {
 };
 
 const Order = (props) => {
-  const modes = ["pickup", "delivery"];
-  const [activeMode, setActiveMode] = useState(props.active);
+  const [activeMode, setActiveMode] = useState(true);
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
@@ -73,7 +72,7 @@ const Order = (props) => {
 
   // set searchbar query from the selected marker
   useEffect(() => {
-    if (activeMode === "pickup") {
+    if (activeMode) {
       setQuery(location);
     }
   }, [location, activeMode]);
@@ -85,7 +84,7 @@ const Order = (props) => {
 
   const changeMode = (mode) => {
     setActiveMode(mode);
-    mode === "delivery" ? setMapMarkers([]) : setMapMarkers(props.markers);
+    !mode ? setMapMarkers([]) : setMapMarkers(props.markers);
   };
 
   return (
@@ -94,29 +93,25 @@ const Order = (props) => {
       <div className="mode-button-container">
         <button
           type="button"
-          className={
-            activeMode === modes[0] ? "mode-button selected" : "mode-button"
-          }
-          onClick={() => changeMode(modes[0])}
+          className={activeMode ? "mode-button selected" : "mode-button"}
+          onClick={() => changeMode(true)}
         >
           Pickup
         </button>
         <button
           type="button"
-          className={
-            activeMode === modes[1] ? "mode-button selected" : "mode-button"
-          }
-          onClick={() => changeMode(modes[1])}
+          className={!activeMode ? "mode-button selected" : "mode-button"}
+          onClick={() => changeMode(false)}
         >
           McDelivery
         </button>
       </div>
       <Map
         markers={mapMarkers}
-        locateCurrent={activeMode === modes[1]}
+        locateCurrent={!activeMode}
         setLocation={setLocation}
       />
-      {activeMode === modes[0] && (
+      {activeMode && (
         <>
           <Searchbar
             placeholder={"Buscar por direccion..."}
@@ -129,7 +124,7 @@ const Order = (props) => {
           <RestaurantList query={query} markers={mapMarkers} />
         </>
       )}
-      {activeMode === modes[1] && <Delivery location={location} />}
+      {!activeMode && <Delivery location={location} />}
     </div>
   );
 };

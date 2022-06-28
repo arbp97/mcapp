@@ -68,7 +68,6 @@ const App = () => {
                 index
                 element={
                   <Order
-                    active={"pickup"}
                     markers={markers}
                     isOrderConfirmed={isOrderConfirmed}
                     toggleOrderModal={toggleOrderModal}

@@ -74,14 +74,14 @@ const Coupon = () => {
       <div className="mode-button-container">
         <button
           type="button"
-          className={active === true ? "mode-button selected" : "mode-button"}
+          className={active ? "mode-button selected" : "mode-button"}
           onClick={() => setActive(true)}
         >
           Activos
         </button>
         <button
           type="button"
-          className={active === false ? "mode-button selected" : "mode-button"}
+          className={!active ? "mode-button selected" : "mode-button"}
           onClick={() => setActive(false)}
         >
           Inactivos
