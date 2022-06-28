@@ -70,6 +70,7 @@
 }
 
 .coupon-card {
+  text-decoration: none !important;
   display: flex;
   flex-direction: column;
   row-gap: 5px;
@@ -102,6 +103,7 @@
 
 .coupon-card .info .price {
   font-size: 14px;
+  color: var(--mc-black);
 }
 
 @media screen and (max-width: 512px) {

@@ -8,7 +8,10 @@ const CouponModal = (props) => {
       <p className="title">{props.title}</p>
       <div>
         <QRCode value="https://mcdapp.vercel.app" size={256} />
-        <p className="warning">Válido hasta el {props.validDate}</p>
+        <p className="warning">
+          Válido hasta el{" "}
+          {new Date(props.validDate).toLocaleDateString("es-AR")}
+        </p>
       </div>
       <div className="coupon-code">AM1 - A2T - DKE</div>
     </Modal>

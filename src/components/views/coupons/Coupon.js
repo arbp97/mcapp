@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Coupon.css";
 
 const Coupon = () => {
   const [nothingToDisplay, setNothingToDisplay] = useState(false);
   const [active, setActive] = useState(true);
   const date = new Date();
+
   let coupons = JSON.parse(localStorage.getItem("coupons"));
   if (!coupons) {
     coupons = [];
     localStorage.setItem("coupons", JSON.stringify(coupons));
   }
-  // valid coupons
-  const activeCoupons = coupons.filter((element) => {
-    const newDate = new Date(element.validDate);
-    return newDate > date;
-  });
-  // coupons that expired
-  const inactiveCoupons = coupons.filter((element) => {
-    const newDate = new Date(element.validDate);
-    return newDate < date;
-  });
+
+  // filter coupons into two distinct arrays active / inactive
+  // based on current date
+  let activeCoupons = [],
+    inactiveCoupons = [];
+
+  for (const [i, coupon] of coupons.entries()) {
+    const newDate = new Date(coupon.validDate);
+    newDate > date
+      ? activeCoupons.push({ ...coupon, parentIndex: i })
+      : inactiveCoupons.push({ ...coupon, parentIndex: i });
+  }
 
   useEffect(() => {
     // display default view when there is no coupons to
@@ -33,7 +37,7 @@ const Coupon = () => {
         ? setNothingToDisplay(true)
         : setNothingToDisplay(false);
     }
-  }, [active, activeCoupons, inactiveCoupons]);
+  }, [active, activeCoupons.length, inactiveCoupons.length]);
 
   const DefaultView = () => {
     return (
@@ -47,25 +51,19 @@ const Coupon = () => {
   };
 
   const CouponCard = (props) => {
-    const displayDate = (d) => {
-      const result = new Date(d);
-      return (
-        result.getDate() +
-        "/" +
-        Number(result.getMonth() + 1) +
-        "/" +
-        result.getFullYear()
-      );
-    };
-
     return (
-      <div className="coupon-card">
+      <Link
+        className="coupon-card"
+        to={props.disabled ? " " : "/coupons/" + props.parentIndex}
+      >
         <img src={"/img/" + props.img} alt="" />
         <div className="info">
-          <span className="date">{"Vence el " + displayDate(props.date)}</span>
+          <span className="date">
+            {"Vence el " + new Date(props.date).toLocaleDateString("es-AR")}
+          </span>
           <span className="price">{"$ " + props.price}</span>
         </div>
-      </div>
+      </Link>
     );
   };
 
@@ -94,6 +92,7 @@ const Coupon = () => {
           return (
             <CouponCard
               key={index}
+              parentIndex={element.parentIndex}
               date={element.validDate}
               img={element.img}
               price={element.price}
@@ -105,7 +104,9 @@ const Coupon = () => {
         inactiveCoupons.map((element, index) => {
           return (
             <CouponCard
+              disabled={true}
               key={index}
+              parentIndex={element.parentIndex}
               date={element.validDate}
               img={element.img}
               price={element.price}

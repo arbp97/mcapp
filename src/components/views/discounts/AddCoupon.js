@@ -13,12 +13,6 @@ const AddCoupon = () => {
   let date = new Date();
   date.setDate(date.getDate() + 30);
 
-  const displayDate = (d) => {
-    return (
-      d.getDate() + "/" + Number(date.getMonth() + 1) + "/" + date.getFullYear()
-    );
-  };
-
   // Modal open state
   const [modal, setModal] = useState(false);
   // Toggle for Modal
@@ -61,7 +55,7 @@ const AddCoupon = () => {
         modal={modal}
         toggleModal={toggleModal}
         title={data.title}
-        validDate={displayDate(date)}
+        validDate={date}
       />
     </div>
   );
