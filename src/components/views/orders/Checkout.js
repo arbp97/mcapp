@@ -47,6 +47,13 @@ const UserValidation = (props) => {
 };
 
 const Detail = (props) => {
+  const addressTitle = props.order.isDelivery
+    ? "Domicilio"
+    : "Dirección de retiro en el local";
+  const paymentPlaceholder = props.order.isDelivery
+    ? "Efectivo"
+    : "Pagás al retirar el pedido en la sucursal";
+
   return (
     <div className="Detail">
       <div className="detail-box">
@@ -55,7 +62,7 @@ const Detail = (props) => {
         </h1>
         <div className="address">
           <h3>
-            <strong>Dirección de retiro en el local</strong>
+            <strong>{addressTitle}</strong>
           </h3>
           <h3>{props.order.address}</h3>
         </div>
@@ -76,11 +83,11 @@ const Detail = (props) => {
         <h1 className="pay-method">
           <strong>Método de pago</strong>
         </h1>
-        <h3>Pagás al retirar el pedido en la sucursal.</h3>
+        <h3>{paymentPlaceholder}</h3>
       </div>
       <div className="detail-total">
         <p>Total</p>
-        <p>{"$ " + props.total}</p>
+        <p>{"$ " + props.order.total}</p>
       </div>
       <McButton
         content={"Enviar pedido"}
@@ -107,6 +114,7 @@ const Checkout = (props) => {
   const confirmOrder = () => {
     let order = location.state.order;
     order.confirmed = true;
+    order.paymentType = "EFECTIVO"; // placeholder
 
     localStorage.setItem("order", JSON.stringify(order));
     props.setIsOrderConfirmed(true);

@@ -7,6 +7,9 @@ import { QRCode } from "react-qrcode-logo";
 const CurrentOrder = (props) => {
   const navigate = useNavigate();
   const order = JSON.parse(localStorage.getItem("order"));
+  const addressTitle = order.isDelivery
+    ? "Domicilio"
+    : "Dirección de retiro en el local";
 
   // restrict access when an order is in place
   if (!props.isOrderConfirmed) {
@@ -27,7 +30,7 @@ const CurrentOrder = (props) => {
       </div>
       <div className="address">
         <h3>
-          <strong>Dirección de retiro en el local</strong>
+          <strong>{addressTitle}</strong>
         </h3>
         <h3>{order.address}</h3>
       </div>
@@ -36,11 +39,19 @@ const CurrentOrder = (props) => {
         size={256}
         bgColor={"#ffc72c"}
       />
-      <h1 className="info">
-        <strong>
-          Muéstrale este código al cajero, pagá y retirá tu pedido en minutos.
-        </strong>
-      </h1>
+      <div className="info">
+        <h1>
+          <strong>AM1 - A2T - DKE</strong>
+        </h1>
+        <h3>
+          <strong>Método de Pago: </strong>
+          {order.paymentType}
+        </h3>
+        <h3>
+          <strong>Total: </strong>
+          {"$ " + order.total + ".00"}
+        </h3>
+      </div>
       <McButton
         content={"Cancelar pedido"}
         color="#da291c"

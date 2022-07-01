@@ -25,11 +25,9 @@ const Cart = () => {
     }
     // change total && order stored if the item list changed
     order.items = itemList;
+    order.total = getTotal();
     localStorage.setItem("order", JSON.stringify(order));
-    setTotal(getTotal);
   }, [itemList, navigate, getTotal, order]);
-
-  const [total, setTotal] = useState(getTotal);
 
   // delete selected item from the order
   const deleteItem = (item) => {
@@ -65,13 +63,13 @@ const Cart = () => {
       <div className="cart-info">
         <div className="cart-total">
           <p>Total</p>
-          <p>{"$ " + total}</p>
+          <p>{"$ " + getTotal()}</p>
         </div>
         <McButton
           content={"Pagar con la app"}
           onClick={() =>
             navigate("/orders/checkout", {
-              state: { order: order, total: total },
+              state: { order: order },
             })
           }
         />

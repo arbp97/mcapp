@@ -4,7 +4,7 @@ import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
 import InfoModal from "../../modal/InfoModal.js";
 import { useEffect, useState } from "react";
-import { Navigate, NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 
 const RestaurantList = (props) => {
   return (
@@ -43,12 +43,29 @@ const RestaurantList = (props) => {
 const Delivery = (props) => {
   // Delivery Info
   const [showModal, setShowModal] = useState(true);
+  const navigate = useNavigate();
+  const shortLocation = props.location.split(" ").slice(0, 5).join(" ");
 
   const toggleModal = () => setShowModal(!showModal);
 
+  const handleSubmit = () => {
+    if (!props.location || props.location === "") {
+      alert("Seleccione una dirección");
+    } else {
+      navigate("/orders/add", {
+        state: {
+          name: shortLocation.slice(0, -1),
+          address: props.location,
+          img: "delivery.png",
+          isDelivery: true,
+        },
+      });
+    }
+  };
+
   return (
     <div className="Delivery">
-      <McButton content={"Aceptar"} onClick={() => alert(props.location)} />
+      <McButton content={"Aceptar"} onClick={() => handleSubmit()} />
       <InfoModal
         toggle={toggleModal}
         isOpen={showModal}

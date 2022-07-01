@@ -12,7 +12,14 @@ const ComboList = (props) => {
     /* create a new order or, in case that it exists & its not sent, 
     change the address to the current selected restaurant */
     if (!order) {
-      const newOrder = { address: data.address, items: [], confirmed: false };
+      const newOrder = {
+        address: data.address,
+        items: [],
+        total: 0,
+        confirmed: false,
+        paymentType: "",
+        isDelivery: data.isDelivery ? true : false,
+      };
 
       localStorage.setItem("order", JSON.stringify(newOrder));
     } else {
