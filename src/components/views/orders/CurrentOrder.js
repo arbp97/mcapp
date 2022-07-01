@@ -32,7 +32,7 @@ const CurrentOrder = (props) => {
         <h3>
           <strong>{addressTitle}</strong>
         </h3>
-        <h3>{order.address}</h3>
+        <h3>{order.address.split(",").slice(0, 3).join(", ")}</h3>
       </div>
       <QRCode
         value="https://mcdapp.vercel.app"

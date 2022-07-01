@@ -44,7 +44,7 @@ const Delivery = (props) => {
   // Delivery Info
   const [showModal, setShowModal] = useState(true);
   const navigate = useNavigate();
-  const shortLocation = props.location.split(" ").slice(0, 5).join(" ");
+  const shortLocation = props.location.split(",").slice(0, 3).join(", ");
 
   const toggleModal = () => setShowModal(!showModal);
 
@@ -54,7 +54,7 @@ const Delivery = (props) => {
     } else {
       navigate("/orders/add", {
         state: {
-          name: shortLocation.slice(0, -1),
+          name: shortLocation,
           address: props.location,
           img: "delivery.png",
           isDelivery: true,
