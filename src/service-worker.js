@@ -34,9 +34,14 @@ registerRoute(
 
 // Cache CDN stuff
 registerRoute(
-  ({ url }) =>
-    url.origin === "https://cdn.jsdelivr.net" ||
-    "https://maxcdn.bootstrapcdn.com",
+  ({ url }) => url.origin === "https://cdn.jsdelivr.net",
+  new StaleWhileRevalidate({
+    cacheName: "cdn-styles-scripts",
+  })
+);
+
+registerRoute(
+  ({ url }) => url.origin === "https://maxcdn.bootstrapcdn.com",
   new StaleWhileRevalidate({
     cacheName: "cdn-styles-scripts",
   })
@@ -67,7 +72,9 @@ registerRoute(
  * @see https://developers.google.com/web/tools/workbox/guides/common-recipes#caching_images
  */
 registerRoute(
-  ({ request }) => request.destination === "image",
+  ({ request }) =>
+    request.destination === "image" &&
+    !request.url.includes("basemaps.cartocdn.com"), // exclude leaflet tiles due to size constraints
   new CacheFirst({
     cacheName: "images",
     plugins: [
