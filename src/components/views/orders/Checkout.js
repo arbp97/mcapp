@@ -4,6 +4,9 @@ import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
+import { css } from "styled-components";
+import images from "react-payment-inputs/es/images/index.js";
 
 const UserValidation = (props) => {
   const [formData, setFormData] = useState({
@@ -44,6 +47,84 @@ const UserValidation = (props) => {
       <UserForm data={formData} setData={setFormData} />
       <McButton content={"Aceptar"} onClick={() => handleValidation()} fixed />
     </div>
+  );
+};
+
+// card input info
+const PaymentInputs = () => {
+  const ERROR_MESSAGES = {
+    emptyCardNumber: "El número de la tarjeta es inválido",
+    invalidCardNumber: "El número de la tarjeta es inválido",
+    emptyExpiryDate: "La fecha de expiración es inválida",
+    monthOutOfRange: "El mes de expiración debe estar entre 01 y 12",
+    yearOutOfRange: "El año de expiración no puede estar en el pasado",
+    dateOutOfRange: "La fecha de expiración no puede estar en el pasado",
+    invalidExpiryDate: "La fecha de expiración es inválida",
+    emptyCVC: "El código de seguridad es inválido",
+    invalidCVC: "El código de seguridad es inválido",
+  };
+
+  const {
+    wrapperProps,
+    getCardImageProps,
+    getCardNumberProps,
+    getExpiryDateProps,
+    getCVCProps,
+  } = usePaymentInputs({
+    errorMessages: ERROR_MESSAGES,
+  });
+
+  return (
+    <PaymentInputsWrapper
+      {...wrapperProps}
+      styles={{
+        fieldWrapper: {
+          base: css`
+            margin-bottom: 1rem;
+            width: fit-content;
+          `,
+        },
+        inputWrapper: {
+          base: css`
+            border-color: green;
+            height: 40px;
+          `,
+          errored: css`
+            border-color: red;
+          `,
+        },
+        input: {
+          base: css`
+            color: green;
+            font-size: 14px;
+          `,
+          errored: css`
+            color: red;
+          `,
+          cardNumber: css`
+            width: 15rem;
+          `,
+          expiryDate: css`
+            width: 10rem;
+          `,
+          cvc: css`
+            width: 5rem;
+          `,
+        },
+        errorText: {
+          base: css`
+            margin-top: 10px;
+            color: red;
+            font-size: 12px;
+          `,
+        },
+      }}
+    >
+      <svg {...getCardImageProps({ images })} />
+      <input {...getCardNumberProps()} />
+      <input {...getExpiryDateProps()} />
+      <input {...getCVCProps()} />
+    </PaymentInputsWrapper>
   );
 };
 
@@ -111,6 +192,7 @@ const Detail = (props) => {
             </div>
           </FormGroup>
         </Form>
+        {selectedMethod === "DEBITO" && <PaymentInputs />}
       </div>
       <div className="detail-total">
         <p>Total</p>
