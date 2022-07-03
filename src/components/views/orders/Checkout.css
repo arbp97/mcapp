@@ -74,3 +74,90 @@
   justify-content: space-between;
   padding: 0 1em 0 1em;
 }
+
+.Detail .pay-method-label {
+  margin-top: 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.Detail .radio-group {
+  margin-top: 20px;
+}
+
+.Detail .pay-method-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.Detail .pay-method-radio:hover {
+  background: #9faab7;
+}
+.Detail .pay-method-radio:checked {
+  background: #4bb543;
+}
+.Detail .pay-method-radio:checked::before {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  content: "\2713";
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  font-family: "Font Awesome 5 Free";
+}
+.Detail .pay-method-radio:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #4bb543;
+  content: "";
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.Detail .pay-method-radio {
+  border-radius: 50%;
+}
+.Detail .pay-method-radio::after {
+  border-radius: 50%;
+}
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}

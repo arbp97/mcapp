@@ -3,6 +3,7 @@ import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 
 const UserValidation = (props) => {
   const [formData, setFormData] = useState({
@@ -50,9 +51,7 @@ const Detail = (props) => {
   const addressTitle = props.order.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
-  const paymentPlaceholder = props.order.isDelivery
-    ? "Efectivo"
-    : "Pagás al retirar el pedido en la sucursal";
+  const [selectedMethod, setSelectedMethod] = useState("EFECTIVO");
 
   return (
     <div className="Detail">
@@ -80,10 +79,38 @@ const Detail = (props) => {
             );
           })}
         </div>
-        <h1 className="pay-method">
-          <strong>Método de pago</strong>
-        </h1>
-        <h3>{paymentPlaceholder}</h3>
+        <Form>
+          <FormGroup tag="fieldset">
+            <h1>
+              <strong>Método de pago</strong>
+            </h1>
+            <div className="radio-group">
+              <FormGroup check>
+                <Label check className="pay-method-label">
+                  <Input
+                    type="radio"
+                    defaultChecked={true}
+                    name="paymethod"
+                    className="pay-method-radio"
+                    onClick={() => setSelectedMethod("EFECTIVO")}
+                  />
+                  EFECTIVO
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check className="pay-method-label">
+                  <Input
+                    type="radio"
+                    name="paymethod"
+                    className="pay-method-radio"
+                    onClick={() => setSelectedMethod("DEBITO")}
+                  />
+                  DEBITO
+                </Label>
+              </FormGroup>
+            </div>
+          </FormGroup>
+        </Form>
       </div>
       <div className="detail-total">
         <p>Total</p>
@@ -91,7 +118,7 @@ const Detail = (props) => {
       </div>
       <McButton
         content={"Enviar pedido"}
-        onClick={() => props.confirmOrder()}
+        onClick={() => props.confirmOrder(selectedMethod)}
         fixed
       />
     </div>
@@ -111,10 +138,10 @@ const Checkout = (props) => {
     if (user) setIsValidated(true);
   }, [navigate, location, setIsValidated]);
 
-  const confirmOrder = () => {
+  const confirmOrder = (payMethod) => {
     let order = location.state.order;
     order.confirmed = true;
-    order.paymentType = "EFECTIVO"; // placeholder
+    order.paymentType = payMethod; // placeholder
 
     localStorage.setItem("order", JSON.stringify(order));
     props.setIsOrderConfirmed(true);
