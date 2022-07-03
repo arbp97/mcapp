@@ -1,4 +1,13 @@
 .UserForm {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserFormContainer {
   width: 80%;
   height: fit-content;
   display: flex;
