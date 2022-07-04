@@ -9,7 +9,7 @@ import { css } from "styled-components";
 import images from "react-payment-inputs/es/images/index.js";
 
 // card input info
-const PaymentInputs = () => {
+const PaymentInputs = (props) => {
   const ERROR_MESSAGES = {
     emptyCardNumber: "El número de la tarjeta es inválido",
     invalidCardNumber: "El número de la tarjeta es inválido",
@@ -31,6 +31,25 @@ const PaymentInputs = () => {
   } = usePaymentInputs({
     errorMessages: ERROR_MESSAGES,
   });
+
+  const setCardIsValid = props.setCardIsValid;
+
+  useEffect(() => {
+    setCardIsValid(wrapperProps.error ? false : true);
+  }, [wrapperProps.error, setCardIsValid]);
+
+  // card event handlers
+  const handleCardNumberChange = (e) => {
+    props.setCardNumber(e.target.value);
+  };
+
+  const handleCardDateChange = (e) => {
+    props.setCardDate(e.target.value);
+  };
+
+  const handleCardCVCChange = (e) => {
+    props.setCardCVC(e.target.value);
+  };
 
   return (
     <PaymentInputsWrapper
@@ -79,9 +98,9 @@ const PaymentInputs = () => {
       }}
     >
       <svg {...getCardImageProps({ images })} />
-      <input {...getCardNumberProps()} />
-      <input {...getExpiryDateProps()} />
-      <input {...getCVCProps()} />
+      <input {...getCardNumberProps({ onChange: handleCardNumberChange })} />
+      <input {...getExpiryDateProps({ onChange: handleCardDateChange })} />
+      <input {...getCVCProps({ onChange: handleCardCVCChange })} />
     </PaymentInputsWrapper>
   );
 };
@@ -91,6 +110,12 @@ const Detail = (props) => {
     ? "Domicilio"
     : "Dirección de retiro en el local";
   const [selectedMethod, setSelectedMethod] = useState("EFECTIVO");
+  // card information
+  const [cardNumber, setCardNumber] = useState();
+  const [cardDate, setCardDate] = useState();
+  const [cardCVC, setCardCVC] = useState();
+  // card validation check
+  const [cardIsValid, setCardIsValid] = useState(false);
 
   return (
     <div className="Detail">
@@ -150,7 +175,14 @@ const Detail = (props) => {
             </div>
           </FormGroup>
         </Form>
-        {selectedMethod === "DEBITO" && <PaymentInputs />}
+        {selectedMethod === "DEBITO" && (
+          <PaymentInputs
+            setCardCVC={setCardCVC}
+            setCardDate={setCardDate}
+            setCardNumber={setCardNumber}
+            setCardIsValid={setCardIsValid}
+          />
+        )}
       </div>
       <div className="detail-total">
         <p>Total</p>
@@ -158,7 +190,17 @@ const Detail = (props) => {
       </div>
       <McButton
         content={"Enviar pedido"}
-        onClick={() => props.confirmOrder(selectedMethod)}
+        onClick={() => {
+          if (selectedMethod === "DEBITO" && !cardIsValid) {
+            alert("Invalid card information");
+          } else {
+            props.confirmOrder(selectedMethod, {
+              cardNumber,
+              cardDate,
+              cardCVC,
+            });
+          }
+        }}
         fixed
       />
     </div>
@@ -168,6 +210,7 @@ const Detail = (props) => {
 const Checkout = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
+  // user validation check
   const [isValidated, setIsValidated] = useState(false);
 
   useEffect(() => {
@@ -178,10 +221,12 @@ const Checkout = (props) => {
     if (user) setIsValidated(true);
   }, [navigate, location, setIsValidated]);
 
-  const confirmOrder = (payMethod) => {
+  const confirmOrder = (payMethod, cardInfo) => {
     let order = location.state.order;
     order.confirmed = true;
-    order.paymentType = payMethod; // placeholder
+    order.paymentType = payMethod;
+
+    console.log(cardInfo);
 
     localStorage.setItem("order", JSON.stringify(order));
     props.setIsOrderConfirmed(true);
