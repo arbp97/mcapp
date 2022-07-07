@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import PaymentInputs from "../../form/PaymentInputs.js";
+import InfoModal from "../../modal/InfoModal.js";
 
 const Detail = (props) => {
   const addressTitle = props.order.isDelivery
@@ -17,6 +18,16 @@ const Detail = (props) => {
   const [cardCVC, setCardCVC] = useState();
   // card validation check
   const [cardIsValid, setCardIsValid] = useState(false);
+
+  // warning modal
+  const [modalMessage, setModalMessage] = useState("");
+  const [showOrderModal, setShowOrderModal] = useState(false);
+  const toggleOrderModal = () => setShowOrderModal(!showOrderModal);
+
+  const handleCardWarning = (message) => {
+    setModalMessage(message);
+    toggleOrderModal();
+  };
 
   return (
     <div className="Detail">
@@ -93,7 +104,7 @@ const Detail = (props) => {
         content={"Enviar pedido"}
         onClick={() => {
           if (selectedMethod === "DEBITO" && !cardIsValid) {
-            alert("Invalid card information");
+            handleCardWarning("La información de la tarjeta es inválida");
           } else {
             props.confirmOrder(selectedMethod, {
               cardNumber,
@@ -103,6 +114,12 @@ const Detail = (props) => {
           }
         }}
         fixed
+      />
+      <InfoModal
+        toggle={toggleOrderModal}
+        isOpen={showOrderModal}
+        title="Atención"
+        message={modalMessage}
       />
     </div>
   );
