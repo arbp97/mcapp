@@ -3,22 +3,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
 import { useState } from "react";
 import combos from "../../../data/combo.js";
+import useOrder from "../../../hooks/useOrder.js";
 
 const AddItem = () => {
   const navigate = useNavigate();
   const { category, id } = useParams();
   const data = combos[category].items[id];
   const [count, setCount] = useState(1);
+  const [order, handleSetOrder, handleNewOrderItem] = useOrder();
 
   // add selected qty of this item and adds them to the order
   const handleClick = () => {
-    const order = JSON.parse(localStorage.getItem("order"));
-    let existingItem = order.items.find((item) => item.name === data.name);
-
+    let existingItem = order.items.find((item) => item.name === data.title);
     // if the item exists in the current order,
     //just add the count to it to avoid duplications
     if (existingItem) {
       existingItem.quantity += count;
+      handleSetOrder(order);
     } else {
       const newItem = {
         quantity: count,
@@ -27,10 +28,8 @@ const AddItem = () => {
         pricePerUnit: Number(data.price),
       };
 
-      order.items.push(newItem);
+      handleNewOrderItem(newItem);
     }
-
-    localStorage.setItem("order", JSON.stringify(order));
 
     navigate(-1);
   };

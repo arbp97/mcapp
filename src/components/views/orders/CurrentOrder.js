@@ -3,22 +3,22 @@ import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { QRCode } from "react-qrcode-logo";
+import useOrder from "../../../hooks/useOrder.js";
 
 const CurrentOrder = (props) => {
   const navigate = useNavigate();
-  const order = JSON.parse(localStorage.getItem("order"));
+  const [order] = useOrder();
   const addressTitle = order.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
 
   // restrict access when an order is in place
-  if (!props.isOrderConfirmed) {
+  if (!order.confirmed) {
     return <Navigate to={"/"} replace />;
   }
 
   const cancelOrder = () => {
     localStorage.removeItem("order");
-    props.setIsOrderConfirmed(false);
     navigate("/");
   };
 

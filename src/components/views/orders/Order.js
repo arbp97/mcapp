@@ -5,6 +5,7 @@ import McButton from "../../buttons/McButton.js";
 import InfoModal from "../../modal/InfoModal.js";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import useOrder from "../../../hooks/useOrder.js";
 
 const RestaurantList = (props) => {
   return (
@@ -25,6 +26,7 @@ const RestaurantList = (props) => {
                   name: value.title,
                   address: value.location,
                   img: value.img,
+                  isDelivery: false,
                 }}
               >
                 <img src={"/img/" + value.img} alt="" />
@@ -81,11 +83,12 @@ const Order = (props) => {
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
+  const [order] = useOrder();
 
   //show warning modal when an order is in place
   useEffect(() => {
-    if (props.isOrderConfirmed) props.toggleOrderModal();
-  }, [props]);
+    if (order.confirmed) props.toggleOrderModal();
+  });
 
   // set searchbar query from the selected marker
   useEffect(() => {
@@ -95,7 +98,7 @@ const Order = (props) => {
   }, [location, activeMode]);
 
   // restrict access when an order is in place
-  if (props.isOrderConfirmed) {
+  if (order.confirmed) {
     return <Navigate to={"/"} replace />;
   }
 

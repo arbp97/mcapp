@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
+import useOrder from "../../../hooks/useOrder.js";
 import "./Cart.css";
 
 const Cart = () => {
   const navigate = useNavigate();
-  let order = JSON.parse(localStorage.getItem("order"));
+  const [order, handleSetOrder] = useOrder();
   const [itemList, setItemList] = useState(order.items);
 
   const getTotal = useCallback(() => {
@@ -26,8 +27,8 @@ const Cart = () => {
     // change total && order stored if the item list changed
     order.items = itemList;
     order.total = getTotal();
-    localStorage.setItem("order", JSON.stringify(order));
-  }, [itemList, navigate, getTotal, order]);
+    handleSetOrder(order);
+  }, [itemList, navigate, getTotal, order, handleSetOrder]);
 
   // delete selected item from the order
   const deleteItem = (item) => {
@@ -67,11 +68,7 @@ const Cart = () => {
         </div>
         <McButton
           content={"Pagar con la app"}
-          onClick={() =>
-            navigate("/orders/checkout", {
-              state: { order: order },
-            })
-          }
+          onClick={() => navigate("/orders/checkout")}
         />
       </div>
     </div>

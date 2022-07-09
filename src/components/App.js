@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 /* VIEWS */
 import Home from "./views/home/Home.js";
 import Coupon from "./views/coupons/Coupon.js";
@@ -30,18 +30,6 @@ import discountSlides from "../data/discountSlides.js";
 import discounts from "../data/discounts.js";
 
 const App = () => {
-  // variable used to check if there is a pending order
-  const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
-
-  // set this variable too when someone opens the app
-  useEffect(() => {
-    const order = JSON.parse(localStorage.getItem("order"));
-
-    if (order && order.confirmed) {
-      setIsOrderConfirmed(true);
-    }
-  }, [setIsOrderConfirmed]);
-
   // Order warning
   const [showOrderModal, setShowOrderModal] = useState(false);
 
@@ -55,13 +43,7 @@ const App = () => {
           <Routes>
             <Route
               path="/"
-              element={
-                <Home
-                  links={homeLinks}
-                  carouselItems={homeSlides}
-                  isOrderConfirmed={isOrderConfirmed}
-                />
-              }
+              element={<Home links={homeLinks} carouselItems={homeSlides} />}
             />
             <Route path="/orders">
               <Route
@@ -69,25 +51,13 @@ const App = () => {
                 element={
                   <Order
                     markers={markers}
-                    isOrderConfirmed={isOrderConfirmed}
                     toggleOrderModal={toggleOrderModal}
                   />
                 }
               />
               <Route path="cart" element={<Cart />} />
-              <Route
-                path="checkout"
-                element={<Checkout setIsOrderConfirmed={setIsOrderConfirmed} />}
-              />
-              <Route
-                path="current"
-                element={
-                  <CurrentOrder
-                    setIsOrderConfirmed={setIsOrderConfirmed}
-                    isOrderConfirmed={isOrderConfirmed}
-                  />
-                }
-              />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="current" element={<CurrentOrder />} />
               <Route path="add" element={<ComboList items={combos} />} />
               <Route path="add/:category/:id" element={<AddItem />} />
             </Route>

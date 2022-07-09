@@ -1,34 +1,12 @@
 import "./ComboList.css";
 import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider.js";
-import { useEffect } from "react";
+import useOrder from "../../../hooks/useOrder.js";
 
 const ComboList = (props) => {
   const location = useLocation();
   const data = location.state;
-  const order = JSON.parse(localStorage.getItem("order"));
-
-  useEffect(() => {
-    /* create a new order or, in case that it exists & its not sent, 
-    change the address to the current selected restaurant */
-    if (!order) {
-      const newOrder = {
-        address: data.address,
-        items: [],
-        total: 0,
-        confirmed: false,
-        paymentType: "",
-        isDelivery: data.isDelivery ? true : false,
-      };
-
-      localStorage.setItem("order", JSON.stringify(newOrder));
-    } else {
-      if (!order.confirmed && order.address !== data.address) {
-        order.address = data.address;
-        localStorage.setItem("order", JSON.stringify(order));
-      }
-    }
-  }, [order, data]);
+  const [order] = useOrder(data);
 
   return (
     <div className="ComboList">

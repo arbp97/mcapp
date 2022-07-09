@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import PaymentInputs from "../../form/PaymentInputs.js";
 import InfoModal from "../../modal/InfoModal.js";
+import useOrder from "../../../hooks/useOrder.js";
 
 const Detail = (props) => {
   const addressTitle = props.order.isDelivery
@@ -130,24 +131,21 @@ const Checkout = (props) => {
   const navigate = useNavigate();
   // user validation check
   const [isValidated, setIsValidated] = useState(false);
+  const [order, handleSetOrder] = useOrder();
 
   useEffect(() => {
     // exit if there is no order in the state
-    if (!location.state) navigate("/");
+    if (order.items.length <= 0) navigate("/");
 
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) setIsValidated(true);
-  }, [navigate, location, setIsValidated]);
+  }, [navigate, location, setIsValidated, order]);
 
   const confirmOrder = (payMethod, cardInfo) => {
-    let order = location.state.order;
     order.confirmed = true;
     order.paymentType = payMethod;
 
-    console.log(cardInfo);
-
-    localStorage.setItem("order", JSON.stringify(order));
-    props.setIsOrderConfirmed(true);
+    handleSetOrder(order);
 
     navigate("/");
   };
@@ -155,13 +153,7 @@ const Checkout = (props) => {
   return (
     <div className="Checkout">
       {!isValidated && <UserForm setIsValidated={setIsValidated} />}
-      {isValidated && (
-        <Detail
-          order={location.state.order}
-          total={location.state.total}
-          confirmOrder={confirmOrder}
-        />
-      )}
+      {isValidated && <Detail order={order} confirmOrder={confirmOrder} />}
     </div>
   );
 };
