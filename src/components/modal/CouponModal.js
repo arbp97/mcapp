@@ -13,7 +13,7 @@ const CouponModal = (props) => {
           {new Date(props.validDate).toLocaleDateString("es-AR")}
         </p>
       </div>
-      <div className="coupon-code">AM1 - A2T - DKE</div>
+      <div className="coupon-code">{props.code}</div>
     </Modal>
   );
 };

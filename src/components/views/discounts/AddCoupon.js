@@ -3,12 +3,14 @@ import { useState } from "react";
 import "./AddCoupon.css";
 import discounts from "../../../data/discounts.js";
 import CouponModal from "../../modal/CouponModal.js";
+import useRandom from "../../../hooks/useRandom.js";
 
 const AddCoupon = () => {
   // coupon data
   const { category, id } = useParams();
   const data = discounts[category].items[id];
   let coupons = JSON.parse(localStorage.getItem("coupons"));
+  const [randomString] = useRandom(9);
   // get date 30 days from now
   let date = new Date();
   date.setDate(date.getDate() + 30);
@@ -25,6 +27,7 @@ const AddCoupon = () => {
         title: data.title,
         img: data.img,
         price: data.price,
+        code: randomString.match(/.{1,3}/g).join("-"),
         validDate: date,
       };
 
@@ -55,6 +58,7 @@ const AddCoupon = () => {
         modal={modal}
         toggleModal={toggleModal}
         title={data.title}
+        code={randomString.match(/.{1,3}/g).join("-")}
         validDate={date}
       />
     </div>

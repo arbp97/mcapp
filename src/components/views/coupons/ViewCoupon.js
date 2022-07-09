@@ -35,6 +35,7 @@ const ViewCoupon = () => {
       <CouponModal
         modal={modal}
         toggleModal={toggleModal}
+        code={data.code}
         title={data.title}
         validDate={data.validDate}
       />
