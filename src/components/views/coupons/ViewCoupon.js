@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import "./ViewCoupon.css";
 import CouponModal from "../../modal/CouponModal.js";
@@ -8,12 +8,18 @@ const ViewCoupon = () => {
   const { id } = useParams();
   const coupons = JSON.parse(localStorage.getItem("coupons"));
   const data = coupons[id];
+  const date = new Date();
 
   // Modal open state
   const [modal, setModal] = useState(false);
 
   // Toggle for Modal
   const toggleModal = () => setModal(!modal);
+
+  // deny access if its not an active coupon
+  if (new Date(data.validDate) < date) {
+    return <Navigate to={"/coupons"} replace />;
+  }
 
   return (
     <div className="ViewCoupon">
