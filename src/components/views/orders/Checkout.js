@@ -21,12 +21,12 @@ const Detail = (props) => {
 
   // warning modal
   const [modalMessage, setModalMessage] = useState("");
-  const [showOrderModal, setShowOrderModal] = useState(false);
-  const toggleOrderModal = () => setShowOrderModal(!showOrderModal);
+  const toggleModal = () => setShowModal(!showModal);
+  const [showModal, setShowModal] = useState(false);
 
   const handleCardWarning = (message) => {
     setModalMessage(message);
-    toggleOrderModal();
+    toggleModal();
   };
 
   return (
@@ -116,8 +116,8 @@ const Detail = (props) => {
         fixed
       />
       <InfoModal
-        toggle={toggleOrderModal}
-        isOpen={showOrderModal}
+        toggle={toggleModal}
+        isOpen={showModal}
         title="Atención"
         message={modalMessage}
       />

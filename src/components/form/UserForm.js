@@ -2,6 +2,7 @@ import "./UserForm.css";
 import McInput from "../input/McInput.js";
 import McButton from "../buttons/McButton.js";
 import { useState } from "react";
+import InfoModal from "../modal/InfoModal.js";
 
 const UserForm = (props) => {
   const [formData, setFormData] = useState({
@@ -11,25 +12,32 @@ const UserForm = (props) => {
     phone: "",
   });
 
+  const [modalMessage, setModalMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = (message) => {
+    setModalMessage(message ? message : "");
+    setShowModal(!showModal);
+  };
+
   const handleValidation = () => {
     // eslint-disable-next-line
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
-      alert("Correo inválido");
+      toggleModal("Correo inválido");
       return;
     }
 
     if (!/^([a-zA-Z ]){2,30}$/.test(formData.name)) {
-      alert("Nombre inválido");
+      toggleModal("Nombre inválido");
       return;
     }
 
     if (!/^[0-9]+$/.test(formData.dni)) {
-      alert("Ingrese un DNI");
+      toggleModal("DNI inválido");
       return;
     }
 
     if (!/^([0-9]{10})+$/.test(formData.phone)) {
-      alert("Ingrese un teléfono válido");
+      toggleModal("Teléfono inválido");
       return;
     }
 
@@ -117,6 +125,12 @@ const UserForm = (props) => {
           />
         </div>
       </div>
+      <InfoModal
+        toggle={() => toggleModal()}
+        isOpen={showModal}
+        title="Atención"
+        message={modalMessage}
+      />
       <McButton content={"Aceptar"} onClick={() => handleValidation()} fixed />
     </div>
   );
