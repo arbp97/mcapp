@@ -7,20 +7,21 @@ import useOrder from "../../../hooks/useOrder.js";
 
 const CurrentOrder = (props) => {
   const navigate = useNavigate();
-  const [order] = useOrder();
-  const addressTitle = order.isDelivery
-    ? "Domicilio"
-    : "Dirección de retiro en el local";
+  const [order, handleRemoveOrder] = useOrder();
 
   // restrict access when an order is in place
-  if (!order.confirmed) {
+  if (!order || !order.confirmed) {
     return <Navigate to={"/"} replace />;
   }
 
   const cancelOrder = () => {
-    localStorage.removeItem("order");
+    handleRemoveOrder();
     navigate("/");
   };
+
+  const addressTitle = order.isDelivery
+    ? "Domicilio"
+    : "Dirección de retiro en el local";
 
   return (
     <div className="CurrentOrder">

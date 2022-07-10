@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import useLocalStorage from "./useLocalStorage.js";
 
 const useOrder = (data) => {
-  const [order, setOrder] = useState(JSON.parse(localStorage.getItem("order")));
+  const [getStorageItem, setStorageItem, removeStorageItem] = useLocalStorage();
+  const [order, setOrder] = useState(getStorageItem("order"));
 
   useEffect(() => {
     /* create a new order or, in case that it exists & its not sent, 
@@ -28,11 +30,11 @@ const useOrder = (data) => {
         });
       }
     }
-  }, [order, data]);
+  });
 
   const handleSetOrder = (order) => {
     setOrder(order);
-    localStorage.setItem("order", JSON.stringify(order));
+    setStorageItem("order", order);
   };
 
   const handleNewOrderItem = (item) => {
@@ -41,7 +43,12 @@ const useOrder = (data) => {
     handleSetOrder(auxOrder);
   };
 
-  return [order, handleSetOrder, handleNewOrderItem];
+  const handleRemoveOrder = () => {
+    removeStorageItem("order");
+    setOrder(null);
+  };
+
+  return [order, handleSetOrder, handleNewOrderItem, handleRemoveOrder];
 };
 
 export default useOrder;
