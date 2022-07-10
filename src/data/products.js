@@ -191,7 +191,7 @@ const products = {
           "Si amás el dulce de leche, si amás el helado, si amás el cucurucho, si amás un postre que te refresque; este es tu postre.",
       },
       {
-        img: "Cono-combinado.png",
+        img: "cono-combinado.png",
         title: "Cono combinado",
         description:
           "El helado para los que lo quieren todo. Para los que no se conforman con un sabor. Un helado que combina dulce de leche, vainilla y un delicioso cucurucho.",
@@ -233,7 +233,7 @@ const products = {
           "El helado de vainilla que ya conocés, con una deliciosa salsa frutilla. Disfrutá la mezcla perfecta de tu postre preferido con la mejor selección de frutas.",
       },
       {
-        img: "sundae-Crocantella.png",
+        img: "Sundae-Crocantella.png",
         title: "Sundae Crocantella",
         description:
           "Helado de vainilla, salsa caliente y recubierto con salsa de Chocoavellanas que al contacto con tu postre se transforma en un placer crocante",
