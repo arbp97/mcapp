@@ -3,6 +3,7 @@ import McInput from "../input/McInput.js";
 import McButton from "../buttons/McButton.js";
 import { useState } from "react";
 import InfoModal from "../modal/InfoModal.js";
+import useLocalStorage from "../../hooks/useLocalStorage.js";
 
 const UserForm = (props) => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const UserForm = (props) => {
     dni: "",
     phone: "",
   });
+  const [setStorageItem] = useLocalStorage();
 
   const [modalMessage, setModalMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -41,7 +43,7 @@ const UserForm = (props) => {
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify(formData));
+    setStorageItem("user", formData);
     props.setIsValidated(true);
   };
 

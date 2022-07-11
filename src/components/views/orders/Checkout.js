@@ -7,6 +7,7 @@ import { Form, FormGroup, Label, Input } from "reactstrap";
 import PaymentInputs from "../../form/PaymentInputs.js";
 import InfoModal from "../../modal/InfoModal.js";
 import useOrder from "../../../hooks/useOrder.js";
+import useLocalStorage from "../../../hooks/useLocalStorage.js";
 
 const Detail = (props) => {
   const addressTitle = props.order.isDelivery
@@ -132,14 +133,15 @@ const Checkout = (props) => {
   // user validation check
   const [isValidated, setIsValidated] = useState(false);
   const [order, handleSetOrder] = useOrder();
+  const [getStorageItem] = useLocalStorage();
 
   useEffect(() => {
     // exit if there is no order in the state
     if (order.items.length <= 0) navigate("/");
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = getStorageItem("user");
     if (user) setIsValidated(true);
-  }, [navigate, location, setIsValidated, order]);
+  }, [navigate, location, setIsValidated, order, getStorageItem]);
 
   const confirmOrder = (payMethod, cardInfo) => {
     order.confirmed = true;

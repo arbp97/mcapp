@@ -2,11 +2,13 @@ import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import "./ViewCoupon.css";
 import CouponModal from "../../modal/CouponModal.js";
+import useLocalStorage from "../../../hooks/useLocalStorage.js";
 
 const ViewCoupon = () => {
   // coupon data
   const { id } = useParams();
-  const coupons = JSON.parse(localStorage.getItem("coupons"));
+  const [getStorageItem] = useLocalStorage();
+  const coupons = getStorageItem("coupons");
   const data = coupons[id];
   const date = new Date();
 
