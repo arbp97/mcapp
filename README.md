@@ -4,6 +4,10 @@ Grupo 14 Proyecto de Software - UNLa
 
 ## Scripts
 
+### Install Dependencies
+
+> npm install
+
 ### Development
 
 > npm start
