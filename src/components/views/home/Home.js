@@ -2,11 +2,11 @@ import "./Home.css";
 import Carousel from "../../carousel/Carousel.js";
 import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
-import useOrder from "../../../hooks/useOrder.js";
+import { useOrder } from "../../../context/OrderContext.js";
 
 const Home = (props) => {
   const navigate = useNavigate();
-  const [order] = useOrder();
+  const order = useOrder();
 
   return (
     <div className="Home">

@@ -3,11 +3,12 @@ import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { QRCode } from "react-qrcode-logo";
-import useOrder from "../../../hooks/useOrder.js";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
 
 const CurrentOrder = (props) => {
   const navigate = useNavigate();
-  const [order, handleRemoveOrder] = useOrder();
+  const order = useOrder();
+  const updateOrder = useOrderUpdate();
 
   // restrict access when an order is in place
   if (!order || !order.confirmed) {
@@ -15,7 +16,7 @@ const CurrentOrder = (props) => {
   }
 
   const cancelOrder = () => {
-    handleRemoveOrder();
+    updateOrder(null);
     navigate("/");
   };
 

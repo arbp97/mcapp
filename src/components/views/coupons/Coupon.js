@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useLocalStorage from "../../../hooks/useLocalStorage.js";
 import "./Coupon.css";
 
 const Coupon = () => {
   const [nothingToDisplay, setNothingToDisplay] = useState(false);
   const [active, setActive] = useState(true);
+  const [getStorageItem, setStorageItem] = useLocalStorage();
   const date = new Date();
 
-  let coupons = JSON.parse(localStorage.getItem("coupons"));
+  let coupons = getStorageItem("coupons");
   if (!coupons) {
     coupons = [];
-    localStorage.setItem("coupons", JSON.stringify(coupons));
+    setStorageItem("coupons", coupons);
   }
 
   // filter coupons into two distinct arrays active / inactive

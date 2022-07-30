@@ -1,12 +1,26 @@
 import "./ComboList.css";
 import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider.js";
-import useOrder from "../../../hooks/useOrder.js";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
+import { useEffect } from "react";
 
 const ComboList = (props) => {
   const location = useLocation();
   const data = location.state;
-  const [order] = useOrder(data);
+  const order = useOrder();
+  const updateOrder = useOrderUpdate();
+
+  useEffect(() => {
+    // update order with current location info
+    updateOrder({
+      ...order,
+      // eslint-disable-next-line
+      ["address"]: data.address,
+      // eslint-disable-next-line
+      ["isDelivery"]: data.isDelivery,
+    });
+    // eslint-disable-next-line
+  }, [data]);
 
   return (
     <div className="ComboList">

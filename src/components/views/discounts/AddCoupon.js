@@ -4,12 +4,14 @@ import "./AddCoupon.css";
 import discounts from "../../../data/discounts.js";
 import CouponModal from "../../modal/CouponModal.js";
 import useRandom from "../../../hooks/useRandom.js";
+import useLocalStorage from "../../../hooks/useLocalStorage.js";
 
 const AddCoupon = () => {
   // coupon data
   const { category, id } = useParams();
   const data = discounts[category].items[id];
-  let coupons = JSON.parse(localStorage.getItem("coupons"));
+  const [getStorageItem, setStorageItem] = useLocalStorage();
+  let coupons = getStorageItem("coupons");
   const [randomString] = useRandom(9);
   // get date 30 days from now
   let date = new Date();
@@ -36,7 +38,7 @@ const AddCoupon = () => {
       }
 
       coupons.push(coupon);
-      localStorage.setItem("coupons", JSON.stringify(coupons));
+      setStorageItem("coupons", coupons);
       setAdded(true);
     }
 
