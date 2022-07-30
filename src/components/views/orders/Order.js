@@ -5,7 +5,7 @@ import McButton from "../../buttons/McButton.js";
 import InfoModal from "../../modal/InfoModal.js";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import useOrder from "../../../hooks/useOrder.js";
+import { useOrder } from "../../../context/OrderContext.js";
 
 const RestaurantList = (props) => {
   return (
@@ -83,12 +83,7 @@ const Order = (props) => {
   const [mapMarkers, setMapMarkers] = useState(props.markers);
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
-  const [order] = useOrder();
-
-  //show warning modal when an order is in place
-  useEffect(() => {
-    if (order.confirmed) props.toggleOrderModal();
-  });
+  const order = useOrder();
 
   // set searchbar query from the selected marker
   useEffect(() => {
@@ -99,6 +94,7 @@ const Order = (props) => {
 
   // restrict access when an order is in place
   if (order.confirmed) {
+    props.toggleOrderModal();
     return <Navigate to={"/"} replace />;
   }
 

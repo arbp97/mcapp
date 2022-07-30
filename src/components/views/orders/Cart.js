@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
-import useOrder from "../../../hooks/useOrder.js";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
 import "./Cart.css";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const [order, handleSetOrder] = useOrder();
+  const order = useOrder();
+  const updateOrder = useOrderUpdate();
   const [itemList, setItemList] = useState(order.items);
 
   const getTotal = useCallback(() => {
@@ -26,9 +27,10 @@ const Cart = () => {
     }
     // change total && order stored if the item list changed
     order.items = itemList;
-    order.total = getTotal();
-    handleSetOrder(order);
-  }, [itemList, navigate, getTotal, order, handleSetOrder]);
+    // eslint-disable-next-line
+    updateOrder({ ...order, ["total"]: getTotal() });
+    // eslint-disable-next-line
+  }, [itemList]);
 
   // delete selected item from the order
   const deleteItem = (item) => {

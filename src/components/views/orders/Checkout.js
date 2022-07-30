@@ -2,11 +2,11 @@ import "./Checkout.css";
 import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import PaymentInputs from "../../form/PaymentInputs.js";
 import InfoModal from "../../modal/InfoModal.js";
-import useOrder from "../../../hooks/useOrder.js";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
 
 const Detail = (props) => {
@@ -127,12 +127,12 @@ const Detail = (props) => {
   );
 };
 
-const Checkout = (props) => {
-  const location = useLocation();
+const Checkout = () => {
   const navigate = useNavigate();
   // user validation check
   const [isValidated, setIsValidated] = useState(false);
-  const [order, handleSetOrder] = useOrder();
+  const order = useOrder();
+  const updateOrder = useOrderUpdate();
   const [getStorageItem] = useLocalStorage();
 
   useEffect(() => {
@@ -141,13 +141,12 @@ const Checkout = (props) => {
 
     const user = getStorageItem("user");
     if (user) setIsValidated(true);
-  }, [navigate, location, setIsValidated, order, getStorageItem]);
+    // eslint-disable-next-line
+  }, [order]);
 
   const confirmOrder = (payMethod, cardInfo) => {
-    order.confirmed = true;
-    order.paymentType = payMethod;
-
-    handleSetOrder(order);
+    // eslint-disable-next-line
+    updateOrder({ ...order, ["confirmed"]: true, ["paymentType"]: payMethod });
 
     navigate("/");
   };
