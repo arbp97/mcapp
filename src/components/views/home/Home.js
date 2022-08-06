@@ -1,5 +1,5 @@
 import "./Home.css";
-import { IMG_PATH } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config.js";
 import Carousel from "../../carousel/Carousel.js";
 import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ const Home = () => {
         <McButton
           content={"Pedido en curso >>>"}
           img={"order-bag-nobg.png"}
-          onClick={() => navigate("/orders/current")}
+          onClick={() => navigate(URLS.ORDERS_CURRENT)}
           fixed
         />
       )}

@@ -1,5 +1,5 @@
 import "./CurrentOrder.css";
-import { IMG_PATH, LOCALE } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config.js";
 import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
@@ -15,12 +15,12 @@ const CurrentOrder = () => {
 
   // restrict access when an order is in place
   if (!order || !order.confirmed) {
-    return <Navigate to={"/"} replace />;
+    return <Navigate to={URLS.ROOT} replace />;
   }
 
   const cancelOrder = () => {
     updateOrder(null);
-    navigate("/");
+    navigate(URLS.ROOT);
   };
 
   const addressTitle = order.isDelivery

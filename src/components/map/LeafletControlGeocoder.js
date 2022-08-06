@@ -24,6 +24,7 @@ const LeafletControlGeocoder = (props) => {
       // parse /?geocoder=nominatim from URL
       let params = new URLSearchParams(window.location.search);
       let geocoderString = params.get("geocoder");
+
       if (geocoderString && L.Control.Geocoder[geocoderString]) {
         geocoder = L.Control.Geocoder[geocoderString]();
       } else if (geocoderString) {

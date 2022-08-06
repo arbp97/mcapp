@@ -2,8 +2,6 @@ import "./Product.css";
 import { IMG_PATH } from "../../config.js";
 
 const Product = (props) => {
-  //componente funcional props-->propiedades
-
   return (
     <div className="Product">
       <img src={IMG_PATH + props.img} alt="" />

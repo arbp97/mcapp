@@ -3,6 +3,7 @@ import Slider from "../../slider/Slider.js";
 import Carousel from "../../carousel/Carousel.js";
 import DISCOUNTS from "../../../data/discounts.js";
 import DISCOUNT_SLIDES from "../../../data/discountSlides.js";
+import { URLS } from "../../../config.js";
 
 const Discount = () => {
   return (
@@ -13,7 +14,7 @@ const Discount = () => {
           return (
             <div className="slider-container" key={key}>
               <p>{value.category}</p>
-              <Slider items={value.items} link={"/discounts/" + key + "/"} />
+              <Slider items={value.items} link={URLS.DISCOUNTS + key + "/"} />
             </div>
           );
         })}

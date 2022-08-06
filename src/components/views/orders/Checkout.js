@@ -1,5 +1,5 @@
 import "./Checkout.css";
-import { LOCALE } from "../../../config.js";
+import { URLS } from "../../../config.js";
 import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
@@ -144,7 +144,7 @@ const Checkout = () => {
 
   useEffect(() => {
     // exit if there is no order in the state
-    if (order.items.length <= 0) navigate("/");
+    if (order.items.length <= 0) navigate(URLS.ROOT);
 
     const user = getStorageItem("user");
     if (user) setIsValidated(true);
@@ -155,7 +155,7 @@ const Checkout = () => {
     // eslint-disable-next-line
     updateOrder({ ...order, ["confirmed"]: true, ["paymentType"]: payMethod });
 
-    navigate("/");
+    navigate(URLS.ROOT);
   };
 
   return (

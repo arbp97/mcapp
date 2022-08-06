@@ -47,7 +47,7 @@ const App = () => {
                 <Route path={URLS.ORDERS_CURRENT} element={<CurrentOrder />} />
                 <Route path={URLS.ORDERS_ADD} element={<ComboList />} />
                 <Route
-                  path={URLS.ORDERS_ADD + "/:category/:id"}
+                  path={URLS.ORDERS_ADD + ":category/:id"}
                   element={<AddItem />}
                 />
               </Route>

@@ -1,5 +1,5 @@
 import "./Order.css";
-import { IMG_PATH } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config.js";
 import Map from "../../map/Map.js";
 import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
@@ -23,7 +23,7 @@ const RestaurantList = (props) => {
               <NavLink
                 key={key}
                 className={"marker"}
-                to={"/orders/add"}
+                to={URLS.ORDERS_ADD}
                 state={{
                   name: value.title,
                   address: value.location,
@@ -56,7 +56,7 @@ const Delivery = (props) => {
     if (!props.location || props.location === "") {
       alert("Seleccione una dirección");
     } else {
-      navigate("/orders/add", {
+      navigate(URLS.ORDERS_ADD, {
         state: {
           name: shortLocation,
           address: props.location,
@@ -97,7 +97,7 @@ const Order = (props) => {
   // restrict access when an order is in place
   if (order.confirmed) {
     props.toggleOrderModal();
-    return <Navigate to={"/"} replace />;
+    return <Navigate to={URLS.ROOT} replace />;
   }
 
   const changeMode = (mode) => {

@@ -1,5 +1,5 @@
 import "./ComboList.css";
-import { IMG_PATH } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config.js";
 import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider.js";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
@@ -41,13 +41,13 @@ const ComboList = () => {
               <Slider
                 items={value.items}
                 showPrice={true}
-                link={"/orders/add/" + key + "/"}
+                link={URLS.ORDERS_ADD + key + "/"}
               />
             </div>
           );
         })}
         {order && order.items.length > 0 && (
-          <NavLink className="view-order-link" to={"/orders/cart"}>
+          <NavLink className="view-order-link" to={URLS.ORDERS_CART}>
             <img src={IMG_PATH + "order-bag.png"} alt="" />
             <div className="order-qty">{order.items.length}</div>
           </NavLink>

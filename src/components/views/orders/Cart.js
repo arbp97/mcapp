@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { IMG_PATH, LOCALE } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config.js";
 import useFormat from "../../../hooks/useFormat.js";
 import { useNavigate } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
@@ -73,7 +73,7 @@ const Cart = () => {
         </div>
         <McButton
           content={"Pagar con la app"}
-          onClick={() => navigate("/orders/checkout")}
+          onClick={() => navigate(URLS.ORDERS_CHECKOUT)}
         />
       </div>
     </div>
