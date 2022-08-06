@@ -1,5 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { IMG_PATH } from "../../../config.js";
 import "./ViewCoupon.css";
 import CouponModal from "../../modal/CouponModal.js";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
@@ -25,13 +26,13 @@ const ViewCoupon = () => {
 
   return (
     <div className="ViewCoupon">
-      <img src={"/img/" + data.img} alt="" />
+      <img src={IMG_PATH + data.img} alt="" />
       <p className="warning">
         🇦🇷 Este cupón solo es válido para la República Argentina.
       </p>
       <p className="title">{data.title}</p>
       <button className="button" onClick={toggleModal}>
-        <img src="/img/qr-icon.png" alt="" />
+        <img src={IMG_PATH + "qr-icon.png"} alt="" />
         Utilizar QR
       </button>
       <CouponModal

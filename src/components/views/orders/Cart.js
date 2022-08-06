@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { IMG_PATH, LOCALE } from "../../../config.js";
+import useFormat from "../../../hooks/useFormat.js";
 import { useNavigate } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
@@ -9,6 +11,7 @@ const Cart = () => {
   const order = useOrder();
   const updateOrder = useOrderUpdate();
   const [itemList, setItemList] = useState(order.items);
+  const [currencyFormatter] = useFormat();
 
   const getTotal = useCallback(() => {
     let result = 0;
@@ -35,7 +38,7 @@ const Cart = () => {
   // delete selected item from the order
   const deleteItem = (item) => {
     setItemList(
-      itemList.filter((element, index) => {
+      itemList.filter((index) => {
         return index !== item;
       })
     );
@@ -46,12 +49,12 @@ const Cart = () => {
       {itemList.map((item, index) => {
         return (
           <div className="item" key={index}>
-            <img src={"/img/" + item.img} alt="" />
+            <img src={IMG_PATH + item.img} alt="" />
             <div className="item-info">
               <p>{item.name}</p>
               <p>{"Cantidad: " + item.quantity}</p>
               <p>
-                {"$" + item.pricePerUnit}
+                {currencyFormatter().format(item.pricePerUnit)}
                 <button
                   className="delete-btn"
                   onClick={() => deleteItem(index)}
@@ -66,7 +69,7 @@ const Cart = () => {
       <div className="cart-info">
         <div className="cart-total">
           <p>Total</p>
-          <p>{"$ " + getTotal()}</p>
+          <p>{currencyFormatter().format(getTotal())}</p>
         </div>
         <McButton
           content={"Pagar con la app"}

@@ -1,4 +1,5 @@
 import "./Carousel.css";
+import { IMG_PATH } from "../../config.js";
 
 const Carousel = (props) => {
   return (
@@ -33,7 +34,7 @@ const Carousel = (props) => {
                 }
               >
                 <img
-                  src={"img/" + element}
+                  src={IMG_PATH + element}
                   className="d-block w-100"
                   alt="..."
                 />

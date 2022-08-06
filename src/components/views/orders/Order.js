@@ -1,4 +1,5 @@
 import "./Order.css";
+import { IMG_PATH } from "../../../config.js";
 import Map from "../../map/Map.js";
 import Searchbar from "../../input/Searchbar.js";
 import McButton from "../../buttons/McButton.js";
@@ -29,7 +30,7 @@ const RestaurantList = (props) => {
                   isDelivery: false,
                 }}
               >
-                <img src={"/img/" + value.img} alt="" />
+                <img src={IMG_PATH + value.img} alt="" />
                 <div className="marker-info">
                   <h6 className="title">{value.title} </h6>
                   <h6 className="location">{value.location}</h6>

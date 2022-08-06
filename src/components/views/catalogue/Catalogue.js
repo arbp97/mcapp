@@ -1,4 +1,5 @@
 import "./Catalogue.css";
+import { IMG_PATH } from "../../../config.js";
 import { NavLink } from "react-router-dom";
 
 const Catalogue = (props) => {
@@ -12,11 +13,11 @@ const Catalogue = (props) => {
             className={"category-link"}
             to={"/catalogue/" + key}
           >
-            <img src={"img/" + value.items[0].img} alt="" />
+            <img src={IMG_PATH + value.items[0].img} alt="" />
             <p>{value.category}</p>
             <img
               className="category-arrow"
-              src={"/img/right-arrow.png"}
+              src={IMG_PATH + "right-arrow.png"}
               alt=""
             />
           </NavLink>

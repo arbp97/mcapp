@@ -1,4 +1,5 @@
 import "./Checkout.css";
+import { LOCALE } from "../../../config.js";
 import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
@@ -8,12 +9,14 @@ import PaymentInputs from "../../form/PaymentInputs.js";
 import InfoModal from "../../modal/InfoModal.js";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
+import useFormat from "../../../hooks/useFormat.js";
 
 const Detail = (props) => {
   const addressTitle = props.order.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
   const [selectedMethod, setSelectedMethod] = useState("EFECTIVO");
+  const [currencyFormatter] = useFormat();
   // card information
   const [cardNumber, setCardNumber] = useState();
   const [cardDate, setCardDate] = useState();
@@ -52,7 +55,11 @@ const Detail = (props) => {
               <div className="item" key={key}>
                 <p className="name">{value.name}</p>
                 <p>{"x" + value.quantity}</p>
-                <p>{"$" + value.pricePerUnit * value.quantity}</p>
+                <p>
+                  {currencyFormatter().format(
+                    value.pricePerUnit * value.quantity
+                  )}
+                </p>
               </div>
             );
           })}
@@ -100,7 +107,7 @@ const Detail = (props) => {
       </div>
       <div className="detail-total">
         <p>Total</p>
-        <p>{"$ " + props.order.total}</p>
+        <p>{currencyFormatter().format(props.order.total)}</p>
       </div>
       <McButton
         content={"Enviar pedido"}

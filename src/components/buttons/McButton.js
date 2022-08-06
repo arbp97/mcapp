@@ -1,4 +1,5 @@
 import "./McButton.css";
+import { IMG_PATH } from "../../config.js";
 
 const McButton = (props) => {
   return (
@@ -7,7 +8,7 @@ const McButton = (props) => {
       onClick={props.onClick}
       style={props.color && { background: props.color }}
     >
-      {props.img && <img src={"/img/" + props.img} alt="" />}
+      {props.img && <img src={IMG_PATH + props.img} alt="" />}
       {props.content}
     </button>
   );

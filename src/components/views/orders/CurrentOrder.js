@@ -1,14 +1,17 @@
 import "./CurrentOrder.css";
+import { IMG_PATH, LOCALE } from "../../../config.js";
 import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { QRCode } from "react-qrcode-logo";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
+import useFormat from "../../../hooks/useFormat.js";
 
-const CurrentOrder = (props) => {
+const CurrentOrder = () => {
   const navigate = useNavigate();
   const order = useOrder();
   const updateOrder = useOrderUpdate();
+  const [currencyFormatter] = useFormat();
 
   // restrict access when an order is in place
   if (!order || !order.confirmed) {
@@ -27,7 +30,7 @@ const CurrentOrder = (props) => {
   return (
     <div className="CurrentOrder">
       <div className="title">
-        <img src="/img/order-bag-nobg.png" alt="" />
+        <img src={IMG_PATH + "order-bag-nobg.png"} alt="" />
         Pedido en curso
       </div>
       <div className="address">
@@ -51,7 +54,7 @@ const CurrentOrder = (props) => {
         </h3>
         <h3>
           <strong>Total: </strong>
-          {"$ " + order.total + ".00"}
+          {currencyFormatter().format(order.total)}
         </h3>
       </div>
       <McButton

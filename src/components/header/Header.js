@@ -1,4 +1,5 @@
 import "./Header.css";
+import { IMG_PATH } from "../../config.js";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -23,10 +24,10 @@ const Header = () => {
           handleNavigate();
         }}
       >
-        <img src={"/img/left-arrow.png"} alt="" />
+        <img src={IMG_PATH + "left-arrow.png"} alt="" />
         Volver
       </button>
-      <img className="logo" src="/img/logo-plain.png" alt="" />
+      <img className="logo" src={IMG_PATH + "logo-plain.png"} alt="" />
     </div>
   );
 };

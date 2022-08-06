@@ -1,4 +1,5 @@
 import "./CouponModal.css";
+import { LOCALE } from "../../config.js";
 import { Modal } from "reactstrap";
 import { QRCode } from "react-qrcode-logo";
 
@@ -9,8 +10,7 @@ const CouponModal = (props) => {
       <div>
         <QRCode value="https://mcdapp.vercel.app" size={256} />
         <p className="warning">
-          Válido hasta el{" "}
-          {new Date(props.validDate).toLocaleDateString("es-AR")}
+          Válido hasta el {new Date(props.validDate).toLocaleDateString(LOCALE)}
         </p>
       </div>
       <div className="coupon-code">{props.code}</div>

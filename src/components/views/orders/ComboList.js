@@ -1,4 +1,5 @@
 import "./ComboList.css";
+import { IMG_PATH } from "../../../config.js";
 import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider.js";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
@@ -25,7 +26,7 @@ const ComboList = (props) => {
   return (
     <div className="ComboList">
       <div className="restaurant">
-        <img src={"/img/" + data.img} alt="" />
+        <img src={IMG_PATH + data.img} alt="" />
         <div className="address">
           <p>{data.name}</p>
           <p>{data.address}</p>
@@ -46,7 +47,7 @@ const ComboList = (props) => {
         })}
         {order && order.items.length > 0 && (
           <NavLink className="view-order-link" to={"/orders/cart"}>
-            <img src="/img/order-bag.png" alt="" />
+            <img src={IMG_PATH + "order-bag.png"} alt="" />
             <div className="order-qty">{order.items.length}</div>
           </NavLink>
         )}

@@ -1,4 +1,5 @@
 import "./Home.css";
+import { IMG_PATH } from "../../../config.js";
 import Carousel from "../../carousel/Carousel.js";
 import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +18,7 @@ const Home = (props) => {
             <div key={key} className="home-link">
               <p className="title">{value.title}</p>
               <a href={value.href}>
-                <img src={"/img/" + value.img} alt="" />
+                <img src={IMG_PATH + value.img} alt="" />
               </a>
             </div>
           );

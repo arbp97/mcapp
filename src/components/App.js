@@ -30,6 +30,8 @@ import homeSlides from "../data/homeSlides.js";
 import discountSlides from "../data/discountSlides.js";
 import discounts from "../data/discounts.js";
 
+import { URLS } from "../config.js";
+
 const App = () => {
   // Order warning
   const [showOrderModal, setShowOrderModal] = useState(false);
@@ -44,10 +46,10 @@ const App = () => {
             <Header />
             <Routes>
               <Route
-                path="/"
+                path={URLS.ROOT}
                 element={<Home links={homeLinks} carouselItems={homeSlides} />}
               />
-              <Route path="/orders">
+              <Route path={URLS.ORDERS}>
                 <Route
                   index
                   element={
@@ -57,13 +59,19 @@ const App = () => {
                     />
                   }
                 />
-                <Route path="cart" element={<Cart />} />
-                <Route path="checkout" element={<Checkout />} />
-                <Route path="current" element={<CurrentOrder />} />
-                <Route path="add" element={<ComboList items={combos} />} />
-                <Route path="add/:category/:id" element={<AddItem />} />
+                <Route path={URLS.ORDERS_CART} element={<Cart />} />
+                <Route path={URLS.ORDERS_CHECKOUT} element={<Checkout />} />
+                <Route path={URLS.ORDERS_CURRENT} element={<CurrentOrder />} />
+                <Route
+                  path={URLS.ORDERS_ADD}
+                  element={<ComboList items={combos} />}
+                />
+                <Route
+                  path={URLS.ORDERS_ADD + ":category/:id"}
+                  element={<AddItem />}
+                />
               </Route>
-              <Route path="/discounts">
+              <Route path={URLS.DISCOUNTS}>
                 <Route
                   index
                   element={
@@ -75,11 +83,11 @@ const App = () => {
                 />
                 <Route path=":category/:id" element={<AddCoupon />} />
               </Route>
-              <Route path="/coupons">
+              <Route path={URLS.COUPONS}>
                 <Route index element={<Coupon />} />
                 <Route path=":id" element={<ViewCoupon />} />
               </Route>
-              <Route path="/catalogue">
+              <Route path={URLS.CATALOGUE}>
                 <Route index element={<Catalogue categories={products} />} />
                 <Route path=":category" element={<ProductList />} />
               </Route>

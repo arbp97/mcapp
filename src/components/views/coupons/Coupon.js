@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { IMG_PATH, LOCALE } from "../../../config.js";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
+import useFormat from "../../../hooks/useFormat.js";
 import "./Coupon.css";
 
 const Coupon = () => {
   const [nothingToDisplay, setNothingToDisplay] = useState(false);
   const [active, setActive] = useState(true);
   const [getStorageItem, setStorageItem] = useLocalStorage();
+  const [currencyFormatter] = useFormat();
   const date = new Date();
 
   let coupons = getStorageItem("coupons");
@@ -44,7 +47,7 @@ const Coupon = () => {
   const DefaultView = () => {
     return (
       <div className="default-view">
-        <img src="/img/logo-plain.png" alt="" />
+        <img src={IMG_PATH + "logo-plain.png"} alt="" />
         <h2>
           <strong>No existen cupones para mostrar</strong>
         </h2>
@@ -58,12 +61,14 @@ const Coupon = () => {
         className="coupon-card"
         to={props.disabled ? " " : "/coupons/" + props.parentIndex}
       >
-        <img src={"/img/" + props.img} alt="" />
+        <img src={IMG_PATH + props.img} alt="" />
         <div className="info">
           <span className="date">
-            {"Vence el " + new Date(props.date).toLocaleDateString("es-AR")}
+            {"Vence el " + new Date(props.date).toLocaleDateString(LOCALE)}
           </span>
-          <span className="price">{"$ " + props.price}</span>
+          <span className="price">
+            {currencyFormatter().format(props.price)}
+          </span>
         </div>
       </Link>
     );

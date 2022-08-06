@@ -1,4 +1,5 @@
 import "./Navigation.css";
+import { IMG_PATH } from "../../config.js";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -22,7 +23,8 @@ const Navigation = (props) => {
     };
 
     setActive(toRoot(location.pathname));
-  }, [location, props.buttons]);
+    // eslint-disable-next-line
+  }, [location]);
 
   return (
     <nav className="nav-container">
@@ -40,7 +42,7 @@ const Navigation = (props) => {
               key={key}
             >
               <NavLink to={toRoute(key)} className="nav-link">
-                <img src={"/img/" + value.img} alt="" />
+                <img src={IMG_PATH + value.img} alt="" />
                 {value.text}
               </NavLink>
             </li>

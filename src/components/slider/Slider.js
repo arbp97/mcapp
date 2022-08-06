@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { IMG_PATH } from "../../config.js";
+import useFormat from "../../hooks/useFormat.js";
 import "./Slider.css";
 
 const Slider = (props) => {
+  const [currencyFormatter] = useFormat();
   return (
     <div className="Slider">
       {Object.entries(props.items).map(([key, value]) => {
@@ -16,11 +19,13 @@ const Slider = (props) => {
               price: value.price ? value.price : null,
             }}
           >
-            <img src={"/img/" + value.img} alt=""></img>
+            <img src={IMG_PATH + value.img} alt=""></img>
             <p className="title" title={value.title}>
               {value.title}
             </p>
-            {props.showPrice && <p className="price">{"$" + value.price}</p>}
+            {props.showPrice && (
+              <p className="price">{currencyFormatter().format(value.price)}</p>
+            )}
           </NavLink>
         );
       })}
