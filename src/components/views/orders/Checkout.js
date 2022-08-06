@@ -1,5 +1,5 @@
 import "./Checkout.css";
-import { URLS } from "../../../config.js";
+import { URLS, STORAGE } from "../../../config.js";
 import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
@@ -146,7 +146,7 @@ const Checkout = () => {
     // exit if there is no order in the state
     if (order.items.length <= 0) navigate(URLS.ROOT);
 
-    const user = getStorageItem("user");
+    const user = getStorageItem(STORAGE.USER);
     if (user) setIsValidated(true);
     // eslint-disable-next-line
   }, [order]);

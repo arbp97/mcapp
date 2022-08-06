@@ -1,6 +1,6 @@
 import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import { IMG_PATH } from "../../../config.js";
+import { IMG_PATH, STORAGE, URLS } from "../../../config.js";
 import "./ViewCoupon.css";
 import CouponModal from "../../modal/CouponModal.js";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
@@ -9,7 +9,7 @@ const ViewCoupon = () => {
   // coupon data
   const { id } = useParams();
   const [getStorageItem] = useLocalStorage();
-  const coupons = getStorageItem("coupons");
+  const coupons = getStorageItem(STORAGE.COUPONS);
   const data = coupons[id];
   const date = new Date();
 
@@ -21,7 +21,7 @@ const ViewCoupon = () => {
 
   // deny access if its not an active coupon
   if (new Date(data.validDate) < date) {
-    return <Navigate to={"/coupons"} replace />;
+    return <Navigate to={URLS.COUPONS} replace />;
   }
 
   return (

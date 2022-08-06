@@ -1,8 +1,5 @@
 export const LOCALE = "es-AR";
 export const CURRENCY = "ARS";
-export const ORDER_STORAGE = "order";
-export const USER_STORAGE = "user";
-export const COUPON_STORAGE = "coupons";
 export const IMG_PATH = "/img/";
 
 export const URLS = {
@@ -15,4 +12,10 @@ export const URLS = {
   DISCOUNTS: "/discounts/",
   COUPONS: "/coupons/",
   CATALOGUE: "/catalogue/",
+};
+
+export const STORAGE = {
+  USER: "user",
+  ORDER: "order",
+  COUPONS: "coupons",
 };

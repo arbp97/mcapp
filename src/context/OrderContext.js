@@ -1,4 +1,5 @@
 import { useState, useContext, createContext, useEffect } from "react";
+import { STORAGE } from "../config.js";
 import useLocalStorage from "../hooks/useLocalStorage.js";
 
 const OrderContext = createContext();
@@ -27,11 +28,11 @@ export const OrderProvider = ({ children }) => {
   const [getStorageItem, setStorageItem] = useLocalStorage();
 
   const getInitialState = () => {
-    const order = getStorageItem("order");
+    const order = getStorageItem(STORAGE.ORDER);
 
     if (!order) {
-      setStorageItem("order", newOrder());
-      return getStorageItem("order");
+      setStorageItem(STORAGE.ORDER, newOrder());
+      return getStorageItem(STORAGE.ORDER);
     } else {
       return order;
     }
@@ -43,7 +44,7 @@ export const OrderProvider = ({ children }) => {
     if (!order) {
       setOrder(newOrder());
     }
-    setStorageItem("order", order);
+    setStorageItem(STORAGE.ORDER, order);
   }, [order, setStorageItem]);
 
   const updateOrder = (order) => {

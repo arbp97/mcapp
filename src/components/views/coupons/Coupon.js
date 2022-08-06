@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IMG_PATH, LOCALE } from "../../../config.js";
+import { IMG_PATH, LOCALE, STORAGE, URLS } from "../../../config.js";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
 import useFormat from "../../../hooks/useFormat.js";
@@ -12,10 +12,10 @@ const Coupon = () => {
   const [currencyFormatter] = useFormat();
   const date = new Date();
 
-  let coupons = getStorageItem("coupons");
+  let coupons = getStorageItem(STORAGE.COUPONS);
   if (!coupons) {
     coupons = [];
-    setStorageItem("coupons", coupons);
+    setStorageItem(STORAGE.COUPONS, coupons);
   }
 
   // filter coupons into two distinct arrays active / inactive
@@ -59,7 +59,7 @@ const Coupon = () => {
     return (
       <Link
         className="coupon-card"
-        to={props.disabled ? " " : "/coupons/" + props.parentIndex}
+        to={props.disabled ? " " : URLS.COUPONS + props.parentIndex}
       >
         <img src={IMG_PATH + props.img} alt="" />
         <div className="info">

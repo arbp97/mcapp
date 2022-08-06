@@ -4,6 +4,7 @@ import McButton from "../buttons/McButton.js";
 import { useState } from "react";
 import InfoModal from "../modal/InfoModal.js";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
+import { STORAGE } from "../../config.js";
 
 const UserForm = (props) => {
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ const UserForm = (props) => {
       return;
     }
 
-    setStorageItem("user", formData);
+    setStorageItem(STORAGE.USER, formData);
     props.setIsValidated(true);
   };
 

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { IMG_PATH } from "../../../config.js";
+import { IMG_PATH, STORAGE } from "../../../config.js";
 import "./AddCoupon.css";
 import discounts from "../../../data/discounts.js";
 import CouponModal from "../../modal/CouponModal.js";
@@ -12,7 +12,7 @@ const AddCoupon = () => {
   const { category, id } = useParams();
   const data = discounts[category].items[id];
   const [getStorageItem, setStorageItem] = useLocalStorage();
-  let coupons = getStorageItem("coupons");
+  let coupons = getStorageItem(STORAGE.COUPONS);
   const [randomString] = useRandom(9);
   // get date 30 days from now
   let date = new Date();
@@ -40,7 +40,7 @@ const AddCoupon = () => {
       }
 
       coupons.push(coupon);
-      setStorageItem("coupons", coupons);
+      setStorageItem(STORAGE.COUPONS, coupons);
       setAdded(true);
     }
 
