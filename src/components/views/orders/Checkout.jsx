@@ -1,13 +1,13 @@
 import "./Checkout.css";
 import { URLS, STORAGE, PAYMENT_TYPE } from "../../../config.js";
-import UserForm from "../../form/UserForm.js";
-import McButton from "../../buttons/McButton.js";
+import UserForm from "../../form/UserForm";
+import McButton from "../../buttons/McButton";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
-import PaymentInputs from "../../form/PaymentInputs.js";
-import InfoModal from "../../modal/InfoModal.js";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
+import PaymentInputs from "../../form/PaymentInputs";
+import InfoModal from "../../modal/InfoModal";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
 import useFormat from "../../../hooks/useFormat.js";
 

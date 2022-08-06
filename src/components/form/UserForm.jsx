@@ -1,8 +1,8 @@
 import "./UserForm.css";
-import McInput from "../input/McInput.js";
-import McButton from "../buttons/McButton.js";
+import McInput from "../input/McInput";
+import McButton from "../buttons/McButton";
 import { useState } from "react";
-import InfoModal from "../modal/InfoModal.js";
+import InfoModal from "../modal/InfoModal";
 import useLocalStorage from "../../hooks/useLocalStorage.js";
 import { STORAGE } from "../../config.js";
 

@@ -1,6 +1,6 @@
 import "./Discount.css";
-import Slider from "../../slider/Slider.js";
-import Carousel from "../../carousel/Carousel.js";
+import Slider from "../../slider/Slider";
+import Carousel from "../../carousel/Carousel";
 import DISCOUNTS from "../../../data/discounts.js";
 import DISCOUNT_SLIDES from "../../../data/discountSlides.js";
 import { URLS } from "../../../config.js";

@@ -2,7 +2,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { IMG_PATH, STORAGE, URLS } from "../../../config.js";
 import "./ViewCoupon.css";
-import CouponModal from "../../modal/CouponModal.js";
+import CouponModal from "../../modal/CouponModal";
 import useLocalStorage from "../../../hooks/useLocalStorage.js";
 
 const ViewCoupon = () => {

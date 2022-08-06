@@ -1,25 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 /* VIEWS */
-import Home from "./views/home/Home.js";
-import Coupon from "./views/coupons/Coupon.js";
-import ViewCoupon from "./views/coupons/ViewCoupon.js";
-import Discount from "./views/discounts/Discount.js";
-import AddCoupon from "./views/discounts/AddCoupon.js";
-import Order from "./views/orders/Order.js";
-import ComboList from "./views/orders/ComboList.js";
-import Catalogue from "./views/catalogue/Catalogue.js";
-import ProductList from "./views/catalogue/ProductList.js";
-import AddItem from "./views/orders/AddItem.js";
-import Cart from "./views/orders/Cart.js";
-import Checkout from "./views/orders/Checkout.js";
-import CurrentOrder from "./views/orders/CurrentOrder.js";
+import Home from "./views/home/Home";
+import Coupon from "./views/coupons/Coupon";
+import ViewCoupon from "./views/coupons/ViewCoupon";
+import Discount from "./views/discounts/Discount";
+import AddCoupon from "./views/discounts/AddCoupon";
+import Order from "./views/orders/Order";
+import ComboList from "./views/orders/ComboList";
+import Catalogue from "./views/catalogue/Catalogue";
+import ProductList from "./views/catalogue/ProductList";
+import AddItem from "./views/orders/AddItem";
+import Cart from "./views/orders/Cart";
+import Checkout from "./views/orders/Checkout";
+import CurrentOrder from "./views/orders/CurrentOrder";
 /* COMMON COMPONENTS */
-import Header from "./header/Header.js";
-import Navigation from "./navbar/Navigation.js";
-import Scroll from "./common/Scroll.js";
-import InfoModal from "./modal/InfoModal.js";
-import { OrderProvider } from "../context/OrderContext.js";
+import Header from "./header/Header";
+import Navigation from "./navbar/Navigation";
+import Scroll from "./common/Scroll";
+import InfoModal from "./modal/InfoModal";
+import { OrderProvider } from "../context/OrderContext";
 
 import { URLS } from "../config.js";
 

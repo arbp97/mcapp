@@ -2,8 +2,8 @@ import { useCallback, useEffect } from "react";
 import { IMG_PATH, URLS } from "../../../config.js";
 import useFormat from "../../../hooks/useFormat.js";
 import { useNavigate } from "react-router-dom";
-import McButton from "../../buttons/McButton.js";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
+import McButton from "../../buttons/McButton";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
 import "./Cart.css";
 
 const Cart = () => {

@@ -1,6 +1,6 @@
 import "./Map.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import LeafletControlGeocoder from "./LeafletControlGeocoder.js";
+import LeafletControlGeocoder from "./LeafletControlGeocoder";
 import MarkerIcon from "./MarkerIcon.js";
 
 const Map = (props) => {

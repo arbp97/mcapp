@@ -1,8 +1,8 @@
 import "./ComboList.css";
 import { IMG_PATH, URLS } from "../../../config.js";
 import { useLocation, NavLink } from "react-router-dom";
-import Slider from "../../slider/Slider.js";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
+import Slider from "../../slider/Slider";
+import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
 import { useEffect } from "react";
 import COMBOS from "../../../data/combos.js";
 

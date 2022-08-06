@@ -1,12 +1,12 @@
 import "./Order.css";
 import { IMG_PATH, URLS } from "../../../config.js";
-import Map from "../../map/Map.js";
-import Searchbar from "../../input/Searchbar.js";
-import McButton from "../../buttons/McButton.js";
-import InfoModal from "../../modal/InfoModal.js";
+import Map from "../../map/Map";
+import Searchbar from "../../input/Searchbar";
+import McButton from "../../buttons/McButton";
+import InfoModal from "../../modal/InfoModal";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import { useOrder } from "../../../context/OrderContext.js";
+import { useOrder } from "../../../context/OrderContext";
 import MARKERS from "../../../data/markers.js";
 
 const RestaurantList = (props) => {
