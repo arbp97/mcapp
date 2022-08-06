@@ -1,5 +1,5 @@
 import "./Navigation.css";
-import { IMG_PATH } from "../../config.js";
+import { IMG_PATH, URLS } from "../../config.js";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -8,18 +8,15 @@ const Navigation = (props) => {
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
 
-  // returns supposed route with a slash
-  const toRoute = (route) => {
-    return route === "home" ? "/" : "/" + route;
-  };
-
   useEffect(() => {
     // returns the root section of a route, as route
     const toRoot = (route) => {
-      for (const b of Object.entries(props.buttons)) {
-        if (route.includes(b[0])) return toRoute(b[0]);
+      if (route === URLS.ROOT) return URLS.ROOT;
+
+      for (const button of props.buttons) {
+        if (button.path === URLS.ROOT) continue;
+        if (route.includes(button.path)) return button.path;
       }
-      return route;
     };
 
     setActive(toRoot(location.pathname));
@@ -29,19 +26,17 @@ const Navigation = (props) => {
   return (
     <nav className="nav-container">
       <ul className="nav-list">
-        {Object.entries(props.buttons).map(([key, value]) => {
+        {props.buttons.map((value) => {
           // load all buttons listed before
           return (
             <li
               className={
                 // if key is the actual active key, set active class
-                active === toRoute(key)
-                  ? "nav-list-item active"
-                  : "nav-list-item"
+                active === value.path ? "nav-list-item active" : "nav-list-item"
               }
-              key={key}
+              key={value.path}
             >
-              <NavLink to={toRoute(key)} className="nav-link">
+              <NavLink to={value.path} className="nav-link">
                 <img src={IMG_PATH + value.img} alt="" />
                 {value.text}
               </NavLink>

@@ -67,7 +67,7 @@ const App = () => {
                   element={<ComboList items={combos} />}
                 />
                 <Route
-                  path={URLS.ORDERS_ADD + ":category/:id"}
+                  path={URLS.ORDERS_ADD + "/:category/:id"}
                   element={<AddItem />}
                 />
               </Route>
@@ -98,7 +98,7 @@ const App = () => {
               isOpen={showOrderModal}
               title="Atención"
               message="Ya existe un pedido en curso. Pulsa 'Ver' para ver tu pedido actual."
-              link="/orders/current"
+              link={URLS.ORDERS_CURRENT}
             />
           </Scroll>
         </Router>
