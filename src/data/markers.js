@@ -1,4 +1,4 @@
-const markers = [
+const MARKERS = [
   {
     title: "BOULEVARD ADROGUE SHOPPING",
     img: "indicador.png",
@@ -78,4 +78,4 @@ const markers = [
   },
 ];
 
-export default markers;
+export default MARKERS;

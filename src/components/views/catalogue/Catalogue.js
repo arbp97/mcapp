@@ -1,11 +1,12 @@
 import "./Catalogue.css";
 import { IMG_PATH } from "../../../config.js";
+import PRODUCTS from "../../../data/products.js";
 import { NavLink } from "react-router-dom";
 
-const Catalogue = (props) => {
+const Catalogue = () => {
   return (
     <div className="Catalogue">
-      {Object.entries(props.categories).map(([key, value]) => {
+      {Object.entries(PRODUCTS).map(([key, value]) => {
         // map all categories as links
         return (
           <NavLink

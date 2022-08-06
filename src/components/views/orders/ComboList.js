@@ -4,8 +4,9 @@ import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider.js";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
 import { useEffect } from "react";
+import COMBOS from "../../../data/combos.js";
 
-const ComboList = (props) => {
+const ComboList = () => {
   const location = useLocation();
   const data = location.state;
   const order = useOrder();
@@ -33,7 +34,7 @@ const ComboList = (props) => {
         </div>
       </div>
       <div className="ComboList-slides">
-        {Object.entries(props.items).map(([key, value]) => {
+        {Object.entries(COMBOS).map(([key, value]) => {
           return (
             <div className="slider-container" key={key}>
               <p>{value.category}</p>

@@ -1,9 +1,9 @@
 import "./AddItem.css";
-import { LOCALE, IMG_PATH } from "../../../config.js";
+import { IMG_PATH } from "../../../config.js";
 import { useNavigate, useParams } from "react-router-dom";
 import McButton from "../../buttons/McButton.js";
 import { useState } from "react";
-import combos from "../../../data/combo.js";
+import combos from "../../../data/combos.js";
 import { useOrder, useOrderUpdate } from "../../../context/OrderContext.js";
 import useFormat from "../../../hooks/useFormat.js";
 

@@ -7,13 +7,14 @@ import InfoModal from "../../modal/InfoModal.js";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useOrder } from "../../../context/OrderContext.js";
+import MARKERS from "../../../data/markers.js";
 
 const RestaurantList = (props) => {
   return (
     <div className="RestaurantList">
       <div className="marker-list">
         <p className="title">Sucursales</p>
-        {Object.entries(props.markers)
+        {Object.entries(MARKERS)
           .filter(([key, value]) =>
             value.location.toLowerCase().includes(props.query.toLowerCase())
           )
@@ -81,7 +82,7 @@ const Delivery = (props) => {
 
 const Order = (props) => {
   const [activeMode, setActiveMode] = useState(true);
-  const [mapMarkers, setMapMarkers] = useState(props.markers);
+  const [mapMarkers, setMapMarkers] = useState(MARKERS);
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
   const order = useOrder();
@@ -101,7 +102,7 @@ const Order = (props) => {
 
   const changeMode = (mode) => {
     setActiveMode(mode);
-    !mode ? setMapMarkers([]) : setMapMarkers(props.markers);
+    !mode ? setMapMarkers([]) : setMapMarkers(MARKERS);
   };
 
   return (
@@ -138,7 +139,7 @@ const Order = (props) => {
             query={query}
             setQuery={setQuery}
           />
-          <RestaurantList query={query} markers={mapMarkers} />
+          <RestaurantList query={query} />
         </>
       )}
       {!activeMode && <Delivery location={location} />}

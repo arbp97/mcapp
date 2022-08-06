@@ -1,4 +1,4 @@
-const homeLinks = [
+const HOME_LINKS = [
   {
     title: "Mes de La Hamburguesa",
     img: "mesDeLaHamburgesa.png",
@@ -31,4 +31,4 @@ const homeLinks = [
   },
 ];
 
-export default homeLinks;
+export default HOME_LINKS;

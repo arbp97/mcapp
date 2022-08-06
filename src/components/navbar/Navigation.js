@@ -2,8 +2,9 @@ import "./Navigation.css";
 import { IMG_PATH, URLS } from "../../config.js";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import NAV_BUTTONS from "../../data/navButtons.js";
 
-const Navigation = (props) => {
+const Navigation = () => {
   // default view is home
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
@@ -13,7 +14,7 @@ const Navigation = (props) => {
     const toRoot = (route) => {
       if (route === URLS.ROOT) return URLS.ROOT;
 
-      for (const button of props.buttons) {
+      for (const button of NAV_BUTTONS) {
         if (button.path === URLS.ROOT) continue;
         if (route.includes(button.path)) return button.path;
       }
@@ -26,7 +27,7 @@ const Navigation = (props) => {
   return (
     <nav className="nav-container">
       <ul className="nav-list">
-        {props.buttons.map((value) => {
+        {NAV_BUTTONS.map((value) => {
           // load all buttons listed before
           return (
             <li

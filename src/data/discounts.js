@@ -1,5 +1,5 @@
 // discounts & promotions
-const discounts = {
+const DISCOUNTS = {
   burgers: {
     category: "Para disfrutar en familia",
     items: [
@@ -67,4 +67,4 @@ const discounts = {
   },
 };
 
-export default discounts;
+export default DISCOUNTS;

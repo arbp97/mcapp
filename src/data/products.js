@@ -1,5 +1,5 @@
 // categories & products
-const products = {
+const PRODUCTS = {
   burgers: {
     category: "Hamburguesas",
     items: [
@@ -477,4 +477,4 @@ const products = {
   },
 };
 
-export default products;
+export default PRODUCTS;

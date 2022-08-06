@@ -1,4 +1,4 @@
-const combos = {
+const COMBOS = {
   bacon: {
     category: "Con Bacon todo es mejor",
     items: [
@@ -221,4 +221,4 @@ const combos = {
   },
 };
 
-export default combos;
+export default COMBOS;

@@ -1,3 +1,3 @@
-const discountSlides = ["discount_img_1.jpeg", "discount_img_2.jpg"];
+const DISCOUNT_SLIDES = ["discount_img_1.jpeg", "discount_img_2.jpg"];
 
-export default discountSlides;
+export default DISCOUNT_SLIDES;

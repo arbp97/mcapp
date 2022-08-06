@@ -4,16 +4,18 @@ import Carousel from "../../carousel/Carousel.js";
 import McButton from "../../buttons/McButton.js";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../../context/OrderContext.js";
+import HOME_SLIDES from "../../../data/homeSlides.js";
+import HOME_LINKS from "../../../data/homeLinks.js";
 
-const Home = (props) => {
+const Home = () => {
   const navigate = useNavigate();
   const order = useOrder();
 
   return (
     <div className="Home">
-      <Carousel items={props.carouselItems} />
+      <Carousel items={HOME_SLIDES} />
       <div className="home-list">
-        {Object.entries(props.links).map(([key, value]) => {
+        {Object.entries(HOME_LINKS).map(([key, value]) => {
           return (
             <div key={key} className="home-link">
               <p className="title">{value.title}</p>

@@ -1,13 +1,15 @@
+import "./Discount.css";
 import Slider from "../../slider/Slider.js";
 import Carousel from "../../carousel/Carousel.js";
-import "./Discount.css";
+import DISCOUNTS from "../../../data/discounts.js";
+import DISCOUNT_SLIDES from "../../../data/discountSlides.js";
 
-const Discount = (props) => {
+const Discount = () => {
   return (
     <div className="Discount">
-      <Carousel items={props.carouselItems} />
+      <Carousel items={DISCOUNT_SLIDES} />
       <div className="slides">
-        {Object.entries(props.items).map(([key, value]) => {
+        {Object.entries(DISCOUNTS).map(([key, value]) => {
           return (
             <div className="slider-container" key={key}>
               <p>{value.category}</p>

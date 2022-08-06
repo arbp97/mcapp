@@ -1,7 +1,7 @@
 import { URLS } from "../config.js";
 
 // Navigation bar text & icons
-const navButtons = [
+const NAV_BUTTONS = [
   { text: "Home", img: "logo-black.png", path: URLS.ROOT },
   { text: "Pedidos", img: "fries.png", path: URLS.ORDERS },
   { text: "Ofertas", img: "ticket.png", path: URLS.DISCOUNTS },
@@ -9,4 +9,4 @@ const navButtons = [
   { text: "Menú", img: "more.png", path: URLS.CATALOGUE },
 ];
 
-export default navButtons;
+export default NAV_BUTTONS;
