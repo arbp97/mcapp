@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { IMG_PATH, URLS } from "../../../config.js";
 import useFormat from "../../../hooks/useFormat.js";
 import { useNavigate } from "react-router-dom";
@@ -10,43 +10,41 @@ const Cart = () => {
   const navigate = useNavigate();
   const order = useOrder();
   const updateOrder = useOrderUpdate();
-  const [itemList, setItemList] = useState(order.items);
   const [currencyFormatter] = useFormat();
 
   const getTotal = useCallback(() => {
     let result = 0;
 
-    for (const item of itemList) {
+    for (const item of order.items) {
       result += item.pricePerUnit * item.quantity;
     }
 
     return result;
-  }, [itemList]);
+  }, [order.items]);
 
   useEffect(() => {
     // go back if there is nothing no display
-    if (itemList.length <= 0) {
+    if (order.items.length <= 0) {
       navigate(-1);
     }
-    // change total && order stored if the item list changed
-    order.items = itemList;
+    // change order stored if the item list changed
     // eslint-disable-next-line
     updateOrder({ ...order, ["total"]: getTotal() });
     // eslint-disable-next-line
-  }, [itemList]);
+  }, [order.items]);
 
   // delete selected item from the order
   const deleteItem = (item) => {
-    setItemList(
-      itemList.filter((index) => {
-        return index !== item;
-      })
-    );
+    const list = order.items.filter((element, index) => {
+      return index !== item;
+    });
+    // eslint-disable-next-line
+    updateOrder({ ...order, ["items"]: list });
   };
 
   return (
     <div className="Cart">
-      {itemList.map((item, index) => {
+      {order.items.map((item, index) => {
         return (
           <div className="item" key={index}>
             <img src={IMG_PATH + item.img} alt="" />

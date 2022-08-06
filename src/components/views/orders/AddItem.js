@@ -32,10 +32,10 @@ const AddItem = () => {
         pricePerUnit: data.price,
       };
 
+      order.items.push(newItem);
+
       updateOrder({
         ...order,
-        // eslint-disable-next-line
-        ["items"]: order.items.concat([newItem]),
         // eslint-disable-next-line
         ["total"]: order.total + newItem.pricePerUnit * count,
       });
