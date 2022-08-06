@@ -1,5 +1,5 @@
 import "./Checkout.css";
-import { URLS, STORAGE } from "../../../config.js";
+import { URLS, STORAGE, PAYMENT_TYPE } from "../../../config.js";
 import UserForm from "../../form/UserForm.js";
 import McButton from "../../buttons/McButton.js";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ const Detail = (props) => {
   const addressTitle = props.order.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
-  const [selectedMethod, setSelectedMethod] = useState("EFECTIVO");
+  const [selectedMethod, setSelectedMethod] = useState(PAYMENT_TYPE.CASH);
   const [currencyFormatter] = useFormat();
   // card information
   const [cardNumber, setCardNumber] = useState();
@@ -77,9 +77,9 @@ const Detail = (props) => {
                     defaultChecked={true}
                     name="paymethod"
                     className="pay-method-radio"
-                    onClick={() => setSelectedMethod("EFECTIVO")}
+                    onClick={() => setSelectedMethod(PAYMENT_TYPE.CASH)}
                   />
-                  EFECTIVO
+                  {PAYMENT_TYPE.CASH}
                 </Label>
               </FormGroup>
               <FormGroup check>
@@ -88,15 +88,15 @@ const Detail = (props) => {
                     type="radio"
                     name="paymethod"
                     className="pay-method-radio"
-                    onClick={() => setSelectedMethod("DEBITO")}
+                    onClick={() => setSelectedMethod(PAYMENT_TYPE.DEBIT)}
                   />
-                  DEBITO
+                  {PAYMENT_TYPE.DEBIT}
                 </Label>
               </FormGroup>
             </div>
           </FormGroup>
         </Form>
-        {selectedMethod === "DEBITO" && (
+        {selectedMethod === PAYMENT_TYPE.DEBIT && (
           <PaymentInputs
             setCardCVC={setCardCVC}
             setCardDate={setCardDate}
@@ -112,7 +112,7 @@ const Detail = (props) => {
       <McButton
         content={"Enviar pedido"}
         onClick={() => {
-          if (selectedMethod === "DEBITO" && !cardIsValid) {
+          if (selectedMethod === PAYMENT_TYPE.DEBIT && !cardIsValid) {
             handleCardWarning("La información de la tarjeta es inválida");
           } else {
             props.confirmOrder(selectedMethod, {

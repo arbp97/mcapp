@@ -19,3 +19,8 @@ export const STORAGE = {
   ORDER: "order",
   COUPONS: "coupons",
 };
+
+export const PAYMENT_TYPE = {
+  DEBIT: "DEBITO",
+  CASH: "EFECTIVO",
+};
