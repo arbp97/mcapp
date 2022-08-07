@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const shuffle = (array) => {
+const shuffle = (array: any[]) => {
   let result = array;
   for (let i = result.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
@@ -12,7 +12,7 @@ const shuffle = (array) => {
   return result;
 };
 
-const getRandomInt = (max) => {
+const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max);
 };
 
@@ -56,7 +56,7 @@ const OPTIONS = shuffle([
 ]);
 
 // generate a random alphanumeric string of n length
-const useRandom = (length) => {
+const useRandom = (length: number) => {
   let string = "";
 
   for (let i = 0; i < length; i++) {
