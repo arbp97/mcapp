@@ -1,15 +1,14 @@
 import { useCallback, useEffect } from "react";
-import { IMG_PATH, URLS } from "../../../config.js";
-import useFormat from "../../../hooks/useFormat.js";
+import { IMG_PATH, URLS } from "../../../config";
+import useFormat from "../../../hooks/useFormat";
 import { useNavigate } from "react-router-dom";
 import McButton from "../../buttons/McButton";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
 import "./Cart.css";
+import { useOrderContext } from "../../../context/OrderContext";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const order = useOrder();
-  const updateOrder = useOrderUpdate();
+  const { order, updateOrder } = useOrderContext();
   const [currencyFormatter] = useFormat();
 
   const getTotal = useCallback(() => {

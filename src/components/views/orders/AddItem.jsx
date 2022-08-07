@@ -1,19 +1,18 @@
 import "./AddItem.css";
-import { IMG_PATH } from "../../../config.js";
+import { IMG_PATH } from "../../../config";
 import { useNavigate, useParams } from "react-router-dom";
 import McButton from "../../buttons/McButton";
 import { useState } from "react";
-import combos from "../../../data/combos.js";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
-import useFormat from "../../../hooks/useFormat.js";
+import combos from "../../../data/combos";
+import { useOrderContext } from "../../../context/OrderContext";
+import useFormat from "../../../hooks/useFormat";
 
 const AddItem = () => {
   const navigate = useNavigate();
   const { category, id } = useParams();
   const data = combos[category].items[id];
   const [count, setCount] = useState(1);
-  const order = useOrder();
-  const updateOrder = useOrderUpdate();
+  const { order, updateOrder } = useOrderContext();
   const [currencyFormatter] = useFormat();
 
   // add selected qty of this item and adds them to the order

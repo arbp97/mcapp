@@ -1,4 +1,4 @@
-import { LOCALE, CURRENCY } from "../config.js";
+import { LOCALE, CURRENCY } from "../config";
 
 const useFormat = () => {
   const currencyFormatter = () => {

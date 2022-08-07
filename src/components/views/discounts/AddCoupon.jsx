@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { IMG_PATH, STORAGE } from "../../../config.js";
+import { IMG_PATH, STORAGE } from "../../../config";
 import "./AddCoupon.css";
-import discounts from "../../../data/discounts.js";
+import discounts from "../../../data/discounts";
 import CouponModal from "../../modal/CouponModal";
-import useRandom from "../../../hooks/useRandom.js";
-import useLocalStorage from "../../../hooks/useLocalStorage.js";
+import useRandom from "../../../hooks/useRandom";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 const AddCoupon = () => {
   // coupon data

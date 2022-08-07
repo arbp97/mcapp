@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { IMG_PATH, LOCALE, STORAGE, URLS } from "../../../config.js";
+import { IMG_PATH, LOCALE, STORAGE, URLS } from "../../../config";
 import { Link } from "react-router-dom";
-import useLocalStorage from "../../../hooks/useLocalStorage.js";
-import useFormat from "../../../hooks/useFormat.js";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import useFormat from "../../../hooks/useFormat";
 import "./Coupon.css";
 
 const Coupon = () => {

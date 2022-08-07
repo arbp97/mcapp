@@ -1,5 +1,5 @@
 import "./Carousel.css";
-import { IMG_PATH } from "../../config.js";
+import { IMG_PATH } from "../../config";
 
 const Carousel = (props) => {
   return (

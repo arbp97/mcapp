@@ -1,5 +1,5 @@
 import "./Checkout.css";
-import { URLS, STORAGE, PAYMENT_TYPE } from "../../../config.js";
+import { URLS, STORAGE, PAYMENT_TYPE } from "../../../config";
 import UserForm from "../../form/UserForm";
 import McButton from "../../buttons/McButton";
 import { useEffect, useState } from "react";
@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import PaymentInputs from "../../form/PaymentInputs";
 import InfoModal from "../../modal/InfoModal";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
-import useLocalStorage from "../../../hooks/useLocalStorage.js";
-import useFormat from "../../../hooks/useFormat.js";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import useFormat from "../../../hooks/useFormat";
+import { useOrderContext } from "../../../context/OrderContext";
 
 const Detail = (props) => {
   const addressTitle = props.order.isDelivery
@@ -138,8 +138,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   // user validation check
   const [isValidated, setIsValidated] = useState(false);
-  const order = useOrder();
-  const updateOrder = useOrderUpdate();
+  const { order, updateOrder } = useOrderContext();
   const [getStorageItem] = useLocalStorage();
 
   useEffect(() => {

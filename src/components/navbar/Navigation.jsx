@@ -1,8 +1,8 @@
 import "./Navigation.css";
-import { IMG_PATH, URLS } from "../../config.js";
+import { IMG_PATH, URLS } from "../../config";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import NAV_BUTTONS from "../../data/navButtons.js";
+import NAV_BUTTONS from "../../data/navButtons";
 
 const Navigation = () => {
   // default view is home

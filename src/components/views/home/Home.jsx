@@ -1,15 +1,15 @@
 import "./Home.css";
-import { IMG_PATH, URLS } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config";
 import Carousel from "../../carousel/Carousel";
 import McButton from "../../buttons/McButton";
 import { useNavigate } from "react-router-dom";
-import { useOrder } from "../../../context/OrderContext";
-import HOME_SLIDES from "../../../data/homeSlides.js";
-import HOME_LINKS from "../../../data/homeLinks.js";
+import { useOrderContext } from "../../../context/OrderContext";
+import HOME_SLIDES from "../../../data/homeSlides";
+import HOME_LINKS from "../../../data/homeLinks";
 
 const Home = () => {
   const navigate = useNavigate();
-  const order = useOrder();
+  const { order } = useOrderContext();
 
   return (
     <div className="Home">

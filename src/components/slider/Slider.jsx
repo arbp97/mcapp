@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { IMG_PATH } from "../../config.js";
-import useFormat from "../../hooks/useFormat.js";
+import { IMG_PATH } from "../../config";
+import useFormat from "../../hooks/useFormat";
 import "./Slider.css";
 
 const Slider = (props) => {

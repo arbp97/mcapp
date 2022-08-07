@@ -1,7 +1,10 @@
+import { ProductListType } from "../@types/product";
+
 // categories & products
-const PRODUCTS = {
-  burgers: {
+const PRODUCTS: ProductListType = [
+  {
     category: "Hamburguesas",
+    id: "burgers",
     items: [
       {
         img: "big_mac.png", // first img used as category image
@@ -94,8 +97,9 @@ const PRODUCTS = {
       },
     ],
   },
-  chicken: {
+  {
     category: "Sándwiches de Pollo",
+    id: "chicken",
     items: [
       {
         img: "mc_pollo.png",
@@ -134,8 +138,9 @@ const PRODUCTS = {
       },
     ],
   },
-  complements: {
+  {
     category: "Papas y Complementos",
+    id: "complements",
     items: [
       {
         img: "Papas-pequeñas.png",
@@ -175,8 +180,9 @@ const PRODUCTS = {
       },
     ],
   },
-  desserts: {
+  {
     category: "Postres",
+    id: "desserts",
     items: [
       {
         img: "Cono-de-Vainilla.png",
@@ -264,8 +270,9 @@ const PRODUCTS = {
       },
     ],
   },
-  drinks: {
+  {
     category: "Bebidas",
+    id: "drinks",
     items: [
       {
         img: "agua.png",
@@ -363,8 +370,9 @@ const PRODUCTS = {
       },
     ],
   },
-  breakfast: {
+  {
     category: "Desayunos / Merienda",
+    id: "breakfast",
     items: [
       {
         img: "Café-Premium-14oz.png",
@@ -434,8 +442,9 @@ const PRODUCTS = {
       },
     ],
   },
-  coffee: {
+  {
     category: "McCafé",
+    id: "coffee",
     items: [
       {
         img: "Espresso.png",
@@ -475,6 +484,6 @@ const PRODUCTS = {
       },
     ],
   },
-};
+];
 
 export default PRODUCTS;

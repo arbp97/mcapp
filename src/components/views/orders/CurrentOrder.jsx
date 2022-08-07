@@ -1,16 +1,15 @@
 import "./CurrentOrder.css";
-import { IMG_PATH, URLS } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config";
 import McButton from "../../buttons/McButton";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { QRCode } from "react-qrcode-logo";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
-import useFormat from "../../../hooks/useFormat.js";
+import useFormat from "../../../hooks/useFormat";
+import { useOrderContext } from "../../../context/OrderContext";
 
 const CurrentOrder = () => {
   const navigate = useNavigate();
-  const order = useOrder();
-  const updateOrder = useOrderUpdate();
+  const { order, updateOrder } = useOrderContext();
   const [currencyFormatter] = useFormat();
 
   // restrict access when an order is in place

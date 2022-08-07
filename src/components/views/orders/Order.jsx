@@ -1,13 +1,13 @@
 import "./Order.css";
-import { IMG_PATH, URLS } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config";
 import Map from "../../map/Map";
 import Searchbar from "../../input/Searchbar";
 import McButton from "../../buttons/McButton";
 import InfoModal from "../../modal/InfoModal";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import { useOrder } from "../../../context/OrderContext";
-import MARKERS from "../../../data/markers.js";
+import MARKERS from "../../../data/markers";
+import { useOrderContext } from "../../../context/OrderContext";
 
 const RestaurantList = (props) => {
   return (
@@ -85,7 +85,7 @@ const Order = (props) => {
   const [mapMarkers, setMapMarkers] = useState(MARKERS);
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
-  const order = useOrder();
+  const { order } = useOrderContext();
 
   // set searchbar query from the selected marker
   useEffect(() => {

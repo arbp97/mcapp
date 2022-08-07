@@ -3,8 +3,8 @@ import McInput from "../input/McInput";
 import McButton from "../buttons/McButton";
 import { useState } from "react";
 import InfoModal from "../modal/InfoModal";
-import useLocalStorage from "../../hooks/useLocalStorage.js";
-import { STORAGE } from "../../config.js";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { STORAGE } from "../../config";
 
 const UserForm = (props) => {
   const [formData, setFormData] = useState({

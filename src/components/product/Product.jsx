@@ -1,5 +1,5 @@
 import "./Product.css";
-import { IMG_PATH } from "../../config.js";
+import { IMG_PATH } from "../../config";
 
 const Product = (props) => {
   return (

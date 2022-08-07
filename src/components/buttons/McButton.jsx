@@ -1,5 +1,5 @@
 import "./McButton.css";
-import { IMG_PATH } from "../../config.js";
+import { IMG_PATH } from "../../config";
 
 const McButton = (props) => {
   return (

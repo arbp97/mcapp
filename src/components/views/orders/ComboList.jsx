@@ -1,16 +1,15 @@
 import "./ComboList.css";
-import { IMG_PATH, URLS } from "../../../config.js";
+import { IMG_PATH, URLS } from "../../../config";
 import { useLocation, NavLink } from "react-router-dom";
 import Slider from "../../slider/Slider";
-import { useOrder, useOrderUpdate } from "../../../context/OrderContext";
 import { useEffect } from "react";
-import COMBOS from "../../../data/combos.js";
+import COMBOS from "../../../data/combos";
+import { useOrderContext } from "../../../context/OrderContext";
 
 const ComboList = () => {
   const location = useLocation();
   const data = location.state;
-  const order = useOrder();
-  const updateOrder = useOrderUpdate();
+  const { order, updateOrder } = useOrderContext();
 
   useEffect(() => {
     // update order with current location info

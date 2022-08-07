@@ -1,4 +1,4 @@
-import { URLS } from "../config.js";
+import { URLS } from "../config";
 
 // Navigation bar text & icons
 const NAV_BUTTONS = [

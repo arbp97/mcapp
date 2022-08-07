@@ -1,5 +1,5 @@
 import "./Header.css";
-import { IMG_PATH, URLS } from "../../config.js";
+import { IMG_PATH, URLS } from "../../config";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 

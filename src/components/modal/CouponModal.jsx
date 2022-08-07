@@ -1,5 +1,5 @@
 import "./CouponModal.css";
-import { LOCALE } from "../../config.js";
+import { LOCALE } from "../../config";
 import { Modal } from "reactstrap";
 import { QRCode } from "react-qrcode-logo";
 

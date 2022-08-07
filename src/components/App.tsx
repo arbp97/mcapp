@@ -21,7 +21,7 @@ import Scroll from "./common/Scroll";
 import InfoModal from "./modal/InfoModal";
 import { OrderProvider } from "../context/OrderContext";
 
-import { URLS } from "../config.js";
+import { URLS } from "../config";
 
 const App = () => {
   // Order warning
