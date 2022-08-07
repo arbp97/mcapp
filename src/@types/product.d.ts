@@ -1,15 +1,15 @@
-// @type.product.ts
+// @types.product.ts
 
-export interface IProduct {
+export type ProductType = {
   img: string;
   title: string;
   description: string;
-}
+};
 
-export interface IProductCategory {
+export type ProductCategoryType = {
   category: string;
   id: string;
-  items: Product[];
-}
+  items: ProductType[];
+};
 
-export type ProductListType = IProductCategory[];
+export type ProductListType = ProductCategoryType[];

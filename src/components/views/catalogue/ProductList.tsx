@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import Product from "../../product/Product";
 import products from "../../../data/products";
-import { IProductCategory } from "../../../@types/product";
+import { ProductCategoryType } from "../../../@types/product";
 import "./ProductList.css";
 
 const ProductList = () => {
   const { category } = useParams<{ category?: string }>();
   const data = products.find(
     (product) => product.id === category
-  ) as IProductCategory;
+  ) as ProductCategoryType;
 
   return (
     <div className="ProductList">

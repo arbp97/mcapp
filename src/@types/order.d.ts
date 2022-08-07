@@ -1,21 +1,21 @@
 // @types.order.ts
-export interface IOrder {
+export type OrderType = {
   address: string;
-  items: IOrderItem[];
+  items: OrderItemType[];
   total: number;
   confirmed: boolean;
   paymentType: string;
   isDelivery: boolean;
-}
+};
 
-export interface IOrderItem {
+export type OrderItemType = {
   quantity: number;
   name: string;
   img: string;
   pricePerUnit: number;
-}
+};
 
 export type OrderContextType = {
-  order: IOrder;
-  updateOrder: (order: IOrder) => void;
+  order: Order;
+  updateOrder: (order: Order) => void;
 };

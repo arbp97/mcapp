@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IMG_PATH, LOCALE, STORAGE, URLS } from "../../../config";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { CouponListType, CouponType } from "../../../@types/coupon";
 import useFormat from "../../../hooks/useFormat";
 import "./Coupon.css";
 
@@ -12,20 +13,25 @@ const Coupon = () => {
   const [currencyFormatter] = useFormat();
   const date = new Date();
 
-  let coupons = getStorageItem(STORAGE.COUPONS);
+  let coupons = getStorageItem(STORAGE.COUPONS) as CouponListType;
   if (!coupons) {
     coupons = [];
     setStorageItem(STORAGE.COUPONS, coupons);
   }
 
+  type CouponAndIndexType = CouponType & {
+    parentIndex: number;
+  };
+
+  type CouponAndIndexListType = CouponAndIndexType[];
+
+  let activeCoupons: CouponAndIndexListType = [],
+    inactiveCoupons: CouponAndIndexListType = [];
+
   // filter coupons into two distinct arrays active / inactive
   // based on current date
-  let activeCoupons = [],
-    inactiveCoupons = [];
-
   for (const [i, coupon] of coupons.entries()) {
-    const newDate = new Date(coupon.validDate);
-    newDate > date
+    coupon.validDate > date
       ? activeCoupons.push({ ...coupon, parentIndex: i })
       : inactiveCoupons.push({ ...coupon, parentIndex: i });
   }
@@ -55,20 +61,28 @@ const Coupon = () => {
     );
   };
 
-  const CouponCard = (props) => {
+  type CouponCardProps = CouponAndIndexType & {
+    disabled?: boolean;
+  };
+
+  const CouponCard = ({
+    validDate,
+    disabled,
+    parentIndex,
+    img,
+    price,
+  }: CouponCardProps) => {
     return (
       <Link
         className="coupon-card"
-        to={props.disabled ? " " : URLS.COUPONS + props.parentIndex}
+        to={disabled ? " " : URLS.COUPONS + parentIndex}
       >
-        <img src={IMG_PATH + props.img} alt="" />
+        <img src={IMG_PATH + img} alt="" />
         <div className="info">
           <span className="date">
-            {"Vence el " + new Date(props.date).toLocaleDateString(LOCALE)}
+            {"Vence el " + new Date(validDate).toLocaleDateString(LOCALE)}
           </span>
-          <span className="price">
-            {currencyFormatter().format(props.price)}
-          </span>
+          <span className="price">{currencyFormatter().format(price)}</span>
         </div>
       </Link>
     );
@@ -100,7 +114,7 @@ const Coupon = () => {
             <CouponCard
               key={index}
               parentIndex={element.parentIndex}
-              date={element.validDate}
+              validDate={element.validDate}
               img={element.img}
               price={element.price}
             />
@@ -114,7 +128,7 @@ const Coupon = () => {
               disabled={true}
               key={index}
               parentIndex={element.parentIndex}
-              date={element.validDate}
+              validDate={element.validDate}
               img={element.img}
               price={element.price}
             />

@@ -1,5 +1,5 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
-import { OrderContextType, IOrder } from "../@types/order";
+import { useState, useContext, createContext, useEffect } from "react";
+import { OrderContextType, OrderType } from "../@types/order";
 import { ChildrenProps } from "../@types/childrenProps";
 import { STORAGE } from "../config";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -13,7 +13,7 @@ export const useOrderContext = () => {
 export const OrderProvider = ({ children }: ChildrenProps) => {
   const [getStorageItem, setStorageItem] = useLocalStorage();
 
-  const newOrder = (): IOrder => {
+  const newOrder = (): OrderType => {
     return {
       address: "",
       items: [],
@@ -24,8 +24,8 @@ export const OrderProvider = ({ children }: ChildrenProps) => {
     };
   };
 
-  const getInitialState = (): IOrder => {
-    const order = getStorageItem(STORAGE.ORDER) as IOrder;
+  const getInitialState = (): OrderType => {
+    const order = getStorageItem(STORAGE.ORDER) as OrderType;
 
     if (!order) {
       setStorageItem(STORAGE.ORDER, newOrder());
@@ -44,7 +44,7 @@ export const OrderProvider = ({ children }: ChildrenProps) => {
     setStorageItem(STORAGE.ORDER, order);
   }, [order, setStorageItem]);
 
-  const updateOrder = (order: IOrder) => {
+  const updateOrder = (order: OrderType) => {
     setOrder(order);
   };
 
