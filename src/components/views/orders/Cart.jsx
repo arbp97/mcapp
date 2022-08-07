@@ -69,7 +69,7 @@ const Cart = () => {
           <p>{currencyFormatter().format(getTotal())}</p>
         </div>
         <McButton
-          content={"Pagar con la app"}
+          text={"Pagar con la app"}
           onClick={() => navigate(URLS.ORDERS_CHECKOUT)}
         />
       </div>

@@ -7,7 +7,7 @@ type InfoModalProps = {
   toggle: () => void;
   title: string;
   message: string;
-  link: string;
+  link?: string;
 };
 
 const InfoModal = ({

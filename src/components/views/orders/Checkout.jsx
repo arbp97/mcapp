@@ -110,7 +110,7 @@ const Detail = (props) => {
         <p>{currencyFormatter().format(props.order.total)}</p>
       </div>
       <McButton
-        content={"Enviar pedido"}
+        text={"Enviar pedido"}
         onClick={() => {
           if (selectedMethod === PAYMENT_TYPE.DEBIT && !cardIsValid) {
             handleCardWarning("La información de la tarjeta es inválida");

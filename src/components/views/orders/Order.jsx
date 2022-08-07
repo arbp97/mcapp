@@ -69,7 +69,7 @@ const Delivery = (props) => {
 
   return (
     <div className="Delivery">
-      <McButton content={"Aceptar"} onClick={() => handleSubmit()} />
+      <McButton text={"Aceptar"} onClick={() => handleSubmit()} />
       <InfoModal
         toggle={toggleModal}
         isOpen={showModal}

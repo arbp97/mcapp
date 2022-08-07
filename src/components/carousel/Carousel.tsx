@@ -1,7 +1,11 @@
 import "./Carousel.css";
 import { IMG_PATH } from "../../config";
 
-const Carousel = (props) => {
+type CarouselProps = {
+  items: string[];
+};
+
+const Carousel = ({ items }: CarouselProps) => {
   return (
     <div className="Carousel">
       <div
@@ -10,11 +14,10 @@ const Carousel = (props) => {
         data-bs-ride="carousel"
       >
         <ol className="carousel-indicators">
-          {props.items.map((element, index) => {
+          {items.map((element, index) => {
             return (
               <li
                 key={index}
-                type="button"
                 className={index === 0 ? "active" : ""}
                 data-bs-target="#carouselExampleIndicators"
                 data-bs-slide-to={index}
@@ -25,7 +28,7 @@ const Carousel = (props) => {
           })}
         </ol>
         <div className="carousel-inner">
-          {props.items.map((element, index) => {
+          {items.map((element, index) => {
             return (
               <div
                 key={index}

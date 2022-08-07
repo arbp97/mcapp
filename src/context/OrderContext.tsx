@@ -9,11 +9,11 @@ export const useOrderContext = () => {
   return useContext(OrderContext) as OrderContextType;
 };
 
-type ChildrenProps = {
+type OrderProviderProps = {
   children?: React.ReactNode;
 };
 
-export const OrderProvider = ({ children }: ChildrenProps) => {
+export const OrderProvider = ({ children }: OrderProviderProps) => {
   const [getStorageItem, setStorageItem] = useLocalStorage();
 
   const newOrder = (): OrderType => {

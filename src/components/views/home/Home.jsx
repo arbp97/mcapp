@@ -28,7 +28,7 @@ const Home = () => {
       </div>
       {order && order.confirmed && (
         <McButton
-          content={"Pedido en curso >>>"}
+          text={"Pedido en curso >>>"}
           img={"order-bag-nobg.png"}
           onClick={() => navigate(URLS.ORDERS_CURRENT)}
           fixed

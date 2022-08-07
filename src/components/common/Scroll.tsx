@@ -1,8 +1,12 @@
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router";
 
+type ScrollProps = {
+  children?: React.ReactNode;
+};
+
 // scroll handler used to reset window scrolling on route change
-const Scroll = ({ children }) => {
+const Scroll = ({ children }: ScrollProps) => {
   const location = useLocation();
   useLayoutEffect(() => {
     document.documentElement.scrollTo(0, 0);

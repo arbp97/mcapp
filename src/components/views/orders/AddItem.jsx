@@ -58,7 +58,7 @@ const AddItem = () => {
         </button>
       </div>
       <McButton
-        content={"Agregar al pedido"}
+        text={"Agregar al pedido"}
         onClick={() => handleClick()}
         fixed
       />

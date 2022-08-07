@@ -5,20 +5,25 @@ import { useState } from "react";
 import InfoModal from "../modal/InfoModal";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { STORAGE } from "../../config";
+import { UserType } from "../../@types/user";
 
-const UserForm = (props) => {
+type UserFormProps = {
+  setIsValidated: (isValid: boolean) => void;
+};
+
+const UserForm = ({ setIsValidated }: UserFormProps) => {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
     dni: "",
     phone: "",
-  });
+  } as UserType);
   const [setStorageItem] = useLocalStorage();
 
   const [modalMessage, setModalMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const toggleModal = (message) => {
-    setModalMessage(message ? message : "");
+  const toggleModal = (message?: string) => {
+    setModalMessage(message ?? "");
     setShowModal(!showModal);
   };
 
@@ -45,7 +50,7 @@ const UserForm = (props) => {
     }
 
     setStorageItem(STORAGE.USER, formData);
-    props.setIsValidated(true);
+    setIsValidated(true);
   };
 
   return (
@@ -60,9 +65,9 @@ const UserForm = (props) => {
           label={"Nombre y apellido"}
           width={"100%"}
           value={formData.name}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             // eslint-disable-next-line
-            setFormData({ ...formData, ["name"]: e.target.value });
+            setFormData({ ...formData, ["name"]: e.currentTarget.value });
           }}
         />
         <McInput
@@ -71,9 +76,9 @@ const UserForm = (props) => {
           label={"Correo"}
           width={"100%"}
           value={formData.email}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             // eslint-disable-next-line
-            setFormData({ ...formData, ["email"]: e.target.value });
+            setFormData({ ...formData, ["email"]: e.currentTarget.value });
           }}
         />
         <McInput
@@ -99,9 +104,9 @@ const UserForm = (props) => {
             label={"Documento"}
             width={"70%"}
             value={formData.dni}
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               // eslint-disable-next-line
-              setFormData({ ...formData, ["dni"]: e.target.value });
+              setFormData({ ...formData, ["dni"]: e.currentTarget.value });
             }}
           />
         </div>
@@ -121,9 +126,9 @@ const UserForm = (props) => {
             label={"Teléfono"}
             width={"70%"}
             value={formData.phone}
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               // eslint-disable-next-line
-              setFormData({ ...formData, ["phone"]: e.target.value });
+              setFormData({ ...formData, ["phone"]: e.currentTarget.value });
             }}
           />
         </div>
@@ -134,7 +139,7 @@ const UserForm = (props) => {
         title="Atención"
         message={modalMessage}
       />
-      <McButton content={"Aceptar"} onClick={() => handleValidation()} fixed />
+      <McButton text={"Aceptar"} onClick={() => handleValidation()} fixed />
     </div>
   );
 };

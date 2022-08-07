@@ -1,10 +1,22 @@
 import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
 import { css } from "styled-components";
-import images from "react-payment-inputs/es/images/index.js";
+import cardImages from "react-payment-inputs/images";
 import { useEffect } from "react";
 
+type PaymentInputsProps = {
+  setCardIsValid: (isValid: boolean) => void;
+  setCardNumber: (number: string) => void;
+  setCardDate: (date: string) => void;
+  setCardCVC: (cvc: string) => void;
+};
+
 // card input info
-const PaymentInputs = (props) => {
+const PaymentInputs = ({
+  setCardIsValid,
+  setCardNumber,
+  setCardDate,
+  setCardCVC,
+}: PaymentInputsProps) => {
   const ERROR_MESSAGES = {
     emptyCardNumber: "El número de la tarjeta es inválido",
     invalidCardNumber: "El número de la tarjeta es inválido",
@@ -27,23 +39,21 @@ const PaymentInputs = (props) => {
     errorMessages: ERROR_MESSAGES,
   });
 
-  const setCardIsValid = props.setCardIsValid;
-
   useEffect(() => {
     setCardIsValid(wrapperProps.error ? false : true);
   }, [wrapperProps.error, setCardIsValid]);
 
   // card event handlers
-  const handleCardNumberChange = (e) => {
-    props.setCardNumber(e.target.value);
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCardNumber(e.currentTarget.value);
   };
 
-  const handleCardDateChange = (e) => {
-    props.setCardDate(e.target.value);
+  const handleCardDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCardDate(e.currentTarget.value);
   };
 
-  const handleCardCVCChange = (e) => {
-    props.setCardCVC(e.target.value);
+  const handleCardCVCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCardCVC(e.currentTarget.value);
   };
 
   return (
@@ -55,6 +65,9 @@ const PaymentInputs = (props) => {
             margin-bottom: 1rem;
             width: fit-content;
           `,
+          errored: css`
+            border-color: red;
+          `,
         },
         inputWrapper: {
           base: css`
@@ -63,6 +76,9 @@ const PaymentInputs = (props) => {
           `,
           errored: css`
             border-color: red;
+          `,
+          focused: css`
+            border-color: blue;
           `,
         },
         input: {
@@ -92,7 +108,7 @@ const PaymentInputs = (props) => {
         },
       }}
     >
-      <svg {...getCardImageProps({ images })} />
+      <svg {...getCardImageProps({ images: cardImages.images })} />
       <input {...getCardNumberProps({ onChange: handleCardNumberChange })} />
       <input {...getExpiryDateProps({ onChange: handleCardDateChange })} />
       <input {...getCVCProps({ onChange: handleCardCVCChange })} />
