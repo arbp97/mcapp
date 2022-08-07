@@ -1,7 +1,8 @@
 // discounts & promotions
-const DISCOUNTS = {
-  burgers: {
+const DISCOUNTS = [
+  {
     category: "Para disfrutar en familia",
+    id: "burgers",
     items: [
       {
         title: "2 McCombos Cuarto de Libra",
@@ -25,8 +26,9 @@ const DISCOUNTS = {
       },
     ],
   },
-  dessert: {
+  {
     category: "Para que termines de la mejor manera",
+    id: "dessert",
     items: [
       {
         title: "2 McFlurry Oreo",
@@ -45,8 +47,9 @@ const DISCOUNTS = {
       },
     ],
   },
-  coffee: {
+  {
     category: "Arranca la mañana con fuerza",
+    id: "coffee",
     items: [
       {
         title: "Cappuccino chico + 1 croissant",
@@ -65,6 +68,6 @@ const DISCOUNTS = {
       },
     ],
   },
-};
+];
 
 export default DISCOUNTS;

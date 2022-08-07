@@ -32,7 +32,7 @@ const Coupon = () => {
   // filter coupons into two distinct arrays active / inactive
   // based on current date
   for (const [i, coupon] of coupons.entries()) {
-    coupon.validDate > date
+    new Date(coupon.validDate) > date
       ? activeCoupons.push({ ...coupon, parentIndex: i })
       : inactiveCoupons.push({ ...coupon, parentIndex: i });
   }

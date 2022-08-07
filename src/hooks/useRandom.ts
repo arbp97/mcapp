@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const shuffle = (array: any[]) => {
   let result = array;
   for (let i = result.length - 1; i > 0; i--) {
@@ -63,9 +61,7 @@ const useRandom = (length: number) => {
     string = string + OPTIONS[getRandomInt(OPTIONS.length)];
   }
 
-  const [randomString, setRandomString] = useState(string);
-
-  return [randomString, setRandomString];
+  return string;
 };
 
 export default useRandom;

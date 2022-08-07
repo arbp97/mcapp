@@ -1,19 +1,22 @@
+import "./AddCoupon.css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { IMG_PATH, STORAGE } from "../../../config";
-import "./AddCoupon.css";
-import discounts from "../../../data/discounts";
+import DISCOUNTS from "../../../data/discounts";
 import CouponModal from "../../modal/CouponModal";
 import useRandom from "../../../hooks/useRandom";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 
 const AddCoupon = () => {
-  // coupon data
-  const { category, id } = useParams();
-  const data = discounts[category].items[id];
+  // coupon couponData
+  const { category, id } = useParams<{ category?: string; id?: string }>();
+  const couponData = DISCOUNTS.find(
+    (discountCategory) => discountCategory.id === category
+  )!.items[Number(id)];
+
   const [getStorageItem, setStorageItem] = useLocalStorage();
   let coupons = getStorageItem(STORAGE.COUPONS);
-  const [randomString] = useRandom(9);
+
   // get date 30 days from now
   let date = new Date();
   date.setDate(date.getDate() + 30);
@@ -23,14 +26,16 @@ const AddCoupon = () => {
   // Toggle for Modal
   const toggleModal = () => setModal(!modal);
   const [added, setAdded] = useState(false);
-  const code = randomString.match(/.{1,3}/g).join("-");
+
+  const randomString = useRandom(9);
+  const code = randomString.match(/.{1,3}/g)!.join("-");
 
   const handleAddCoupon = () => {
     if (!added) {
       const coupon = {
-        title: data.title,
-        img: data.img,
-        price: data.price,
+        title: couponData?.title,
+        img: couponData?.img,
+        price: couponData?.price,
         code: code,
         validDate: date,
       };
@@ -49,11 +54,11 @@ const AddCoupon = () => {
 
   return (
     <div className="AddCoupon">
-      <img src={IMG_PATH + data.img} alt="" />
+      <img src={IMG_PATH + couponData?.img} alt="" />
       <p className="warning">
         🇦🇷 Este cupón solo es válido para la República Argentina.
       </p>
-      <p className="title">{data.title}</p>
+      <p className="title">{couponData?.title}</p>
       <button className="button" onClick={handleAddCoupon}>
         <img src={IMG_PATH + "qr-icon.png"} alt="" />
         OBTENER CUPÓN
@@ -61,7 +66,7 @@ const AddCoupon = () => {
       <CouponModal
         modal={modal}
         toggleModal={toggleModal}
-        title={data.title}
+        title={couponData?.title}
         code={code}
         validDate={date}
       />

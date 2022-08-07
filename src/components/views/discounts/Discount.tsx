@@ -14,7 +14,10 @@ const Discount = () => {
           return (
             <div className="slider-container" key={key}>
               <p>{value.category}</p>
-              <Slider items={value.items} link={URLS.DISCOUNTS + key + "/"} />
+              <Slider
+                items={value.items}
+                link={URLS.DISCOUNTS + value.id + "/"}
+              />
             </div>
           );
         })}
