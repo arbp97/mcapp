@@ -1,6 +1,5 @@
 import { useState, useContext, createContext, useEffect } from "react";
 import { OrderContextType, OrderType } from "../@types/order";
-import { ChildrenProps } from "../@types/childrenProps";
 import { STORAGE } from "../config";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -8,6 +7,10 @@ const OrderContext = createContext<OrderContextType | null>(null);
 
 export const useOrderContext = () => {
   return useContext(OrderContext) as OrderContextType;
+};
+
+type ChildrenProps = {
+  children?: React.ReactNode;
 };
 
 export const OrderProvider = ({ children }: ChildrenProps) => {

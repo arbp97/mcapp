@@ -6,6 +6,12 @@ import { CouponListType, CouponType } from "../../../@types/coupon";
 import useFormat from "../../../hooks/useFormat";
 import "./Coupon.css";
 
+// local types
+type CouponAndIndexType = CouponType & {
+  parentIndex: number;
+};
+type CouponAndIndexListType = CouponAndIndexType[];
+
 const Coupon = () => {
   const [nothingToDisplay, setNothingToDisplay] = useState(false);
   const [active, setActive] = useState(true);
@@ -14,16 +20,11 @@ const Coupon = () => {
   const date = new Date();
 
   let coupons = getStorageItem(STORAGE.COUPONS) as CouponListType;
+
   if (!coupons) {
     coupons = [];
     setStorageItem(STORAGE.COUPONS, coupons);
   }
-
-  type CouponAndIndexType = CouponType & {
-    parentIndex: number;
-  };
-
-  type CouponAndIndexListType = CouponAndIndexType[];
 
   let activeCoupons: CouponAndIndexListType = [],
     inactiveCoupons: CouponAndIndexListType = [];
@@ -61,7 +62,7 @@ const Coupon = () => {
     );
   };
 
-  type CouponCardProps = CouponAndIndexType & {
+  type CouponCardProps = Omit<CouponAndIndexType, "title" | "code"> & {
     disabled?: boolean;
   };
 

@@ -2,26 +2,40 @@ import "./InfoModal.css";
 import { Modal, ModalBody, ModalHeader, ModalFooter, Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
-const InfoModal = (props) => {
+type InfoModalProps = {
+  isOpen: boolean;
+  toggle: () => void;
+  title: string;
+  message: string;
+  link: string;
+};
+
+const InfoModal = ({
+  isOpen,
+  toggle,
+  title,
+  message,
+  link,
+}: InfoModalProps) => {
   const navigate = useNavigate();
   return (
-    <Modal isOpen={props.isOpen} toggle={props.toggle} centered={true}>
+    <Modal isOpen={isOpen} toggle={toggle} centered={true}>
       <ModalBody>
-        <ModalHeader>{props.title}</ModalHeader>
-        {props.message}
+        <ModalHeader>{title}</ModalHeader>
+        {message}
         <ModalFooter>
-          {props.link && (
+          {link && (
             <Button
               color="danger"
               onClick={() => {
-                props.toggle();
-                navigate(props.link);
+                toggle();
+                navigate(link);
               }}
             >
               Ver
             </Button>
           )}
-          <Button color="warning" onClick={props.toggle}>
+          <Button color="warning" onClick={toggle}>
             Ok
           </Button>
         </ModalFooter>

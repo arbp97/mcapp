@@ -1,11 +1,11 @@
 // @types.coupon.ts
 
 export type CouponType = {
-  title?: string;
+  title: string;
   img: string;
   price: number;
   validDate: Date;
-  code?: string;
+  code: string;
 };
 
 export type CouponListType = CouponType[];
