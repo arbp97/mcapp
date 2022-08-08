@@ -3,7 +3,7 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
-import MarkerIcon from "./MarkerIcon.js";
+import MarkerIcon from "./MarkerIcon";
 
 // init the empty layerGroup used to control search markers
 const layerGroup = L.layerGroup();

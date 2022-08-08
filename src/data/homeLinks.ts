@@ -10,7 +10,7 @@ const HOME_LINKS = [
     href: "",
   },
   {
-    title: "Pedí, nosotros de lo llevamos",
+    title: "Pedí, nosotros te lo llevamos",
     img: "mcDelivery.png",
     href: "",
   },

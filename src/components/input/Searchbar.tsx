@@ -6,7 +6,7 @@ type SearchbarProps = {
   id: string;
   icontype?: string;
   placeholder?: string;
-  query: string;
+  query?: string;
   setQuery: (e: string) => void;
 };
 
