@@ -1,22 +1,26 @@
 import "./Order.css";
 import { IMG_PATH, URLS } from "../../../config";
+import MARKERS from "../../../data/markers";
 import Map from "../../map/Map";
 import Searchbar from "../../input/Searchbar";
 import McButton from "../../buttons/McButton";
 import InfoModal from "../../modal/InfoModal";
 import { useEffect, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import MARKERS from "../../../data/markers";
 import { useOrderContext } from "../../../context/OrderContext";
 
-const RestaurantList = (props) => {
+type PickupProps = {
+  query: string;
+};
+
+const Pickup = ({ query }: PickupProps) => {
   return (
-    <div className="RestaurantList">
+    <div className="Pickup">
       <div className="marker-list">
         <p className="title">Sucursales</p>
         {Object.entries(MARKERS)
           .filter(([key, value]) =>
-            value.location.toLowerCase().includes(props.query.toLowerCase())
+            value.location.toLowerCase().includes(query.toLowerCase())
           )
           .map(([key, value]) => {
             return (
@@ -44,22 +48,26 @@ const RestaurantList = (props) => {
   );
 };
 
-const Delivery = (props) => {
+type DeliveryProps = {
+  location?: string;
+};
+
+const Delivery = ({ location }: DeliveryProps) => {
   // Delivery Info
   const [showModal, setShowModal] = useState(true);
   const navigate = useNavigate();
-  const shortLocation = props.location.split(",").slice(0, 3).join(", ");
+  const shortLocation = location?.split(",").slice(0, 3).join(", ");
 
   const toggleModal = () => setShowModal(!showModal);
 
   const handleSubmit = () => {
-    if (!props.location || props.location === "") {
+    if (!location || location === "") {
       alert("Seleccione una dirección");
     } else {
       navigate(URLS.ORDERS_ADD, {
         state: {
           name: shortLocation,
-          address: props.location,
+          address: location,
           img: "delivery.png",
           isDelivery: true,
         },
@@ -80,7 +88,11 @@ const Delivery = (props) => {
   );
 };
 
-const Order = (props) => {
+type OrderProps = {
+  toggleOrderModal: () => void;
+};
+
+const Order = ({ toggleOrderModal }: OrderProps) => {
   const [activeMode, setActiveMode] = useState(true);
   const [mapMarkers, setMapMarkers] = useState(MARKERS);
   const [query, setQuery] = useState("");
@@ -96,11 +108,11 @@ const Order = (props) => {
 
   // restrict access when an order is in place
   if (order.confirmed) {
-    props.toggleOrderModal();
+    toggleOrderModal();
     return <Navigate to={URLS.ROOT} replace />;
   }
 
-  const changeMode = (mode) => {
+  const changeMode = (mode: boolean) => {
     setActiveMode(mode);
     !mode ? setMapMarkers([]) : setMapMarkers(MARKERS);
   };
@@ -139,7 +151,7 @@ const Order = (props) => {
             query={query}
             setQuery={setQuery}
           />
-          <RestaurantList query={query} />
+          <Pickup query={query} />
         </>
       )}
       {!activeMode && <Delivery location={location} />}

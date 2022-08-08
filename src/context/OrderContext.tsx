@@ -51,8 +51,12 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
     setOrder(order);
   };
 
+  const removeOrder = () => {
+    setOrder(newOrder());
+  };
+
   return (
-    <OrderContext.Provider value={{ order, updateOrder }}>
+    <OrderContext.Provider value={{ order, updateOrder, removeOrder }}>
       {children}
     </OrderContext.Provider>
   );

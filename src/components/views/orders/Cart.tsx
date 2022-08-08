@@ -1,9 +1,9 @@
-import { useCallback, useEffect } from "react";
+import "./Cart.css";
 import { IMG_PATH, URLS } from "../../../config";
+import McButton from "../../buttons/McButton";
 import useFormat from "../../../hooks/useFormat";
 import { useNavigate } from "react-router-dom";
-import McButton from "../../buttons/McButton";
-import "./Cart.css";
+import { useCallback, useEffect } from "react";
 import { useOrderContext } from "../../../context/OrderContext";
 
 const Cart = () => {
@@ -33,7 +33,7 @@ const Cart = () => {
   }, [order.items]);
 
   // delete selected item from the order
-  const deleteItem = (item) => {
+  const deleteItem = (item: number) => {
     const list = order.items.filter((element, index) => {
       return index !== item;
     });

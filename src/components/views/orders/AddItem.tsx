@@ -3,32 +3,35 @@ import { IMG_PATH } from "../../../config";
 import { useNavigate, useParams } from "react-router-dom";
 import McButton from "../../buttons/McButton";
 import { useState } from "react";
-import combos from "../../../data/combos";
+import COMBOS from "../../../data/combos";
 import { useOrderContext } from "../../../context/OrderContext";
 import useFormat from "../../../hooks/useFormat";
+import { OrderItemType } from "../../../@types/order";
 
 const AddItem = () => {
+  const { category, id } = useParams<{ category?: string; id?: string }>();
+  const itemData = COMBOS.find((cat) => cat.category === category)!.items[
+    Number(id)
+  ];
   const navigate = useNavigate();
-  const { category, id } = useParams();
-  const data = combos[category].items[id];
   const [count, setCount] = useState(1);
   const { order, updateOrder } = useOrderContext();
   const [currencyFormatter] = useFormat();
 
   // add selected qty of this item and adds them to the order
   const handleClick = () => {
-    let existingItem = order.items.find((item) => item.name === data.title);
+    let existingItem = order.items.find((item) => item.name === itemData.title);
     // if the item exists in the current order,
     //just add the count to it to avoid duplications
     if (existingItem) {
       existingItem.quantity += count;
       updateOrder(order);
     } else {
-      const newItem = {
+      const newItem: OrderItemType = {
         quantity: count,
-        name: data.title,
-        img: data.img,
-        pricePerUnit: data.price,
+        name: itemData.title,
+        img: itemData.img,
+        pricePerUnit: itemData.price,
       };
 
       order.items.push(newItem);
@@ -45,9 +48,9 @@ const AddItem = () => {
 
   return (
     <div className="AddItem">
-      <p className="title">{data.title}</p>
-      <img src={IMG_PATH + data.img} alt="" />
-      <p className="price">{currencyFormatter().format(data.price)}</p>
+      <p className="title">{itemData?.title}</p>
+      <img src={IMG_PATH + itemData?.img} alt="" />
+      <p className="price">{currencyFormatter().format(itemData.price)}</p>
       <div className="counter-container">
         <button onClick={() => setCount(count === 1 ? count : count - 1)}>
           <img src={IMG_PATH + "minus.png"} alt="" />

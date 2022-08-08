@@ -2,25 +2,37 @@ import "./Checkout.css";
 import { URLS, STORAGE, PAYMENT_TYPE } from "../../../config";
 import UserForm from "../../form/UserForm";
 import McButton from "../../buttons/McButton";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Form, FormGroup, Label, Input } from "reactstrap";
-import PaymentInputs from "../../form/PaymentInputs";
 import InfoModal from "../../modal/InfoModal";
+import PaymentInputs from "../../form/PaymentInputs";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 import useLocalStorage from "../../../hooks/useLocalStorage";
 import useFormat from "../../../hooks/useFormat";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useOrderContext } from "../../../context/OrderContext";
+import { OrderType } from "../../../@types/order";
 
-const Detail = (props) => {
-  const addressTitle = props.order.isDelivery
+type CardDetailsType = {
+  number: string;
+  date: string;
+  cvc: string;
+};
+
+type DetailProps = {
+  order: OrderType;
+  confirmOrder: (payMethod: string, details: CardDetailsType) => void;
+};
+
+const Detail = ({ order, confirmOrder }: DetailProps) => {
+  const addressTitle = order.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
   const [selectedMethod, setSelectedMethod] = useState(PAYMENT_TYPE.CASH);
   const [currencyFormatter] = useFormat();
   // card information
-  const [cardNumber, setCardNumber] = useState();
-  const [cardDate, setCardDate] = useState();
-  const [cardCVC, setCardCVC] = useState();
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardDate, setCardDate] = useState("");
+  const [cardCVC, setCardCVC] = useState("");
   // card validation check
   const [cardIsValid, setCardIsValid] = useState(false);
 
@@ -29,7 +41,7 @@ const Detail = (props) => {
   const toggleModal = () => setShowModal(!showModal);
   const [showModal, setShowModal] = useState(false);
 
-  const handleCardWarning = (message) => {
+  const handleCardWarning = (message: string) => {
     setModalMessage(message);
     toggleModal();
   };
@@ -44,13 +56,13 @@ const Detail = (props) => {
           <h3>
             <strong>{addressTitle}</strong>
           </h3>
-          <h3>{props.order.address}</h3>
+          <h3>{order.address}</h3>
         </div>
         <div className="items">
           <h3>
             <strong>Resumen</strong>
           </h3>
-          {Object.entries(props.order.items).map(([key, value]) => {
+          {Object.entries(order.items).map(([key, value]) => {
             return (
               <div className="item" key={key}>
                 <p className="name">{value.name}</p>
@@ -107,7 +119,7 @@ const Detail = (props) => {
       </div>
       <div className="detail-total">
         <p>Total</p>
-        <p>{currencyFormatter().format(props.order.total)}</p>
+        <p>{currencyFormatter().format(order.total)}</p>
       </div>
       <McButton
         text={"Enviar pedido"}
@@ -115,10 +127,10 @@ const Detail = (props) => {
           if (selectedMethod === PAYMENT_TYPE.DEBIT && !cardIsValid) {
             handleCardWarning("La información de la tarjeta es inválida");
           } else {
-            props.confirmOrder(selectedMethod, {
-              cardNumber,
-              cardDate,
-              cardCVC,
+            confirmOrder(selectedMethod, {
+              number: cardNumber,
+              date: cardDate,
+              cvc: cardCVC,
             });
           }
         }}
@@ -150,10 +162,10 @@ const Checkout = () => {
     // eslint-disable-next-line
   }, [order]);
 
-  const confirmOrder = (payMethod, cardInfo) => {
+  const confirmOrder = (payMethod: string, details: CardDetailsType) => {
     // eslint-disable-next-line
     updateOrder({ ...order, ["confirmed"]: true, ["paymentType"]: payMethod });
-
+    console.log(details);
     navigate(URLS.ROOT);
   };
 

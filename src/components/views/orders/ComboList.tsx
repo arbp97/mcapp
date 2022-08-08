@@ -1,14 +1,15 @@
 import "./ComboList.css";
 import { IMG_PATH, URLS } from "../../../config";
-import { useLocation, NavLink } from "react-router-dom";
-import Slider from "../../slider/Slider";
-import { useEffect } from "react";
 import COMBOS from "../../../data/combos";
+import Slider from "../../slider/Slider";
+import { useLocation, NavLink } from "react-router-dom";
+import { useEffect } from "react";
 import { useOrderContext } from "../../../context/OrderContext";
+import { OrderAddressDetailsType } from "../../../@types/order";
 
 const ComboList = () => {
   const location = useLocation();
-  const data = location.state;
+  const orderAddressDetails = location.state as OrderAddressDetailsType;
   const { order, updateOrder } = useOrderContext();
 
   useEffect(() => {
@@ -16,20 +17,20 @@ const ComboList = () => {
     updateOrder({
       ...order,
       // eslint-disable-next-line
-      ["address"]: data.address,
+      ["address"]: orderAddressDetails.address,
       // eslint-disable-next-line
-      ["isDelivery"]: data.isDelivery,
+      ["isDelivery"]: orderAddressDetails.isDelivery,
     });
     // eslint-disable-next-line
-  }, [data]);
+  }, [orderAddressDetails]);
 
   return (
     <div className="ComboList">
       <div className="restaurant">
-        <img src={IMG_PATH + data.img} alt="" />
+        <img src={IMG_PATH + orderAddressDetails.img} alt="" />
         <div className="address">
-          <p>{data.name}</p>
-          <p>{data.address}</p>
+          <p>{orderAddressDetails.name}</p>
+          <p>{orderAddressDetails.address}</p>
         </div>
       </div>
       <div className="ComboList-slides">

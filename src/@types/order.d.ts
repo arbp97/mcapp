@@ -15,7 +15,15 @@ export type OrderItemType = {
   pricePerUnit: number;
 };
 
+export type OrderAddressDetailsType = {
+  name: string;
+  address: string;
+  img: string;
+  isDelivery: boolean;
+};
+
 export type OrderContextType = {
-  order: Order;
-  updateOrder: (order: Order) => void;
+  order: OrderType;
+  updateOrder: (order: OrderType) => void;
+  removeOrder: () => void;
 };

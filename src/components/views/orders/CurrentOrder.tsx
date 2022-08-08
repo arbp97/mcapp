@@ -9,7 +9,7 @@ import { useOrderContext } from "../../../context/OrderContext";
 
 const CurrentOrder = () => {
   const navigate = useNavigate();
-  const { order, updateOrder } = useOrderContext();
+  const { order, removeOrder } = useOrderContext();
   const [currencyFormatter] = useFormat();
 
   // restrict access when an order is in place
@@ -18,7 +18,7 @@ const CurrentOrder = () => {
   }
 
   const cancelOrder = () => {
-    updateOrder(null);
+    removeOrder();
     navigate(URLS.ROOT);
   };
 

@@ -1,6 +1,7 @@
-const COMBOS = {
-  bacon: {
+const COMBOS = [
+  {
     category: "Con Bacon todo es mejor",
+    id: "bacon",
     items: [
       {
         title: "McCombo Cuadruple Bacon Grande",
@@ -44,8 +45,9 @@ const COMBOS = {
       },
     ],
   },
-  classic: {
+  {
     category: "Los clásicos",
+    id: "classic",
     items: [
       {
         title: "McCombo BIG MAC Grande",
@@ -99,8 +101,9 @@ const COMBOS = {
       },
     ],
   },
-  tasty: {
+  {
     category: "Ya probaste la Tasty?",
+    id: "tasty",
     items: [
       {
         title: "McCombo Doble Tasty Grande",
@@ -139,8 +142,9 @@ const COMBOS = {
       },
     ],
   },
-  bbq: {
+  {
     category: "Ponele onda con BBQ",
+    id: "bbq",
     items: [
       {
         title: "McCombo Pequeno Doble BBQ",
@@ -159,8 +163,9 @@ const COMBOS = {
       },
     ],
   },
-  mayo: {
+  {
     category: "Doble mayonesa!",
+    id: "mayo",
     items: [
       {
         title: "McCombo Grande Doble Mayo",
@@ -179,8 +184,9 @@ const COMBOS = {
       },
     ],
   },
-  nuggets: {
+  {
     category: "Nuggets!",
+    id: "nuggets",
     items: [
       {
         title: "McCombo Nuggets x10 Grande",
@@ -204,8 +210,9 @@ const COMBOS = {
       },
     ],
   },
-  chicken: {
+  {
     category: "El mejor pollo",
+    id: "chicken",
     items: [
       {
         title: "McCombo Mc Pollo Grande",
@@ -219,6 +226,6 @@ const COMBOS = {
       },
     ],
   },
-};
+];
 
 export default COMBOS;
