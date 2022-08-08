@@ -67,7 +67,7 @@ const UserForm = ({ setIsValidated }: UserFormProps) => {
           value={formData.name}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             // eslint-disable-next-line
-            setFormData({ ...formData, ["name"]: e.currentTarget.value });
+            setFormData({ ...formData, ["name"]: e.target.value });
           }}
         />
         <McInput
@@ -78,7 +78,7 @@ const UserForm = ({ setIsValidated }: UserFormProps) => {
           value={formData.email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             // eslint-disable-next-line
-            setFormData({ ...formData, ["email"]: e.currentTarget.value });
+            setFormData({ ...formData, ["email"]: e.target.value });
           }}
         />
         <McInput
@@ -106,7 +106,7 @@ const UserForm = ({ setIsValidated }: UserFormProps) => {
             value={formData.dni}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               // eslint-disable-next-line
-              setFormData({ ...formData, ["dni"]: e.currentTarget.value });
+              setFormData({ ...formData, ["dni"]: e.target.value });
             }}
           />
         </div>
@@ -128,7 +128,7 @@ const UserForm = ({ setIsValidated }: UserFormProps) => {
             value={formData.phone}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               // eslint-disable-next-line
-              setFormData({ ...formData, ["phone"]: e.currentTarget.value });
+              setFormData({ ...formData, ["phone"]: e.target.value });
             }}
           />
         </div>
