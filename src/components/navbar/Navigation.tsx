@@ -2,7 +2,14 @@ import "./Navigation.css";
 import { IMG_PATH, URLS } from "../../config";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import NAV_BUTTONS from "../../data/navButtons";
+
+const NAV_BUTTONS = [
+  { text: "Home", img: "logo-black.png", path: URLS.ROOT },
+  { text: "Pedidos", img: "fries.png", path: URLS.ORDERS },
+  { text: "Ofertas", img: "ticket.png", path: URLS.DISCOUNTS },
+  { text: "Cupones", img: "coupon.png", path: URLS.COUPONS },
+  { text: "Menú", img: "more.png", path: URLS.CATALOGUE },
+];
 
 const Navigation = () => {
   // default view is home
@@ -11,7 +18,7 @@ const Navigation = () => {
 
   useEffect(() => {
     // returns the root section of a route, as route
-    const toRoot = (route) => {
+    const toRoot = (route: string) => {
       if (route === URLS.ROOT) return URLS.ROOT;
 
       for (const button of NAV_BUTTONS) {
@@ -20,7 +27,7 @@ const Navigation = () => {
       }
     };
 
-    setActive(toRoot(location.pathname));
+    setActive(toRoot(location.pathname)!);
     // eslint-disable-next-line
   }, [location]);
 
