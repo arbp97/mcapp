@@ -34,7 +34,7 @@ const AddCoupon = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (!couponData) return <Navigate to={URLS.COUPONS} replace />;
+  if (!couponData) return <Navigate to={URLS.DISCOUNTS} replace />;
 
   const handleAddCoupon = () => {
     if (!added) {
