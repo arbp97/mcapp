@@ -24,7 +24,7 @@ type DetailProps = {
 };
 
 const Detail = ({ order, confirmOrder }: DetailProps) => {
-  const addressTitle = order.isDelivery
+  const addressTitle = order.details.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
   const [selectedMethod, setSelectedMethod] = useState(PAYMENT_TYPE.CASH);
@@ -56,7 +56,7 @@ const Detail = ({ order, confirmOrder }: DetailProps) => {
           <h3>
             <strong>{addressTitle}</strong>
           </h3>
-          <h3>{order.address}</h3>
+          <h3>{order.details.address}</h3>
         </div>
         <div className="items">
           <h3>

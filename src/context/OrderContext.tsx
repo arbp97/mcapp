@@ -17,12 +17,16 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
 
   const getNewOrder = (): OrderType => {
     return {
-      address: "",
       items: [],
+      details: {
+        name: "",
+        address: "",
+        img: "",
+        isDelivery: false,
+      },
       total: 0,
       confirmed: false,
       paymentType: "",
-      isDelivery: false,
     };
   };
 

@@ -2,35 +2,19 @@ import "./ComboList.css";
 import { IMG_PATH, URLS } from "../../../config";
 import COMBOS from "../../../data/combos";
 import Slider from "../../slider/Slider";
-import { useLocation, NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useOrderContext } from "../../../context/OrderContext";
-import { OrderAddressDetailsType } from "../../../@types/order";
 
 const ComboList = () => {
-  const location = useLocation();
-  const orderAddressDetails = location.state as OrderAddressDetailsType;
-  const { order, updateOrder } = useOrderContext();
-
-  useEffect(() => {
-    // update order with current location info
-    updateOrder({
-      ...order,
-      // eslint-disable-next-line
-      ["address"]: orderAddressDetails.address,
-      // eslint-disable-next-line
-      ["isDelivery"]: orderAddressDetails.isDelivery,
-    });
-    // eslint-disable-next-line
-  }, [orderAddressDetails]);
+  const { order } = useOrderContext();
 
   return (
     <div className="ComboList">
       <div className="restaurant">
-        <img src={IMG_PATH + orderAddressDetails.img} alt="" />
+        <img src={IMG_PATH + order.details.img} alt="" />
         <div className="address">
-          <p>{orderAddressDetails.name}</p>
-          <p>{orderAddressDetails.address}</p>
+          <p>{order.details.name}</p>
+          <p>{order.details.address}</p>
         </div>
       </div>
       <div className="ComboList-slides">

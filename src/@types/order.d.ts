@@ -1,11 +1,10 @@
 // @types.order.ts
 export type OrderType = {
-  address: string;
+  details: OrderAddressDetailsType;
   items: OrderItemType[];
   total: number;
   confirmed: boolean;
   paymentType: string;
-  isDelivery: boolean;
 };
 
 export type OrderItemType = {

@@ -22,7 +22,7 @@ const CurrentOrder = () => {
     navigate(URLS.ROOT);
   };
 
-  const addressTitle = order.isDelivery
+  const addressTitle = order.details.isDelivery
     ? "Domicilio"
     : "Dirección de retiro en el local";
 
@@ -36,7 +36,7 @@ const CurrentOrder = () => {
         <h3>
           <strong>{addressTitle}</strong>
         </h3>
-        <h3>{order.address.split(",").slice(0, 3).join(", ")}</h3>
+        <h3>{order.details.address.split(",").slice(0, 3).join(", ")}</h3>
       </div>
       <QRCode
         value="https://mcdapp.vercel.app"

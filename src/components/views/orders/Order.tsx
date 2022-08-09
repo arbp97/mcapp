@@ -11,9 +11,15 @@ import { useOrderContext } from "../../../context/OrderContext";
 
 type PickupProps = {
   query: string;
+  handleStoreSelect: (
+    title: string,
+    location: string,
+    img: string,
+    isDelivery: boolean
+  ) => void;
 };
 
-const Pickup = ({ query }: PickupProps) => {
+const Pickup = ({ query, handleStoreSelect }: PickupProps) => {
   const filteredMarkers = useMemo(() => {
     return MARKERS.filter((value) =>
       value.location.toLowerCase().includes(query.toLowerCase())
@@ -30,12 +36,9 @@ const Pickup = ({ query }: PickupProps) => {
               key={index}
               className={"marker"}
               to={URLS.ORDERS_ADD}
-              state={{
-                name: value.title,
-                address: value.location,
-                img: value.img,
-                isDelivery: false,
-              }}
+              onClick={() =>
+                handleStoreSelect(value.title, value.location, value.img, false)
+              }
             >
               <img src={IMG_PATH + value.img} alt="" />
               <div className="marker-info">
@@ -52,9 +55,15 @@ const Pickup = ({ query }: PickupProps) => {
 
 type DeliveryProps = {
   location?: string;
+  handleStoreSelect: (
+    title: string,
+    location: string,
+    img: string,
+    isDelivery: boolean
+  ) => void;
 };
 
-const Delivery = ({ location }: DeliveryProps) => {
+const Delivery = ({ location, handleStoreSelect }: DeliveryProps) => {
   // Delivery Info
   const [showModal, setShowModal] = useState(true);
   const navigate = useNavigate();
@@ -67,14 +76,10 @@ const Delivery = ({ location }: DeliveryProps) => {
       alert("Seleccione una dirección");
       return;
     }
-    navigate(URLS.ORDERS_ADD, {
-      state: {
-        name: shortLocation,
-        address: location,
-        img: "delivery.png",
-        isDelivery: true,
-      },
-    });
+
+    handleStoreSelect(shortLocation!, location, "delivery.img", true);
+
+    navigate(URLS.ORDERS_ADD);
   };
 
   return (
@@ -99,7 +104,7 @@ const Order = ({ toggleOrderModal }: OrderProps) => {
   const [mapMarkers, setMapMarkers] = useState(MARKERS);
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
-  const { order } = useOrderContext();
+  const { order, updateOrder } = useOrderContext();
 
   // set searchbar query from the selected marker
   useEffect(() => {
@@ -115,6 +120,24 @@ const Order = ({ toggleOrderModal }: OrderProps) => {
   const changeMode = (mode: boolean) => {
     setActiveMode(mode);
     !mode ? setMapMarkers([]) : setMapMarkers(MARKERS);
+  };
+
+  const handleStoreSelect = (
+    title: string,
+    location: string,
+    img: string,
+    isDelivery: boolean
+  ) => {
+    updateOrder({
+      ...order,
+      // eslint-disable-next-line
+      ["details"]: {
+        name: title,
+        address: location,
+        img: img,
+        isDelivery: isDelivery,
+      },
+    });
   };
 
   return (
@@ -151,10 +174,12 @@ const Order = ({ toggleOrderModal }: OrderProps) => {
             query={query}
             setQuery={setQuery}
           />
-          <Pickup query={query} />
+          <Pickup query={query} handleStoreSelect={handleStoreSelect} />
         </>
       )}
-      {!activeMode && <Delivery location={location} />}
+      {!activeMode && (
+        <Delivery location={location} handleStoreSelect={handleStoreSelect} />
+      )}
     </div>
   );
 };
