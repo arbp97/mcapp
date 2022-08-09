@@ -1,13 +1,16 @@
 import "./ProductList.css";
 import Product from "../../product/Product";
 import PRODUCTS from "../../../data/products";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import { URLS } from "../../../config";
 
 const ProductList = () => {
   const { category } = useParams<{ category?: string }>();
   const categoryData = PRODUCTS.find(
     (productCategory) => productCategory.id === category
   );
+
+  if (!categoryData) return <Navigate to={URLS.CATALOGUE} replace />;
 
   return (
     <div className="ProductList">

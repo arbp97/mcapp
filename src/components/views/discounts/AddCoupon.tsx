@@ -1,7 +1,7 @@
 import "./AddCoupon.css";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useMemo, useState } from "react";
-import { IMG_PATH, STORAGE } from "../../../config";
+import { IMG_PATH, STORAGE, URLS } from "../../../config";
 import DISCOUNTS from "../../../data/discounts";
 import CouponModal from "../../modal/CouponModal";
 import useRandom from "../../../hooks/useRandom";
@@ -13,7 +13,7 @@ const AddCoupon = () => {
   const { category, id } = useParams<{ category?: string; id?: string }>();
   const couponData = DISCOUNTS.find(
     (discountCategory) => discountCategory.id === category
-  )!.items[Number(id)];
+  )?.items[Number(id)];
 
   const { getStorageItem, setStorageItem } = useLocalStorage();
   let coupons = getStorageItem(STORAGE.COUPONS) as CouponType[];
@@ -33,6 +33,8 @@ const AddCoupon = () => {
     return randomString.match(/.{1,3}/g)!.join("-");
     // eslint-disable-next-line
   }, []);
+
+  if (!couponData) return <Navigate to={URLS.COUPONS} replace />;
 
   const handleAddCoupon = () => {
     if (!added) {
