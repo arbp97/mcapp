@@ -6,8 +6,8 @@ import { MarkerType } from "../../@types/marker";
 
 type MapProps = {
   markers: MarkerType[];
-  setLocation: (location: string) => void;
   locateCurrent: boolean;
+  setLocation: (location: string) => void;
 };
 
 const Map = ({ markers, setLocation, locateCurrent }: MapProps) => {

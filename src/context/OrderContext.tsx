@@ -13,7 +13,7 @@ type OrderProviderProps = {
 };
 
 export const OrderProvider = ({ children }: OrderProviderProps) => {
-  const [getStorageItem, setStorageItem] = useLocalStorage();
+  const { getStorageItem, setStorageItem } = useLocalStorage();
 
   const getNewOrder = (): OrderType => {
     return {
@@ -42,6 +42,7 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
   useEffect(() => {
     if (!order) setOrder(getNewOrder());
     setStorageItem(STORAGE.ORDER, order);
+    // eslint-disable-next-line
   }, [order]);
 
   const updateOrder = (order: OrderType) => setOrder(order);

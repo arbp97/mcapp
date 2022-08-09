@@ -14,7 +14,7 @@ const useLocalStorage = () => {
 
   const removeStorageItem = (key: string): void => localStorage.removeItem(key);
 
-  return [getStorageItem, setStorageItem, removeStorageItem] as const;
+  return { getStorageItem, setStorageItem, removeStorageItem };
 };
 
 export default useLocalStorage;

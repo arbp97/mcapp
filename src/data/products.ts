@@ -1,5 +1,7 @@
+import { ProductCategoryType } from "../@types/product";
+
 // categories & products
-const PRODUCTS = [
+const PRODUCTS: ProductCategoryType[] = [
   {
     category: "Hamburguesas",
     id: "burgers",

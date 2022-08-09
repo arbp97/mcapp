@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IMG_PATH, LOCALE, STORAGE, URLS } from "../../../config";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import { CouponListType, CouponType } from "../../../@types/coupon";
+import { CouponType } from "../../../@types/coupon";
 import useFormat from "../../../hooks/useFormat";
 import "./Coupon.css";
 
@@ -10,27 +10,24 @@ import "./Coupon.css";
 type CouponAndIndexType = CouponType & {
   parentIndex: number;
 };
-type CouponAndIndexListType = CouponAndIndexType[];
 
 const Coupon = () => {
   const [nothingToDisplay, setNothingToDisplay] = useState(false);
   const [active, setActive] = useState(true);
-  const [getStorageItem, setStorageItem] = useLocalStorage();
+  const { getStorageItem, setStorageItem } = useLocalStorage();
   const [currencyFormatter] = useFormat();
   const date = new Date();
 
-  let coupons = getStorageItem(STORAGE.COUPONS) as CouponListType;
+  let coupons = getStorageItem(STORAGE.COUPONS) as CouponType[];
 
   if (!coupons) {
     coupons = [];
     setStorageItem(STORAGE.COUPONS, coupons);
   }
 
-  let activeCoupons: CouponAndIndexListType = [],
-    inactiveCoupons: CouponAndIndexListType = [];
+  let activeCoupons: CouponAndIndexType[] = [],
+    inactiveCoupons: CouponAndIndexType[] = [];
 
-  // filter coupons into two distinct arrays active / inactive
-  // based on current date
   for (const [i, coupon] of coupons.entries()) {
     new Date(coupon.validDate) > date
       ? activeCoupons.push({ ...coupon, parentIndex: i })
@@ -49,7 +46,8 @@ const Coupon = () => {
         ? setNothingToDisplay(true)
         : setNothingToDisplay(false);
     }
-  }, [active, activeCoupons.length, inactiveCoupons.length]);
+    // eslint-disable-next-line
+  }, [active]);
 
   const DefaultView = () => {
     return (

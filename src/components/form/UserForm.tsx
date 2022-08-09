@@ -18,7 +18,7 @@ const UserForm = ({ setIsValidated }: UserFormProps) => {
     dni: "",
     phone: "",
   } as UserType);
-  const [setStorageItem] = useLocalStorage();
+  const { setStorageItem } = useLocalStorage();
 
   const [modalMessage, setModalMessage] = useState("");
   const [showModal, setShowModal] = useState(false);

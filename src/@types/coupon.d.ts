@@ -7,5 +7,3 @@ export type CouponType = {
   validDate: Date;
   code: string;
 };
-
-export type CouponListType = CouponType[];

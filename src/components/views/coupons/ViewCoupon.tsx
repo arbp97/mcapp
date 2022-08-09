@@ -4,13 +4,13 @@ import { IMG_PATH, STORAGE, URLS } from "../../../config";
 import "./ViewCoupon.css";
 import CouponModal from "../../modal/CouponModal";
 import useLocalStorage from "../../../hooks/useLocalStorage";
-import { CouponListType } from "../../../@types/coupon";
+import { CouponType } from "../../../@types/coupon";
 
 const ViewCoupon = () => {
   // coupon data
   const { id } = useParams<{ id?: string }>();
-  const [getStorageItem] = useLocalStorage();
-  const coupons = getStorageItem(STORAGE.COUPONS) as CouponListType;
+  const { getStorageItem } = useLocalStorage();
+  const coupons = getStorageItem(STORAGE.COUPONS) as CouponType[];
   const data = coupons[Number(id)];
   const date = new Date();
 

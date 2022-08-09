@@ -101,9 +101,7 @@ const Order = ({ toggleOrderModal }: OrderProps) => {
 
   // set searchbar query from the selected marker
   useEffect(() => {
-    if (activeMode) {
-      setQuery(location);
-    }
+    if (activeMode) setQuery(location);
   }, [location, activeMode]);
 
   // restrict access when an order is in place

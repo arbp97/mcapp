@@ -1,11 +1,12 @@
 import "./AddCoupon.css";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { IMG_PATH, STORAGE } from "../../../config";
 import DISCOUNTS from "../../../data/discounts";
 import CouponModal from "../../modal/CouponModal";
 import useRandom from "../../../hooks/useRandom";
 import useLocalStorage from "../../../hooks/useLocalStorage";
+import { CouponType } from "../../../@types/coupon";
 
 const AddCoupon = () => {
   // coupon couponData
@@ -14,8 +15,8 @@ const AddCoupon = () => {
     (discountCategory) => discountCategory.id === category
   )!.items[Number(id)];
 
-  const [getStorageItem, setStorageItem] = useLocalStorage();
-  let coupons = getStorageItem(STORAGE.COUPONS);
+  const { getStorageItem, setStorageItem } = useLocalStorage();
+  let coupons = getStorageItem(STORAGE.COUPONS) as CouponType[];
 
   // get date 30 days from now
   let date = new Date();
@@ -28,7 +29,10 @@ const AddCoupon = () => {
   const [added, setAdded] = useState(false);
 
   const randomString = useRandom(9);
-  const code = randomString.match(/.{1,3}/g)!.join("-");
+  const code = useMemo(() => {
+    return randomString.match(/.{1,3}/g)!.join("-");
+    // eslint-disable-next-line
+  }, []);
 
   const handleAddCoupon = () => {
     if (!added) {

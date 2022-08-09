@@ -151,7 +151,7 @@ const Checkout = () => {
   // user validation check
   const [isValidated, setIsValidated] = useState(false);
   const { order, updateOrder } = useOrderContext();
-  const [getStorageItem] = useLocalStorage();
+  const { getStorageItem } = useLocalStorage();
 
   useEffect(() => {
     // exit if there is no order in the state
