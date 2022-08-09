@@ -1,13 +1,12 @@
+import { STORAGE } from "../config";
 import { useState, useContext, createContext, useEffect } from "react";
 import { OrderContextType, OrderType } from "../@types/order";
-import { STORAGE } from "../config";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const OrderContext = createContext<OrderContextType | null>(null);
 
-export const useOrderContext = () => {
-  return useContext(OrderContext) as OrderContextType;
-};
+export const useOrderContext = () =>
+  useContext(OrderContext) as OrderContextType;
 
 type OrderProviderProps = {
   children?: React.ReactNode;
@@ -16,7 +15,7 @@ type OrderProviderProps = {
 export const OrderProvider = ({ children }: OrderProviderProps) => {
   const [getStorageItem, setStorageItem] = useLocalStorage();
 
-  const newOrder = (): OrderType => {
+  const getNewOrder = (): OrderType => {
     return {
       address: "",
       items: [],
@@ -31,32 +30,30 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
     const order = getStorageItem(STORAGE.ORDER) as OrderType;
 
     if (!order) {
-      setStorageItem(STORAGE.ORDER, newOrder());
-      return getStorageItem(STORAGE.ORDER);
-    } else {
-      return order;
+      setStorageItem(STORAGE.ORDER, getNewOrder());
+      return getStorageItem(STORAGE.ORDER) as OrderType;
     }
+
+    return order;
   };
 
   const [order, setOrder] = useState(getInitialState);
 
   useEffect(() => {
-    if (!order) {
-      setOrder(newOrder());
-    }
+    if (!order) setOrder(getNewOrder());
     setStorageItem(STORAGE.ORDER, order);
-  }, [order, setStorageItem]);
+  }, [order]);
 
   const updateOrder = (order: OrderType) => {
     setOrder(order);
   };
 
-  const removeOrder = () => {
-    setOrder(newOrder());
+  const resetOrder = () => {
+    setOrder(getNewOrder());
   };
 
   return (
-    <OrderContext.Provider value={{ order, updateOrder, removeOrder }}>
+    <OrderContext.Provider value={{ order, updateOrder, resetOrder }}>
       {children}
     </OrderContext.Provider>
   );

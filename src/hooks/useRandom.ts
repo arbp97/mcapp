@@ -1,4 +1,6 @@
-const shuffle = (array: any[]) => {
+import { DIGITS } from "../config";
+
+const shuffleArray = (array: string[]) => {
   let result = array;
   for (let i = result.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
@@ -10,56 +12,15 @@ const shuffle = (array: any[]) => {
   return result;
 };
 
-const getRandomInt = (max: number) => {
-  return Math.floor(Math.random() * max);
-};
-
-const OPTIONS = shuffle([
-  0,
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  "Q",
-  "W",
-  "E",
-  "R",
-  "T",
-  "Y",
-  "U",
-  "I",
-  "O",
-  "P",
-  "A",
-  "S",
-  "D",
-  "F",
-  "G",
-  "H",
-  "J",
-  "K",
-  "L",
-  "Z",
-  "X",
-  "C",
-  "V",
-  "B",
-  "N",
-  "M",
-]);
+const getRandomInt = (max: number) => Math.floor(Math.random() * max);
 
 // generate a random alphanumeric string of n length
 const useRandom = (length: number) => {
+  const digitsShuffled = shuffleArray(DIGITS);
   let string = "";
 
-  for (let i = 0; i < length; i++) {
-    string = string + OPTIONS[getRandomInt(OPTIONS.length)];
-  }
+  for (let i = 0; i < length; i++)
+    string = string + digitsShuffled[getRandomInt(DIGITS.length)];
 
   return string;
 };

@@ -25,5 +25,5 @@ export type OrderAddressDetailsType = {
 export type OrderContextType = {
   order: OrderType;
   updateOrder: (order: OrderType) => void;
-  removeOrder: () => void;
+  resetOrder: () => void;
 };

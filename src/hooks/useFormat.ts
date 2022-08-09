@@ -11,7 +11,7 @@ const useFormat = () => {
     return new Intl.DateTimeFormat(LOCALE);
   };
 
-  return [currencyFormatter, dateFormatter];
+  return [currencyFormatter, dateFormatter] as const;
 };
 
 export default useFormat;
