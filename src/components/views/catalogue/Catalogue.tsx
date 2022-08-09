@@ -6,11 +6,11 @@ import { NavLink } from "react-router-dom";
 const Catalogue = () => {
   return (
     <div className="Catalogue">
-      {Object.entries(PRODUCTS).map(([key, value]) => {
+      {PRODUCTS.map((value, index) => {
         // map all categories as links
         return (
           <NavLink
-            key={key}
+            key={index}
             className={"category-link"}
             to={URLS.CATALOGUE + value.id}
           >

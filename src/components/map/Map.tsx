@@ -21,10 +21,10 @@ const Map = ({ markers, setLocation, locateCurrent }: MapProps) => {
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {Object.entries(markers).map(([key, value]) => {
+      {markers.map((value, index) => {
         return (
           <Marker
-            key={key}
+            key={index}
             position={{
               lat: value.lat,
               lng: value.lng,

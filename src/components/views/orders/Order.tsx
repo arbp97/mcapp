@@ -5,7 +5,7 @@ import Map from "../../map/Map";
 import Searchbar from "../../input/Searchbar";
 import McButton from "../../buttons/McButton";
 import InfoModal from "../../modal/InfoModal";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useOrderContext } from "../../../context/OrderContext";
 
@@ -14,35 +14,37 @@ type PickupProps = {
 };
 
 const Pickup = ({ query }: PickupProps) => {
+  const filteredMarkers = useMemo(() => {
+    return MARKERS.filter((value) =>
+      value.location.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [query]);
+
   return (
     <div className="Pickup">
       <div className="marker-list">
         <p className="title">Sucursales</p>
-        {Object.entries(MARKERS)
-          .filter(([key, value]) =>
-            value.location.toLowerCase().includes(query.toLowerCase())
-          )
-          .map(([key, value]) => {
-            return (
-              <NavLink
-                key={key}
-                className={"marker"}
-                to={URLS.ORDERS_ADD}
-                state={{
-                  name: value.title,
-                  address: value.location,
-                  img: value.img,
-                  isDelivery: false,
-                }}
-              >
-                <img src={IMG_PATH + value.img} alt="" />
-                <div className="marker-info">
-                  <h6 className="title">{value.title} </h6>
-                  <h6 className="location">{value.location}</h6>
-                </div>
-              </NavLink>
-            );
-          })}
+        {filteredMarkers.map((value, index) => {
+          return (
+            <NavLink
+              key={index}
+              className={"marker"}
+              to={URLS.ORDERS_ADD}
+              state={{
+                name: value.title,
+                address: value.location,
+                img: value.img,
+                isDelivery: false,
+              }}
+            >
+              <img src={IMG_PATH + value.img} alt="" />
+              <div className="marker-info">
+                <h6 className="title">{value.title} </h6>
+                <h6 className="location">{value.location}</h6>
+              </div>
+            </NavLink>
+          );
+        })}
       </div>
     </div>
   );

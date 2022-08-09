@@ -13,12 +13,12 @@ const Slider = ({ items, link, showPrice }: SliderProps) => {
   const [currencyFormatter] = useFormat();
   return (
     <div className="Slider">
-      {Object.entries(items).map(([key, value]) => {
+      {items.map((value, index) => {
         return (
           <NavLink
             className="slide"
-            key={key}
-            to={link ? link + key : ""}
+            key={index}
+            to={link ? link + index : ""}
             state={{
               name: value.title,
               img: value.img,

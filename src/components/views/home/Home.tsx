@@ -15,9 +15,9 @@ const Home = () => {
     <div className="Home">
       <Carousel items={HOME_SLIDES} />
       <div className="home-list">
-        {Object.entries(HOME_LINKS).map(([key, value]) => {
+        {HOME_LINKS.map((value, index) => {
           return (
-            <div key={key} className="home-link">
+            <div key={index} className="home-link">
               <p className="title">{value.title}</p>
               <a href={value.href}>
                 <img src={IMG_PATH + value.img} alt="" />

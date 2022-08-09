@@ -1,6 +1,6 @@
 import { icon } from "leaflet";
-import * as markerIcon from "leaflet/dist/images/marker-icon.png";
-import * as markerShadow from "leaflet/dist/images/marker-shadow.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 export default icon({
   iconUrl: markerIcon,

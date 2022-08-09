@@ -10,9 +10,9 @@ const Discount = () => {
     <div className="Discount">
       <Carousel items={DISCOUNT_SLIDES} />
       <div className="slides">
-        {Object.entries(DISCOUNTS).map(([key, value]) => {
+        {DISCOUNTS.map((value, index) => {
           return (
-            <div className="slider-container" key={key}>
+            <div className="slider-container" key={index}>
               <p>{value.category}</p>
               <Slider
                 items={value.items}

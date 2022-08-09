@@ -62,9 +62,9 @@ const Detail = ({ order, confirmOrder }: DetailProps) => {
           <h3>
             <strong>Resumen</strong>
           </h3>
-          {Object.entries(order.items).map(([key, value]) => {
+          {order.items.map((value, index) => {
             return (
-              <div className="item" key={key}>
+              <div className="item" key={index}>
                 <p className="name">{value.name}</p>
                 <p>{"x" + value.quantity}</p>
                 <p>

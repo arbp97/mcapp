@@ -34,14 +34,14 @@ const ComboList = () => {
         </div>
       </div>
       <div className="ComboList-slides">
-        {Object.entries(COMBOS).map(([key, value]) => {
+        {COMBOS.map((value, index) => {
           return (
-            <div className="slider-container" key={key}>
+            <div className="slider-container" key={index}>
               <p>{value.category}</p>
               <Slider
                 items={value.items}
                 showPrice={true}
-                link={URLS.ORDERS_ADD + key + "/"}
+                link={URLS.ORDERS_ADD + index + "/"}
               />
             </div>
           );

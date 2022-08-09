@@ -12,11 +12,11 @@ const ProductList = () => {
   return (
     <div className="ProductList">
       <p>{categoryData?.category}</p>
-      {Object.entries(categoryData!.items).map(([key, value]) => {
+      {categoryData!.items.map((value, index) => {
         // load all products of this category
         return (
           <Product
-            key={key}
+            key={index}
             img={value.img}
             title={value.title}
             description={value.description}
