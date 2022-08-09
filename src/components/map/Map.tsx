@@ -2,9 +2,10 @@ import "./Map.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import LeafletControlGeocoder from "./LeafletControlGeocoder";
 import MarkerIcon from "./MarkerIcon";
+import { MarkerType } from "../../@types/marker";
 
 type MapProps = {
-  markers: any[];
+  markers: MarkerType[];
   setLocation: (location: string) => void;
   locateCurrent: boolean;
 };

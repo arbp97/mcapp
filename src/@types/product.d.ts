@@ -11,5 +11,3 @@ export type ProductCategoryType = {
   id: string;
   items: ProductType[];
 };
-
-export type ProductListType = ProductCategoryType[];

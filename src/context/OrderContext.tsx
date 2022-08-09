@@ -26,7 +26,7 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
     };
   };
 
-  const getInitialState = (): OrderType => {
+  const getInitialState = () => {
     const order = getStorageItem(STORAGE.ORDER) as OrderType;
 
     if (!order) {
@@ -44,13 +44,9 @@ export const OrderProvider = ({ children }: OrderProviderProps) => {
     setStorageItem(STORAGE.ORDER, order);
   }, [order]);
 
-  const updateOrder = (order: OrderType) => {
-    setOrder(order);
-  };
+  const updateOrder = (order: OrderType) => setOrder(order);
 
-  const resetOrder = () => {
-    setOrder(getNewOrder());
-  };
+  const resetOrder = () => setOrder(getNewOrder());
 
   return (
     <OrderContext.Provider value={{ order, updateOrder, resetOrder }}>

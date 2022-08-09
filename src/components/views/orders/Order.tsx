@@ -63,16 +63,16 @@ const Delivery = ({ location }: DeliveryProps) => {
   const handleSubmit = () => {
     if (!location || location === "") {
       alert("Seleccione una dirección");
-    } else {
-      navigate(URLS.ORDERS_ADD, {
-        state: {
-          name: shortLocation,
-          address: location,
-          img: "delivery.png",
-          isDelivery: true,
-        },
-      });
+      return;
     }
+    navigate(URLS.ORDERS_ADD, {
+      state: {
+        name: shortLocation,
+        address: location,
+        img: "delivery.png",
+        isDelivery: true,
+      },
+    });
   };
 
   return (
