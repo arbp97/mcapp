@@ -41,7 +41,7 @@ const ComboList = () => {
               <Slider
                 items={value.items}
                 showPrice={true}
-                link={URLS.ORDERS_ADD + index + "/"}
+                link={URLS.ORDERS_ADD + value.id + "/"}
               />
             </div>
           );

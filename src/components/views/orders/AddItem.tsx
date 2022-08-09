@@ -10,9 +10,9 @@ import { OrderItemType } from "../../../@types/order";
 
 const AddItem = () => {
   const { category, id } = useParams<{ category?: string; id?: string }>();
-  const itemData = COMBOS.find((cat) => cat.category === category)!.items[
-    Number(id)
-  ];
+  const itemData = COMBOS.find(
+    (comboCategory) => comboCategory.id === category
+  )!.items[Number(id)];
   const navigate = useNavigate();
   const [count, setCount] = useState(1);
   const { order, updateOrder } = useOrderContext();

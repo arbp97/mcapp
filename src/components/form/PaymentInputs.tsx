@@ -1,6 +1,6 @@
 import { PaymentInputsWrapper, usePaymentInputs } from "react-payment-inputs";
 import { css } from "styled-components";
-import cardImages from "react-payment-inputs/images";
+import images from "react-payment-inputs/images";
 import { useEffect } from "react";
 
 type PaymentInputsProps = {
@@ -45,15 +45,15 @@ const PaymentInputs = ({
 
   // card event handlers
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCardNumber(e.currentTarget.value);
+    setCardNumber(e.target.value);
   };
 
   const handleCardDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCardDate(e.currentTarget.value);
+    setCardDate(e.target.value);
   };
 
   const handleCardCVCChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCardCVC(e.currentTarget.value);
+    setCardCVC(e.target.value);
   };
 
   return (
@@ -108,7 +108,7 @@ const PaymentInputs = ({
         },
       }}
     >
-      <svg {...getCardImageProps({ images: cardImages.images })} />
+      <svg {...getCardImageProps({ images: images.images })} />
       <input {...getCardNumberProps({ onChange: handleCardNumberChange })} />
       <input {...getExpiryDateProps({ onChange: handleCardDateChange })} />
       <input {...getCVCProps({ onChange: handleCardCVCChange })} />
