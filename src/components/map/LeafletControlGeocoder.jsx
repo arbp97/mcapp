@@ -10,27 +10,40 @@ const layerGroup = L.layerGroup();
 
 // Geocode Wrapper function for the Leaflet Map
 const LeafletControlGeocoder = (props) => {
-  const map = useMap();
   const setLocation = props.setLocation;
+  const map = useMap();
+  const geocoder = L.Control.Geocoder.nominatim({
+    geocodingQueryParams: {
+      limit: 3,
+      countrycodes: "ar",
+    },
+  });
 
   useEffect(() => {
-    let geocoder = L.Control.Geocoder.nominatim({
-      geocodingQueryParams: {
-        limit: 3,
-        countrycodes: "ar",
-      },
-    });
-    if (typeof URLSearchParams !== "undefined" && window.location.search) {
-      // parse /?geocoder=nominatim from URL
-      let params = new URLSearchParams(window.location.search);
-      let geocoderString = params.get("geocoder");
+    map.on("click", (e) => {
+      // clear the layerGroup from previous stored circle and marker
+      layerGroup.clearLayers();
+      geocoder.reverse(
+        e.latlng,
+        map.options.crs.scale(map.getZoom()),
+        (results) => {
+          let result = results[0];
+          if (result) {
+            const marker = L.marker(result.center, {
+              icon: MarkerIcon,
+            })
+              .addTo(layerGroup)
+              .bindPopup(result.name);
 
-      if (geocoderString && L.Control.Geocoder[geocoderString]) {
-        geocoder = L.Control.Geocoder[geocoderString]();
-      } else if (geocoderString) {
-        console.warn("Unsupported geocoder", geocoderString);
-      }
-    }
+            // here add the layerGroup to the map
+            map.addLayer(layerGroup);
+            marker.openPopup();
+            map.flyTo(result.center, map.getZoom());
+            setLocation(result.name);
+          }
+        }
+      );
+    });
 
     const control = L.Control.geocoder({
       query: "",
@@ -64,7 +77,8 @@ const LeafletControlGeocoder = (props) => {
       layerGroup.clearLayers();
       setLocation("");
     };
-  }, [map, setLocation]);
+    // eslint-disable-next-line
+  }, [map, layerGroup]);
 
   return null;
 };

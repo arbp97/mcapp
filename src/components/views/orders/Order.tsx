@@ -77,7 +77,7 @@ const Delivery = ({ location, handleStoreSelect }: DeliveryProps) => {
       return;
     }
 
-    handleStoreSelect(shortLocation!, location, "delivery.img", true);
+    handleStoreSelect(shortLocation!, location, "delivery.png", true);
 
     navigate(URLS.ORDERS_ADD);
   };
@@ -89,7 +89,8 @@ const Delivery = ({ location, handleStoreSelect }: DeliveryProps) => {
         toggle={toggleModal}
         isOpen={showModal}
         title="Localización"
-        message="Presiona en el botón de búsqueda arriba a la derecha del mapa para buscar tu dirección."
+        message="Presiona en el botón de búsqueda arriba a la derecha del mapa para buscar tu dirección.
+         Alternativamente, puedes hacer click directamente en el mapa."
       />
     </div>
   );
