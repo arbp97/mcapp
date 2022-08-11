@@ -74,6 +74,7 @@ const LeafletControlGeocoder = (props) => {
     // cleanup function (removes the search element & control)
     return () => {
       map.removeControl(control);
+      map.removeEventListener("click");
       layerGroup.clearLayers();
       setLocation("");
     };
