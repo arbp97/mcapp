@@ -2,30 +2,40 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
-import L from "leaflet";
+import * as L from "leaflet";
+import Geocoder, { geocoders } from "leaflet-control-geocoder";
 import MarkerIcon from "./MarkerIcon";
 
 // init the empty layerGroup used to control search markers
 const layerGroup = L.layerGroup();
 
+type LeafletControlGeocoderProps = {
+  setLocation: (location: string) => void;
+};
+
 // Geocode Wrapper function for the Leaflet Map
-const LeafletControlGeocoder = (props) => {
-  const setLocation = props.setLocation;
+const LeafletControlGeocoder = ({
+  setLocation,
+}: LeafletControlGeocoderProps) => {
   const map = useMap();
-  const geocoder = L.Control.Geocoder.nominatim({
+  const geocoder = geocoders.nominatim({
     geocodingQueryParams: {
       limit: 3,
       countrycodes: "ar",
     },
   });
 
+  // this listeners are inside a useEffect hook
+  // because we need to remove those when the user
+  // changes back to pickup view.
   useEffect(() => {
     map.on("click", (e) => {
       // clear the layerGroup from previous stored circle and marker
       layerGroup.clearLayers();
+
       geocoder.reverse(
         e.latlng,
-        map.options.crs.scale(map.getZoom()),
+        map.options.crs!.scale(map.getZoom()),
         (results) => {
           let result = results[0];
           if (result) {
@@ -45,7 +55,7 @@ const LeafletControlGeocoder = (props) => {
       );
     });
 
-    const control = L.Control.geocoder({
+    const control = new Geocoder({
       query: "",
       placeholder: "Buscar dirección...",
       defaultMarkGeocode: false,
