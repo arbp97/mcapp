@@ -1,5 +1,8 @@
 # McDonald's App Clone
 
+![React](https://img.shields.io/badge/-React-61DBFB?style=for-the-badge&logo=react&logoColor=333)
+![TypeScript](https://img.shields.io/badge/-TypeScript-007acc?style=for-the-badge&logo=typescript&logoColor=333)
+
 Grupo 14 Proyecto de Software - UNLa
 
 ## Scripts
